@@ -1,0 +1,163 @@
+<!-- 报价折扣审核 -->
+<template>
+  <el-row style="height:100%">
+    <el-col :sm="5">
+      <div style="width:95%;">
+        <el-form :inline="true">
+            <el-select v-model="searchType" style="width:120px">
+              <el-option value="0" label="报价单编号"></el-option>
+              <el-option value="1" label="单位名称"></el-option>
+              <el-option value="2" label="业务员"></el-option>
+            </el-select>
+            <el-input v-model="searchKey" style="width:120px"></el-input>
+            <el-button type="primary" size="mini" @click="search">查询</el-button>
+        </el-form>
+
+        <el-row>
+          <el-col>
+            <el-table ref="leftMenu" :show-header="false" :data="tableData" @row-click='refreshDetail'  :max-height="QJTableMaxHeight">
+              <el-table-column align='left'>
+                <template slot-scope="scope" align="left">
+                  <div :class="{cursor:true,'current-row':quotationData && quotationData.id == scope.row.id }">
+                    <p style="color: blue">{{scope.row.quotationNo}}</p>
+                    <p style="font-weight: bold">{{scope.row.companyName}}</p>
+                    <p>{{scope.row.businessStaffName }}</p>
+                    <p>折前金额:{{scope.row.beforeDiscountsTotal}} &nbsp;&nbsp;&nbsp;折后金额:{{scope.row.afterDiscountsTotal}} </p>
+                  </div>
+                </template>
+              </el-table-column>
+            </el-table>
+
+            <div style="margin-top:10px;text-align:center;float:left;">
+              <mind-pagination
+                :current-page="page"
+                :page-size="rows"
+                :total="total"
+                layout="prev,next,countpage,total"
+                style="margin-left:80px;"
+                @size-change="handlePageSizeChange"
+                @current-change="handleCurrentPageChange">
+              </mind-pagination>
+            </div>
+          </el-col>
+        </el-row>
+      </div>
+    </el-col>
+
+    <el-col class="right  el-col el-col-24 el-col-sm-19">
+      <commonQuotation ref="commonQuotation" :quotationId="quotationId" :applyId="applyId"  @search="search" :rightType="rightType"
+                       style="max-height: 800px;overflow-y: scroll;">
+        <template slot="footer">
+                    <span slot="footer" class="dialog-footer" style="display: block;  text-align: center;">
+                        <el-button type="primary" @click="setAudit" v-has="'M7101'">审 核</el-button>
+                        <el-button type="warning" @click="toBack" v-has="'M7101'">退 回</el-button>
+                    </span>
+        </template>
+      </commonQuotation>
+    </el-col>
+
+  </el-row>
+
+</template>
+
+<script>
+  import Vue from 'vue'
+  import $ from 'jquery'
+  import commonQuotation from './commonQuotation'
+  import {ajaxRequest, formatDate, ajaxSyncRequest} from '../../util/base'
+
+  export default {
+    data() {
+      return {
+        searchType: '0',
+        searchKey: '',
+        page: 1,
+        rows: 10,
+        total: 0,
+        tableData: [],
+        quotationId: null,
+        applyId: null,
+        rightType: 2,
+        quotationData: {}
+      }
+    },
+    components: {commonQuotation},
+    mounted() {
+      this.getTableList()
+    },
+    methods: {
+      search(){
+        this.page = 1;
+        this.getTableList();
+      },
+      //行点击事件
+      refreshDetail(rowInfo, event, column) {
+        this.quotationId = rowInfo.id;
+        this.quotationData = rowInfo;
+        this.applyId = rowInfo.applyId;
+      },
+      // 获取左侧查询数据
+      getTableList() {
+        ajaxSyncRequest('get', 'back/quotation/discountByNoAudit', {
+          fuzzySearch: 1,
+          page: this.page,
+          rows: this.rows,
+          total: 0,
+          auditFlag: '0',
+          searchType: this.searchType,
+          searchKey: this.searchKey
+        }, res => {
+          if (res.code === 200) {
+            this.tableData = res.rows
+            if (this.tableData.length > 0) {
+              this.total = res.total;
+              this.quotationData = this.tableData[0];
+              this.quotationId = this.quotationData.id;
+              this.applyId = this.quotationData.applyId;
+              Vue.nextTick(function () {
+                //选中第一行
+                this.$refs.leftMenu.setCurrentRow(this.tableData[0]);
+              })
+            }else{
+              this.applyId = null;
+              this.quotationId = null;
+            }
+          }
+        })
+      },
+      handlePageSizeChange(size){
+        this.page = 1;
+        this.rows = size;
+        this.getTableList();
+      },
+      handleCurrentPageChange(currentPage) {
+        this.page = currentPage;
+        this.getTableList();
+      },
+      //审核
+      setAudit() {
+        this.$refs.commonQuotation.auditDiscount()
+      },
+      //退回
+      toBack() {
+        this.$refs.commonQuotation.toBack()
+      }
+    }
+  }
+</script>
+
+<style scoped>
+
+  .cursor{
+    cursor: pointer !important;
+  }
+
+  .right{
+    display: inline-block;
+    vertical-align: top;
+  }
+  .current-row{
+    background-color: #f0f9eb;
+  }
+
+</style>

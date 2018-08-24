@@ -1,0 +1,408 @@
+<html>
+<body>
+<!-- 模板编辑内容都写在body中 -->
+<style>
+
+  #printDiv {
+    width: 1000px;
+    text-align: center;
+    margin: auto;
+  }
+
+  .trTop1 {
+    border-top: #808080 solid 2px;
+  }
+
+  .font_table_title {
+    font-size: 11pt;
+    font-family: "华文中宋";
+    font-weight: normal;
+  }
+
+  .font_num {
+    font-size: 12pt;
+    font-family: "Arial";
+  }
+
+  table.MsoNormalTable {
+    font-family: "Times New Roman";
+    word-wrap: break-word;
+    overflow: auto !important;
+  }
+
+
+</style>
+<script>
+  var talbehtml = "";//表模板
+  var talbehead = "";//表头模板
+  var talbedata = "";
+  var talbesum = "";
+
+  var thisData = {};
+
+
+  /**
+   * 如果方法存在则不会直接操作模板
+   * $ jquery对象
+   * data 页面中传入的相应参数
+   */
+  function receive(data) {
+    var script = document.createElement('script');
+    script.src = 'static/js/jquery/jquery-3.3.1.js';
+    document.body.appendChild(script);
+    script.onload = function () {
+      //使用for判断是否分页
+      $("#currentDate").text(new Date().format("YYYY-MM-DD"))
+      if (data) {
+        thisData =data;
+        console.log(data, "传入打印页信息");
+        //默认单位信息
+        $(".defaultCompanyName").text(localStorage.getItem("defaultCompanyName"));
+        $("#defaultAddress").text(localStorage.getItem("defaultAddress"));
+        $("#defaultLevel").text(localStorage.getItem("defaultLevel"));
+        $("#defaultTelephone").text(localStorage.getItem("defaultTelephone"));
+        $("#defaultFax").text(localStorage.getItem("defaultFax"));
+        $("#defaultZipcode").text(localStorage.getItem("defaultZipcode"));//单位邮编
+        $("#defaultBank").text(localStorage.getItem("defaultBank"));//单位开户银行
+        $("#defaultBankAccount").text(localStorage.getItem("defaultBankAccount"));//单位开户银行账号
+        $("#defaultOfficialwebsite").text(localStorage.getItem("defaultOfficialwebsite"));//单位网址
+        $("#defaultMarketphone").text(localStorage.getItem("defaultMarketphone"));
+        $("#defaultMarketFax").text(localStorage.getItem("defaultMarketFax"));
+        $("#defaultSendReceivephone").text(localStorage.getItem("defaultSendReceivephone"));
+        $("#defaultComplaintphone").text(localStorage.getItem("defaultComplaintphone"));
+        $("#defaultOfficialwebsite").text(localStorage.getItem("defaultOfficialwebsite"));
+
+
+        if(data.printType==0){//客户
+          $("#printType").val("（客户留存联）");
+        }else if(data.printType==1){
+          $("#printType").val("（收费处留存）");
+          $(".accountTr").hide();
+        }
+        //发票信息
+        $("#accountName").text(data.account.accountName);
+        $("#accountBank").text(data.account.accountBank);
+        $("#accountNo").text(data.account.accountNo);
+        //缴费单信息
+        $("#billNo").text(data.bill.billNo);
+        $("#printCount").text(data.bill.printCount+1);
+        $("#companyName").text(data.bill.companyName);
+        $("#companyAddress").text(data.bill.companyAddress);
+        $("#companyContact").text(data.bill.companyContact);
+        $("#companyPhone").text(data.bill.companyPhone);
+        let status ="未结账";
+        if(data.bill.isCheck==1){
+          status ="已结账";
+        }else if(data.bill.isTicket==1){
+          status = "已结算";
+        }
+        $("#status").text(status);
+        //费用名称
+        $("#fee1").text(data.feeName.fee1);
+        $("#fee2").text(data.feeName.fee2);
+        $("#fee3").text(data.feeName.fee3);
+        $("#fee4").text(data.feeName.fee4);
+        $("#fee5").text(data.feeName.fee5);
+        $("#fee6").text(data.feeName.fee6);
+        $("#fee7").text(data.feeName.fee7);
+        $("#fee8").text(data.feeName.fee8);
+
+
+        $("#jdfTotal").text(data.feeName.fee1+"：");
+        $("#qtfTotal").text(data.feeName.fee6+"：");
+        $("#allTotal").text(data.feeName.fee7+"：");
+
+        //获取模板
+        getTemplate("applianceList");
+        createTable("applianceList", data.appData);
+      }
+    };
+  }
+
+
+  //创建器具行
+  function createTable(id, list) {
+    $("#" + id).append(talbehead);
+    var sumTs = 0;
+    var sumMoney = 0;
+    var sumJdf = 0;
+    for (var i = 0; i < list.length; i++) {
+      //talbedata  赋值
+      var tempData = $(talbedata);
+      tempData.find("td").each(function (index, row) {
+        var name = $(this).attr("column-name");
+        if ("index" == name) {
+          $(this).html(i + 1);
+        } else if ("detectionMethod" == name) {
+          var methods = "";
+          // 0现场 1送检 2带回
+          if (list[i][name] == "0") {
+            methods = "现场"
+          } else if (list[i][name] == "1") {
+            methods = "送检"
+          } else if (list[i][name] == "2") {
+            methods = "带回";
+          }
+          $(this).html(methods);
+        } else if ("setNumber" == name) {
+          $(this).html(list[i][name]);
+          //套数
+          sumTs += list[i][name];
+        } else if ("TOTAL_ACTUAL" == name) {
+          $(this).html(list[i][name]);
+          sumMoney += list[i][name];
+        } else if ("JDF_ACTUAL" == name) {
+          $(this).html(list[i][name]);
+          sumJdf += list[i][name];
+        } else {
+          $(this).html(list[i][name]);
+        }
+      })
+      $("#" + id).append(tempData.prop("outerHTML"));
+    }
+    //合计
+    var tempSum = $(talbesum);
+    $("#" + id).append(tempSum.prop("outerHTML"));
+    $("#sumTs").html(sumTs);
+    $("#sumMoney").html(sumMoney);
+    $("#sumJdf").html(sumJdf);
+    $("#otherMoney").html(sumMoney - sumJdf);
+  }
+
+  /**
+   *
+   * 根据id抽取模板
+   */
+  function getTemplate(id) {
+    $("#" + id).find("tr").each(function (i, row) {
+      if ("data" == $(this).attr("t_type")) {
+        talbedata = $(this).prop("outerHTML");
+      } else if ("sum" == $(this).attr("t_type")) {
+        talbesum = $(this).prop("outerHTML");
+      } else if ("head" == $(this).attr("t_type")) {
+        talbehead = $(this).prop("outerHTML");
+      }
+    });
+    $("#" + id).empty();
+    talbehtml = $("#" + id).prop("outerHTML");
+  }
+
+  Date.prototype.format = function (format) {
+    if (isNaN(this.getMonth())) {
+      return null;
+    }
+    let o = {
+      "M+": this.getMonth() + 1,
+      "D+": this.getDate(),
+      "h+": this.getHours(),
+      "m+": this.getMinutes(),
+      "s+": this.getSeconds(),
+      "q+": Math.floor((this.getMonth() + 3) / 3),
+      "S": this.getMilliseconds()
+    };
+    if (/(Y+)/.test(format)) {
+      format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    }
+    for (let k in o) {
+      if (new RegExp("(" + k + ")").test(format)) {
+        format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
+      }
+    }
+    return format;
+  };
+
+  function printpage() {
+    //更新缴费单打印次数
+    $.ajax({
+      url:"/back/bill/",
+      type:"put",
+      data:{id:thisData.bill.id,printCount:thisData.bill.printCount+1},
+      xhrFields:{
+        withCredentials:true
+      },
+      crossDomain:true,
+      success:window.print(),
+    });
+
+  }
+
+</script>
+<button onclick="printpage()" class="Noprint">print</button>
+
+<div id="printDiv">
+  <table align=center width=970 class=MsoNormalTable>
+    <tr height=15px>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>
+        <table height=20px width=100% class=MsoNormalTable>
+          <tr>
+            <td width="15%"></td>
+            <td align="center" width="40%"><b><font face="宋体"
+                                                    size="3"><span class="defaultCompanyName"></span>
+            </font></b>
+            </td>
+            <td width="15%" align="right"><span style="font-size: 11pt"><strong> 编号:<span id="billNo"></span>
+                    </strong></span></td>
+          </tr>
+          <tr>
+            <td width="15%"></td>
+            <td align="center" width="40%">
+              <b><font face="宋体" size="3">计量器具检校清单<span id="printType"></span></font></b>
+              &nbsp;&nbsp;&nbsp;
+              <span style="font-size: 11pt">第<span id="printCount"></span>次打印</span>
+            </td>
+            <td width="15%" align="right" valign="bottom">
+              <div><span id="currentDate"></span></div>
+              <div><span style="font-size: 11pt">该单<span id="status"></span></span></div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table height=5px width=100% class=MsoNormalTable>
+          <tr>
+            <td width=100% colspan=2>
+              <hr color=#000000 width=100% size="0.1">
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div align="center">
+          <table id="accountTable" border="0" width="100%" cellspacing="0" cellpadding="0" class=MsoNormalTable>
+            <tr class="accountTr">
+              <td width="310">
+                <p align="left"><span style="font-size: 11pt">检校单位：<span class="defaultCompanyName"></span></span>
+                </p>
+              </td>
+              <td>
+                <p align="left"><span style="font-size: 11pt">地址：<span id="defaultAddress"></span></span></p>
+              </td>
+              <td width="102">
+                <p align="left"><span style="font-size: 11pt">邮编：<span id="defaultZipcode"></span></span></p>
+              </td>
+            </tr>
+            <tr class="accountTr">
+              <td colspan="3">
+                <p align="left">
+                  <span style="font-size: 11pt">开户名：<span id="accountName"></span></span>
+                </p>
+              </td>
+            </tr>
+            <tr class="accountTr">
+              <td colspan="3"><p align="left">
+                <span style="font-size: 11pt">开户银行：<span id="accountBank"></span></span>
+              </p>
+              </td>
+            </tr>
+            <tr class="accountTr">
+              <td colspan="3"><p align="left">
+                <span style="font-size: 11pt">开户账号：<span id="accountNo"></span></span>
+              </p>
+              </td>
+            </tr>
+            <tr class="accountTr">
+              <td colspan="3">
+                <p align="left"><span
+                  style="font-size: 11pt">联系电话：<span id="defaultTelephone"></span>；<span id="defaultFax"></span></span>
+              </td>
+            </tr>
+            <tr class="accountTr">
+              <td colspan="3">
+                <hr width=100% color=#000000 size="0.1">
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <p align="left"><span style="font-size: 11pt">单位名称：<span id="companyName"></span></span>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <p align="left"><span style="font-size: 11pt">单位地址：<span id="companyAddress"></span></span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p align="left"><span
+                  style="font-size: 11pt">联 系 人：<span id="companyContact"></span></span>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <span style="font-size: 11pt">联系电话：<span id="companyPhone"></span></span>
+              </td>
+            </tr>
+            <tr style="height: 20px;">
+              <td align="left">
+                <span style="font-size: 11pt">发票号：</span>
+              </td
+              <td></td>
+            </tr>
+          </table>
+        </div>
+      </td>
+    </tr>
+  </table>
+  <hr width="970" color=#000000 size="0.1">
+  <table width="970" align="center" border="0" cellpadding="0" cellspacing="0" id="applianceList"
+         class="MsoNormalTable">
+    <tr t_type="head">
+      <td align="center">登记号</td>
+      <td align="center">器具名称</td>
+      <td align="center">规格型号</td>
+      <td align="center">套数</td>
+      <td align="center"><span id="fee7"></span></td>
+      <td align="center"><span id="fee1"></span></td>
+      <td align="center"><span id="fee2"></span></td>
+      <td align="center"><span id="fee3"></span></td>
+      <td align="center"><span id="fee4"></span></td>
+      <td align="center"><span id="fee5"></span></td>
+      <td align="center"><span id="fee6"></span></td>
+      <td align="center"><span id="fee8"></span></td>
+      <td align="center">折扣</td>
+      <td align="center">分包费</td>
+    </tr>
+    <tr t_type="data">
+      <td class="trTop1 font_table_title" column-name="REGISTRATION_NO"></td>
+      <td align="center" class="trTop1" column-name="APPLIANCE_NAME"></td>
+      <td align="center" class="trTop1" column-name="MODEL"></td>
+      <td align="center" class="trTop1" column-name="SET_NUMBER"></td>
+      <td align="center" class="trTop1" column-name="TOTAL_ACTUAL"></td>
+      <td align="center" class="trTop1" column-name="JDF_ACTUAL"></td>
+      <td align="center" class="trTop1" column-name="FJF_ACTUAL"></td>
+      <td align="center" class="trTop1" column-name="JJF_ACTUAL"></td>
+      <td align="center" class="trTop1" column-name="XLF_ACTUAL"></td>
+      <td align="center" class="trTop1" column-name="FWF_ACTUAL"></td>
+      <td align="center" class="trTop1" column-name="QTF_ACTUAL"></td>
+      <td align="center" class="trTop1" column-name="WORKLOAD_ACTUAL"></td>
+      <td align="center" class="trTop1" column-name="DISCOUNT"></td>
+      <td align="center" class="trTop1" column-name="SUBCONTRACT_FEE"></td>
+    </tr>
+  </table>
+
+  <table width="970" align="center" border="0" width="100%" cellspacing="0" cellpadding="0" class=MsoNormalTable>
+    <tr>
+      <td width="100%">
+        <p align="right"><span style="font-size: 11pt"><span id="jdfTotal"></span><span id="sumJdf"></span>元&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="qtfTotal"></span><span
+          id="otherMoney"></span>
+          元&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="allTotal"></span><span id="sumMoney"></span>元</span>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td width="100%">
+        <p align="left"><span style="font-size: 11pt">注：</span></p>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</body>
+</html>

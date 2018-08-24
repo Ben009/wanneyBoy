@@ -1,0 +1,101 @@
+<html>
+<style>
+  table.gridtable {
+    border-width: 1px;
+    border-collapse: collapse;
+  }
+  table.gridtable td {
+    border-width: 1px;
+    border-style: solid;
+    padding: 1px;
+  }
+</style>
+<body>
+<script>
+  //var $ =null;//该对象为外部传入的jquery对象
+  /**
+   * 如果方法存在则不会直接操作模板
+   * $ jquery对象
+   * data 页面中传入的相应参数
+   */
+  function receive(data){
+    var script=document.createElement('script');
+    script.src='static/js/jquery/jquery-3.3.1.js';
+    document.body.appendChild(script);
+    script.onload=function(){
+      //器具信息y
+      $.get('/back/entrustSjd/list/'+data.registration_no, (res) => {
+        var str = "";
+        var totalFee1 = 0;
+        var totalFee2 = 0;
+        var totalFee3 = 0;
+        var totalFee4 = 0;
+        var totalFee5 = 0;
+        var totalFee6 = 0;
+        var totalFee7 = 0;
+        var totalFee8 = 0;
+        var totalFee9 = 0;
+        var totalts = 0;
+        for(var i=0;i<res.rows.length;i++){
+          str = str + "<tr><td>"+res.rows[i].registrationNo+"</td>" +
+            "      <td>"+res.rows[i].companyName+"</td>" +
+            "      <td>"+res.rows[i].applianceName+"</td>" +
+            "      <td>"+res.rows[i].totalActual+"</td>" +
+            "      <td>"+res.rows[i].setNumber+"</td>" +
+            "      <td>"+res.rows[i].jdfActual+"</td>" +
+            "      <td>"+res.rows[i].fjfActual+"</td>" +
+            "      <td>"+res.rows[i].jjfActual+"</td>" +
+            "      <td>"+res.rows[i].xlfActual+"</td>" +
+            "      <td>"+res.rows[i].fwfActual+"</td>" +
+            "      <td>"+res.rows[i].qtfActual+"</td>" +
+            "      <td>"+res.rows[i].workloadActual+"</td>" +
+            "      <td>"+res.rows[i].intensiveWorkloadActual+"</td></tr>";
+          totalFee1 = Number(totalFee1) + Number(res.rows[i].totalActual);
+          totalFee2 = Number(totalFee2) + Number(res.rows[i].totalActual);
+          totalFee3 = Number(totalFee3) + Number(res.rows[i].totalActual);
+          totalFee4 = Number(totalFee4) + Number(res.rows[i].totalActual);
+          totalFee5 = Number(totalFee5) + Number(res.rows[i].totalActual);
+          totalFee6 = Number(totalFee6) + Number(res.rows[i].totalActual);
+          totalFee7 = Number(totalFee7) + Number(res.rows[i].totalActual);
+          totalFee8 = Number(totalFee8) + Number(res.rows[i].totalActual);
+          totalFee9 = Number(totalFee9) + Number(res.rows[i].totalActual);
+          totalts = Number(totalts) + Number(res.rows[i].totalActual);
+        }
+        $("#listTr").append(str);
+
+      });
+      $.get('/njmind/findParams/fee1$fee2$fee3$fee4$fee5$fee6$fee7$fee8$fee9',{},(res)=>{
+          $("#fee1").text(res.fee1.value);
+          $("#fee2").text(res.fee2.value);
+          $("#fee3").text(res.fee3.value);
+          $("#fee4").text(res.fee4.value);
+          $("#fee5").text(res.fee5.value);
+          $("#fee6").text(res.fee6.value);
+          $("#fee7").text(res.fee7.value);
+          $("#fee8").text(res.fee8.value);
+          $("#fee9").text(res.fee9.value);
+      });
+
+    };
+  }
+</script>
+<button onclick="window.print()" class="Noprint">print</button>
+<table style="width: 100%;text-align: center" class="gridtable" id="listTr">
+    <tr>
+      <td width="10%">登记号</td>
+      <td width="10%">委托单位</td>
+      <td width="10%">器具名称</td>
+      <td width="7%" id="fee7"></td>
+      <td width="7%">套数</td>
+      <td width="7%" id="fee1"></td>
+      <td width="7%" id="fee2"></td>
+      <td width="7%" id="fee3"></td>
+      <td width="7%" id="fee4"></td>
+      <td width="7%" id="fee5"></td>
+      <td width="7%" id="fee6"></td>
+      <td width="7%" id="fee8"></td>
+      <td width="7%" id="fee9"></td>
+    </tr>
+  </table>
+</body>
+</html>

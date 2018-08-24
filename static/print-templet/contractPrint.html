@@ -1,0 +1,511 @@
+<html>
+<body>
+<!-- 合同打印 -->
+
+<style media="print">
+
+  .Noprint {
+    display: none;
+  }
+
+  .PageNext {
+    page-break-after: always;
+  }
+</style>
+
+
+<style>
+  table.MsoNormalTable {
+    font-family: "Times New Roman";
+    table-layout: fixed;
+    word-wrap: break-word;
+    overflow: auto !important;
+  }
+
+
+</style>
+<script>
+  var talbehtml = "";//表模板
+  var talbehead = "";//表头模板
+  var talbedata = "";
+  var talbesum = "";
+  var lastSumData = "";
+
+
+  //var $ =null;//该对象为外部传入的jquery对象
+  /**
+   * 如果方法存在则不会直接操作模板
+   * $ jquery对象
+   * data 页面中传入的相应参数
+   */
+  function receive(data) {
+    var script = document.createElement('script');
+    script.src = 'static/js/jquery/jquery-3.3.1.js';
+    document.body.appendChild(script);
+    script.onload = function () {
+      getTemplate("appliance");
+      var contractId = data.id;//合同ID
+      var quotationId = data.quotationId;//报价单ID
+
+      $.get('/back/contract/getPrintData/' +contractId, (res) => {
+        for(var p in res.map){
+          $("#" + p).text(res.map[p]);
+        }
+        $("#companyName1").text(res.map['companyName']);
+        $("#businessCompanyName1").text(res.map['businessCompanyName']);
+        $("#addUserName").text(res.map['userName'])
+
+      });
+
+      $("#printDate").text(new Date().format("YYYY-MM-DD"))
+      $("#defaultCompanyName").html(localStorage.getItem("defaultCompanyName"));//默认客户名称
+      $("#defaultOfficialwebsite").html(localStorage.getItem("defaultOfficialwebsite"));//默认网址
+
+      //器具信息y
+      $.get('/back/quotationAppliance/retrieve?quotationId=' +quotationId, (res) => {
+        createTable("appliance",  res.rows);
+      });
+
+    };
+  }
+
+  //创建表格
+  function createTable(id, rows){
+    var newId = id;
+    var t = 0;
+    $("#" + id).append(talbehead);
+    var afterSums = 0;
+    var setNumber = 0;
+    for (var i = 0; i < rows.length; i++) {
+      var tempData = $(talbedata);
+      tempData.find("td").each(function(index,row){
+        var name = $(this).attr("column");
+        if("index"==name){
+          $(this).html(i+1);
+        }else if("afterDiscountTotal"==name){
+          $(this).html(rows[i][name]);
+          afterSums += rows[i][name];
+        }else if("setNumber"==name){
+          $(this).html(rows[i][name]);
+          setNumber += rows[i][name];
+        }else{
+          $(this).html(rows[i][name]);
+        }
+      })
+      if(i!=0 && i%45==0){
+        var newTableHtml = talbehtml;
+        newId = id +""+ i
+        var newTab = $(newTableHtml);
+        $(newTab).attr("id",newId)
+        if(t>0){
+          $("#"+newId).after("<br class='PageNext'>").after($(newTab).prop("outerHTML"));
+          $("#" + newId).append(talbehead);
+        }else{
+          $("#appliance").after("<br class='PageNext'>").after($(newTab).prop("outerHTML"));
+          $("#" + newId).append(talbehead);
+        }
+        t++;
+      }
+      $("#" + newId).append(tempData.prop("outerHTML"));
+    }
+    var tempSum = $(talbesum);
+    var tempSum1 = $(lastSumData);
+    $("#" + newId).append(tempSum.prop("outerHTML"));
+    $("#afterDiscountTotalSum").text(afterSums);
+    $("#totalSetNumber").text(setNumber);
+    $("#" + newId).append(tempSum1.prop("outerHTML"));
+    $("#jcfTotal").text("检校费："+$("#afterDiscountsTotal").text());
+    $("#serviceChargeFee").text("现场检测费："+$("#afterDiscountsTotal").text() * $("#serviceChargePoints").text());
+    $("#jjFee").text("加急费："+$("#afterDiscountsTotal").text() * $("#urgentProportionsPoints").text());
+    $("#jtfee").text("交通费："+$("#carFares").text());
+    $("#lastTotal").text("总计："+$("#totalCost").text());
+  }
+
+
+
+
+  /**
+   *
+   * 根据id抽取模板
+   */
+  function getTemplate(id) {
+    $("#" + id).find("tr").each(function (i, row) {
+      if ("data" == $(this).attr("t_type")) {
+        talbedata = $(this).prop("outerHTML");
+      } else if ("sum" == $(this).attr("t_type")) {
+        talbesum = $(this).prop("outerHTML");
+      } else if ("head" == $(this).attr("t_type")) {
+        talbehead = $(this).prop("outerHTML");
+      }else if ("lastSum" == $(this).attr("t_type")) {
+        lastSumData = $(this).prop("outerHTML");
+      }
+    });
+    $("#" + id).empty();
+    talbehtml = $("#" + id).prop("outerHTML");
+  }
+
+
+
+
+
+  Date.prototype.format = function (format) {
+    if(isNaN(this.getMonth())){
+      return null;
+    }
+    let o = {
+      "M+": this.getMonth() + 1,
+      "D+": this.getDate(),
+      "h+": this.getHours(),
+      "m+": this.getMinutes(),
+      "s+": this.getSeconds(),
+      "q+": Math.floor((this.getMonth() + 3) / 3),
+      "S": this.getMilliseconds()
+    };
+    if (/(Y+)/.test(format)) {
+      format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    }
+    for (let k in o) {
+      if (new RegExp("(" + k + ")").test(format)) {
+        format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
+      }
+    }
+    return format;
+  };
+</script>
+
+<div id="afterDiscountsTotal" style="display: none"></div>
+<div id="serviceChargePoints" style="display: none"></div>
+<div id="urgentProportionsPoints" style="display: none"></div>
+<div id="carFares" style="display: none"></div>
+<div id="totalCost" style="display: none"></div>
+<table id="test" align="center" width="100%" class="MsoNormalTable">
+  <tr>
+    <td rowspan="3" width="30%" align="center">&nbsp;
+    <td align="center" valign="middle">
+      <b><span face="宋体" size="5" id="defaultCompanyName">客户名称</span></b>
+    </td>
+    <td rowspan="3" width="30%" align="center">&nbsp;</td>
+  </tr>
+
+  <tr>
+    <td align=center valign=middle>
+      <b><span face="宋体" size="3" id="defaultOfficialwebsite"></span></b>
+    </td>
+  </tr>
+
+  <tr>
+    <td align=center valign=middle>
+      <b><span face="宋体" size="3">计量器具检校合同</span></b>
+    </td>
+  </tr>
+
+  <tr>
+    <td height="44" colspan="3">
+      <table width=100% class="MsoNormalTable" style="font-size:16px">
+        <tr>
+          <td align="left" style="font-weight: bold">合同编号:<span id="contractNo"></span></td>
+          <td align="right">打印时间：<span id="printDate"></span></td>
+        </tr>
+        <tr>
+          <td width="100%" colspan="2">
+            <hr color="#000000" width="100%">
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+
+<table align="center" width="100%" class="MsoNormalTable" style="font-size:16px">
+
+  <tr>
+    <td colspan="3" align="left"> 委托方(甲方)：<span id="companyName"></span></td>
+  </tr>
+  <tr>
+    <td colspan="3" align="left">地址：<span id="customerAddress"></span></td>
+  </tr>
+  <tr>
+    <td colspan="3" align="left">联系人：<span id="customerContact"></span></td>
+  </tr>
+  <tr>
+    <td align="left" colspan="2">电话：<span id="customerTelephone"></span></td>
+    <td align="left" width="30%">传真：<span id="customerFox"></span></td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <hr width="100%" color="#000000" size="0.1">
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="3" align="left">受委托方(乙方)：<span id="businessCompanyName"></span></td>
+  </tr>
+  <tr>
+    <td colspan="3" align="left">地址：<span id="businessAddress"></span></td>
+  </tr>
+  <tr>
+    <td align="left">联系人：<span id="staffName"></span></td>
+    <td align="left">电话：<span id="businessMobilePhone"></span></td>
+  </tr>
+  <tr>
+    <td align="left" colspan="2">开户银行：<span id="accountBank"></span></td>
+    <td align="left">账号：<span id="accountNo"></span></td>
+  </tr>
+  <tr>
+    <td colspan="3" align="left">户名：<span id="accountName"></span></td>
+  </tr>
+  <tr>
+    <td width=100% colspan=3>
+      <hr color=#000000 width=100%>
+    </td>
+  </tr>
+</table>
+
+
+<table align="center" width=100% class="MsoNormalTable" style="font-size:14px">
+  <tr>
+    <td style="font-weight: bold;font-size:16px"> 一、合同约定内容</td>
+  </tr>
+  <tr>
+    <td> 1、乙方所采用的检定/校准/检测的方法和依据是国家检定规程或校准规范，如需按甲方的特殊要求进行校准时，请附上甲方签字或盖章的正式文件，并在送检单或申请单上注明有特殊校准要求。</td>
+  </tr>
+  <tr>
+    <td> 2、甲方送检的器具，乙方在五个工作日内完成检定/校准/检测工作，并出具证书和报告。需要现场检测的器具，在甲方签字确认后，乙方在五个工作日内安排现场检测，并在检校工作完毕后五个工作日内出具证书和报告；
+      <span style="font-weight: bold;">若不需在五个工作日内安排现场检校，则需要在&nbsp;  yyyy-mm-dd  前安排现场检校。</span>
+    </td>
+  </tr>
+  <tr>
+    <td> 3、当实际检定/校准的仪器、设备与合同中不相符时，按实际仪器、设备数量与内容进行收费。
+    </td>
+  </tr>
+  <tr>
+    <td>4、本合同费用不含修理费，如需修理，修理费和配件费另行结算。</td>
+  </tr>
+  <tr>
+    <td>5、合同履行完成后，双方应在一个月内核对检/校费用，检/校费用到达乙方帐户后，乙方及时将检定/校准证书交付甲方。</td>
+  </tr>
+  <tr>
+    <td>6、如有仪器不在实验室校准范围内外送的，则不在承诺的工作日内。</td>
+  </tr>
+  <tr>
+    <td>7、送检仪器如需加急应提前告知，否则不能保证及时提取。</td>
+  </tr>
+  <tr>
+    <td> 8、合同有效期：合同内容执行完毕即自动失效
+    </td>
+  </tr>
+
+  <tr>
+    <td style="font-weight: bold;font-size:16px"> 二、合同约定附加费用</td>
+  </tr>
+
+  <tr>
+    <td>1、器具检校是否加急：<span id="urgentProportions"></span></td>
+  </tr>
+
+  <tr>
+    <td>2、现场检校，检校费用加收 <span id="serviceCharge"></span>
+  </tr>
+  <tr>
+    <td>3、现场检校 ，加收交通费<span id="carFare"></span>
+  </tr>
+
+  <tr>
+    <td style="font-weight: bold;font-size:16px"> 三、合同特别说明条款</td>
+  </tr>
+  <tr>
+    <td>1、若乙方不能出具检定证书的，则出具校准报告。</td>
+  </tr>
+
+  <tr>
+    <td>2、需修理时,<span id="repairInformation"></span>。</td>
+  </tr>
+
+  <tr>
+    <td> 3、若报告形式为校准或检测时,是否出具复检/校日期：<span id="isRecheck"></span>
+    </td>
+  </tr>
+
+  <tr>
+    <td> 4、检校费用结款周期： ■现结 □月结30天 □月结60天 □其它
+    </td>
+  </tr>
+
+  <tr>
+    <td style="font-weight: bold;font-size:16px"> 四、补充条款：</td>
+  </tr>
+
+  <tr>
+    <td><span id="additionalTerms"></span></td>
+  </tr>
+
+  <tr>
+    <td style="font-weight: bold;font-size:16px"> 五、备注：</td>
+  </tr>
+
+  <tr>
+    <td><span id="remark"></span></td>
+  </tr>
+
+  <tr>
+    <td style="font-weight: bold;font-size:16px">六、其它事项</td>
+  </tr>
+
+  <tr>
+    <td>1、本合同需附检定/校准的计量器具清单（合同附件）。</td>
+  </tr>
+  <tr>
+    <td>2、本合同一式贰份，具有同等效力。</td>
+  </tr>
+  <tr>
+    <td>3、本合同经双方签字盖章后生效。</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<br class="PageNext">
+
+<table border="0" align="center" width=100% cellspacing="0" cellpadding="0" class="MsoNormalTable">
+  <tr>
+    <td rowspan="2" width="30%" align="center">&nbsp;</td>
+    <td align=center rowspan="2" height=80>
+      <b><span face="宋体" size="4">检定/校准计量器具清单（附件）</span></b>
+    </td>
+    <td rowspan="2" width="30%" align="center">&nbsp;</td>
+  </tr>
+</table>
+
+<table id="printTime" border="0" align="center" width=100% cellspacing="0" cellpadding="0" class="MsoNormalTable"  style="font-size:16px">
+  <tr>
+    <td align="left" style="font-weight: bold">合同编号:</td>
+    <td align="right">打印时间：
+    </td>
+  </tr>
+  <tr>
+    <td width=100% colspan="2">
+      <hr color="#000000" width=100%>
+    </td>
+  </tr>
+</table>
+
+<table id="appliance" border="0" align="center" width=100% cellspacing="0" cellpadding="0" class="MsoNormalTable"
+       style="font-size:14px">
+  <tr t_type="head">
+    <td width="5%" align="center">序号</td>
+    <td align="center">器具名称</td>
+    <td width="19%" align="center">型号/规格</td>
+    <td width="6%" align="center">套数</td>
+    <td width="10%" align="center">单价</td>
+    <td width="8%" align="center">实收</td>
+    <td width="9%" align="center">服务类型</td>
+    <td width="9%" align="center">是否现场</td>
+    <td width="14%" align="center">备注</td>
+  </tr>
+
+
+  <tr t_type="data">
+    <td align="center" style="BORDER-BOTTOM: #000000 1px dotted;" column="index"></td>
+    <td align="center" style="BORDER-BOTTOM: #000000 1px dotted;" column="applianceName"></td>
+    <td align="center" style="BORDER-BOTTOM: #000000 1px dotted;" column="model"></td>
+    <td align="center" style="BORDER-BOTTOM: #000000 1px dotted;" column="setNumber"></td>
+    <td align="center" style="BORDER-BOTTOM: #000000 1px dotted;" column="unitPrice"></td>
+    <td align="center" style="BORDER-BOTTOM: #000000 1px dotted;" column="afterDiscountTotal"></td>
+    <td align="center" style="BORDER-BOTTOM: #000000 1px dotted;" column="certificateType"></td>
+    <td align="center" style="BORDER-BOTTOM: #000000 1px dotted;" column="detectionMethod"></td>
+    <td align="center" style="BORDER-BOTTOM: #000000 1px dotted;" column="remark"></td>
+  </tr>
+
+  <tr t_type="sum">
+    <td align="center" style="BORDER-BOTTOM: #000000 1px dotted;">合计：</td>
+    <td align="center" style="BORDER-BOTTOM: #000000 1px dotted;"></td>
+    <td align="center" style="BORDER-BOTTOM: #000000 1px dotted;"></td>
+    <td align="center" style="BORDER-BOTTOM: #000000 1px dotted;" id="totalSetNumber"></td>
+    <td align="center" style="BORDER-BOTTOM: #000000 1px dotted;"></td>
+    <td align="center" style="BORDER-BOTTOM: #000000 1px dotted;" id="afterDiscountTotalSum"></td>
+    <td align="center" style="BORDER-BOTTOM: #000000 1px dotted;"></td>
+    <td align="center" style="BORDER-BOTTOM: #000000 1px dotted;"></td>
+    <td align="center" style="BORDER-BOTTOM: #000000 1px dotted;"></td>
+  </tr>
+
+  <tr t_type="lastSum" width=100% cellspacing="0" cellpadding="0">
+    <td align="center" style="BORDER-BOTTOM: #000000 1px dotted;"></td>
+    <td align="center" style="BORDER-BOTTOM: #000000 1px dotted;" id="jcfTotal">检校费:</td>
+    <td colspan="2" align="center" style="BORDER-BOTTOM: #000000 1px dotted;" id="serviceChargeFee" >现场检测费:</td>
+    <td colspan="2" align="center" style="BORDER-BOTTOM: #000000 1px dotted;" id="jjFee">加急费:</td>
+    <td align="center" style="BORDER-BOTTOM: #000000 1px dotted;" id="jtfee">交通费:</td>
+    <td align="center" style="BORDER-BOTTOM: #000000 1px dotted;" id="lastTotal">总计</td>
+    <td align="center" style="BORDER-BOTTOM: #000000 1px dotted;"></td>
+  </tr>
+
+
+</table>
+
+<table align=center width=100% class="MsoNormalTable">
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+
+<table align="center" width=100% class="MsoNormalTable" style="font-size:16px">
+
+  <tr>
+    <td width="50%">
+      甲方：<span id="companyName1"></span>
+    </td>
+    <td width="15%" align="right">
+      乙方：<span id="businessCompanyName1"></span>
+    </td>
+    <td width="35%">
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      签名(盖章)：
+    </td>
+    <td align="right">
+      合同编制人：<span id="addUserName"></span>
+    </td>
+    <td>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td align="right">
+      编制日期：<span id="addTime"></span>
+    </td>
+    <td>
+    </td>
+  </tr>
+
+
+  <tr>
+    <td>
+      日期：
+    </td>
+    <td align="right">
+      合同审核人：<span id="auditUser"></span>
+    </td>
+    <td>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td align="right">
+      审核日期：<span id="auditDate"></span>
+    </td>
+    <td>
+    </td>
+  </tr>
+</table>
+
+
+</body>
+</html>

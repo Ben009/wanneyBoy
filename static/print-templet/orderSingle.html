@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>流转单打印</title>
+    <style>
+        /* 整体布局 */
+        .container {
+            margin: 20px auto;
+            width: 70%;
+        }
+
+        /* ************头部************ */
+        /*header {*/
+        /*display: flex;*/
+        /*justify-content: space-between;*/
+        /*align-items: flex-end;*/
+        /*vertical-align: bottom;*/
+        /*}*/
+
+        /* 头部左侧样式 */
+        .left #contractNo {
+            font-size: 20px;
+        }
+
+        /* 头部中间样式 */
+        .mid {
+            text-align: center;
+        }
+
+        .mid p, .mid h2 {
+            margin: 0;
+        }
+
+        .mid .button {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .mid button {
+            background-color: rgb(50, 122, 183);
+            border: none;
+            padding: 3px 15px;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .mid .specialButton {
+            background-color: rgb(217, 82, 78);
+        }
+
+        /* 头部右侧样式 */
+        .right {
+            width: 150px;
+            height: 50px;
+        }
+
+        /* **************表格内容************** */
+        main {
+            margin-top: 10px;
+        }
+
+        .position {
+            position: relative;
+            top: -1px;
+        }
+
+        .table {
+            text-align: center;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead td {
+            padding: 5px;
+        }
+
+        .add tr:nth-of-type(n+1) td {
+            padding: 5px 10px
+        }
+
+        .bottom td {
+            padding: 5px;
+        }
+
+        /* 选中的方格 */
+        span.noCheck, span.check {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border: solid 1px black;
+        }
+
+        .check {
+            background-color: black;
+        }
+
+        /* *********底部提示信息************** */
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+    </style>
+    <style media="print">
+
+        .Noprint {
+            display: none;
+        }
+
+        .PageNext {
+            page-break-after: always;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="mid">
+        <p class="button">
+            <button onclick="window.print()" class="Noprint">打印</button>
+        </p>
+    </div>
+</div>
+<script>
+    function receive(data) {
+        var script = document.createElement('script');
+        script.src = 'static/js/jquery/jquery-3.3.1.js';
+        document.body.appendChild(script);
+        script.onload = function () {
+            let arr = data.arr;
+            let add = document.querySelector('.container');
+
+            for (let i = 0; i < arr.length; i++) {
+                let table = '<div class="mid" style="border-bottom: 1px solid #0C0C0C;margin-bottom: 5px;">\n' +
+                    '            <table class="table" style="text-align: left;height: 30px;" cellpadding="0">\n' +
+                    '                <tbody>\n' +
+                    '                <tr style="margin-bottom: 15px;">\n' +
+                    '                    <td>' + localStorage.getItem("defaultCompanyName") + ' </td>\n' +
+                    '                    <td style="font-size: 20px;" colspan="3" style="text-align: center;">流转入库联</td>\n' +
+                    '                    <td id="' + arr[i].ORDER_SINGLE_NO.replace('-', '_', '\g') + '"><img src="/njmind/attachment/certificateBarCode?zsbh='+arr[i].ORDER_SINGLE_NO+'"/></td>\n' +
+                    '                    <td>检测岗位:</td>\n' +
+                    '                    <td style="font-size: 20px;" colspan="2" style="text-align: right">' + judgeNull(arr[i].POST_NAME) + '</td>\n' +
+                    '                </tr>\n' +
+                    '                <tr>\n' +
+                    '                    <td>室主任签字:</td>\n' +
+                    '                    <td></td>\n' +
+                    '                    <td>检定员签字:</td>\n' +
+                    '                    <td></td>\n' +
+                    '                    <td>入库签字:</td>\n' +
+                    '                    <td></td>\n' +
+                    '                    <td>流转单号:</td>\n' +
+                    '                    <td style="text-align: left;">' + judgeNull(arr[i].ORDER_SINGLE_NO) + ' </td>\n' +
+                    '                </tr>\n' +
+                    '                </tbody>\n' +
+                    '            </table>\n' +
+                    '        </div>\n' +
+                    '        <header>\n' +
+                    '            <table class="table" style="text-align: left" cellpadding="0">\n' +
+                    '                <tbody>\n' +
+                    '                <tr>\n' +
+                    '                    <td>委托单位:</td>\n' +
+                    '                    <td colspan="7" style="text-align: left;">' + judgeNull(arr[i].COMPANY_NAME) + ' </td>\n' +
+                    '                </tr>\n' +
+                    '                <tr>\n' +
+                    '                    <td>联系人:</td>\n' +
+                    '                    <td style="text-align: left;">' + judgeNull(arr[i].CONTACTER) + ' </td>\n' +
+                    '                    <td>电话:</td>\n' +
+                    '                    <td  style="text-align: left;">' + judgeNull(arr[i].TELEPHONE) + ' </td>\n' +
+                    '                    <td>地址:</td>\n' +
+                    '                    <td colspan="3" style="text-align: left;">' + judgeNull(arr[i].ADDRESS) + ' </td>\n' +
+                    '                </tr>\n' +
+                    '                <tr>\n' +
+                    '                    <td>委托日期:</td>\n' +
+                    '                    <td style="text-align: left;">' + judgeNull(arr[i].ENTRUST_DATE) + ' </td>\n' +
+                    '                    <td>检测期限:</td>\n' +
+                    '                    <td style="text-align: left;">' + judgeNull(arr[i].DETECTION_DEADLINE) + ' </td>\n' +
+                    '                    <td>是否加急:</td>\n' +
+                    '                    <td style="text-align: left;">' + judgeUrgent(judgeNull(arr[i].IS_URGENT), judgeNull(arr[i].URGENT_PROPORTIONS)) + ' </td>\n' +
+                    '                    <td>是否修理:</td>\n' +
+                    '                    <td style="text-align: left;">' + arr[i].IS_REPAIR + ' </td>\n' +
+                    '                </tr>\n' +
+                    '                <tr>\n' +
+                    '                    <td>报告形式:</td>\n' +
+                    '                    <td style="text-align: left;">' + arr[i].CERTIFICATE_TYPE + ' </td>\n' +
+                    '                    <td>是否需要结论:</td>\n' +
+                    '                    <td style="text-align: left;">' + arr[i].IS_CONCLUSION + ' </td>\n' +
+                    '                    <td>是否需要复校日期:</td>\n' +
+                    '                    <td style="text-align: left;">' + arr[i].IS_RECHECK + ' </td>\n' +
+                    '                    <td>输入员:</td>\n' +
+                    '                    <td style="text-align: left;">' + arr[i].USER_NAME + ' </td>\n' +
+                    '                </tr>\n' +
+                    '                </tbody>\n' +
+                    '            </table>\n' +
+                    '        </header>\n' +
+                    '        <main>\n' +
+                    '            <table class="table" border=1 cellpadding="0">\n' +
+                    '                <tbody>\n' +
+                    '                <tr>\n' +
+                    '                    <td>仪器名称</td>\n' +
+                    '                    <td>仪器规格</td>\n' +
+                    '                    <td>设备/出厂编号</td>\n' +
+                    '                    <td>登记号</td>\n' +
+                    '                    <td>数量</td>\n' +
+                    '                    <td>件/套</td>\n' +
+                    '                    <td>附加说明</td>\n' +
+                    // '                    <td>修理费</td>\n' +
+                    '                    <td>是否强检</td>\n' +
+                    '                </tr>\n';
+                let sampleArr = arr[i].SAMPLE;
+                for (let j = 0; j < sampleArr.length; j++) {//添加器具信息
+                    if (j == sampleArr.length - 1) {
+                        table += '<tr>\n' +
+                            '<td>合计:</td>\n' +
+                            '<td></td>\n' +
+                            '<td></td>\n' +
+                            '<td></td>\n' +
+                            '<td>' + judgeNull(sampleArr[j].SET_NUMBER) + '</td>\n' +
+                            '<td>' + judgeNull(sampleArr[j].PIECE_NUMBER) + '</td>\n' +
+                            '<td></td>\n' +
+                            '<td></td>\n' +
+                            '</tr>\n';
+                    } else {
+                        table += '<tr>\n' +
+                            '<td>' + judgeNull(sampleArr[j].APPLIANCE_ACTUAL_NAME) + '</td>\n' +
+                            '<td>' + judgeNull(sampleArr[j].MODEL) + '</td>\n' +
+                            '<td>' + judgeNull(sampleArr[j].EQUIPMENT_NO) + '/' + judgeNull(sampleArr[j].FACTORY_NO) + '</td>\n' +
+                            '<td>' + judgeNull(sampleArr[j].REGISTRATION_NO) + '</td>\n' +
+                            '<td>' + judgeNull(sampleArr[j].SET_NUMBER) + '</td>\n' +
+                            '<td>' + judgeNull(sampleArr[j].PIECE_NUMBER) + '</td>\n' +
+                            '<td>' + judgeNull(sampleArr[j].REMARK) + '</td>\n' +
+                            '<td>' + judgeNull(sampleArr[j].ISCCOMPULSORYVERIFY) + '</td>\n' +
+                            '</tr>\n';
+                    }
+                }
+
+                table += '                </tbody>\n' +
+                    '            </table>\n' +
+                    '        </main>\n' +
+                    '        <footer style="margin-bottom: 50px" class="PageNext">\n' +
+                    '            <table class="table" style="text-align: left" cellpadding="0">\n' +
+                    '                <tbody>\n' +
+                    '                <tr>\n' +
+                    '                    <td>客户要求:</td>\n' +
+                    '                    <td colspan="7" style="text-align: left;">' + judgeNull(arr[i].SPECIAL_REQUIREMENT) + '</td>\n' +
+                    '                </tr>\n' +
+                    '            </table>\n' +
+                    '        </footer>';
+                let one = document.createElement('div');
+                one.setAttribute('id', arr[i]);
+                one.innerHTML = table;
+                add.appendChild(one);
+            }
+        }
+    }
+
+    function judgeNull(str) {
+        if (str == null || str == undefined) {
+            str = "";
+        }
+        return str;
+    }
+
+    function judgeUrgent(a, b) {
+        let res = "";
+        if (a === 0) {
+            res = "否";
+        } else {
+            res = a + "天" + "(" + b + "%)"
+        }
+        return res;
+    }
+
+</script>
+</body>
+</html>

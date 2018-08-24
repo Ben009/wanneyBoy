@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>委托单预报价打印</title>
+</head>
+
+<style media="print">
+    .Noprint {
+        display: none;
+    }
+
+    .PageNext {
+        page-break-after: always;
+    }
+</style>
+<style>
+    /* 头部中间样式 */
+    .mid {
+        text-align: center;
+    }
+
+    .mid p, .mid h2 {
+        margin: 0;
+    }
+
+    .mid .button {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .mid button {
+        background-color: rgb(50, 122, 183);
+        border: none;
+        padding: 3px 15px;
+        color: white;
+    }
+
+    .mid .specialButton {
+        background-color: rgb(217, 82, 78);
+    }
+
+    .font_table_title {
+        font-size: 11pt;
+        font-family: "华文中宋";
+        font-weight: normal;
+    }
+
+    .font_notice {
+        font-size: 11pt;
+        font-family: "华文宋体";
+        font-weight: normal;
+    }
+
+    .font_jcbm {
+        font-size: 13pt;
+        font-family: "华文中宋";
+        font-weight: normal;
+    }
+
+    .font_qianshou {
+        font-size: 13pt;
+        font-family: "华文宋体";
+        font-weight: bold;
+    }
+
+    .font_jcbm_title {
+        font-size: 12pt;
+        font-family: "宋体";
+        font-weight: bold;
+    }
+
+    .font_biaodian {
+        font-size: 13pt;
+        font-family: "GungsuhChe";
+    }
+
+    .font_6table {
+        font-size: 12pt;
+        font-family: "宋体";
+        text-align: left;
+        font-weight: normal;
+    }
+
+    .font_title {
+        font-size: 17pt;
+        font-family: "宋体";
+        font-weight: bold;
+    }
+
+    .font_title_num {
+        font-size: 15pt;
+        font-family: "Arial";
+        font-weight: bold;
+    }
+
+    .font_num {
+        font-size: 12pt;
+        font-family: "Arial";
+    }
+
+    .font_table_num {
+        font-size: 12pt;
+        font-family: "Arial";
+    }
+
+    .font_SIMT {
+        font-size: 18pt;
+        font-family: "Arial black";
+        font-weight: bolder;
+        font-style: italic;
+    }
+
+    .PageNext {
+        page-break-after: always;
+    }
+
+    .trTop {
+        border-top: #d3d3d3 solid 1px;
+    }
+
+    .trTop1 {
+        border-top: #808080 solid 2px;
+    }
+</style>
+<body>
+<div align=center class="Noprint">
+    <div class="mid">
+        <p class="button">
+            <button onclick="window.print()" class="Noprint">打印</button>
+        </p>
+    </div>
+</div>
+<div style="width:750pt;text-align: center;margin: auto">
+    <table border="0" align="center" width="100%" cellspacing="0" cellpadding="0" class=MsoNormalTable>
+        <tr>
+            <td><b><font face="宋体" size="4">委托单<span id="orderNo"></span>预报价</font></b></td>
+        </tr>
+        <tr>
+            <td>
+                <hr color=#000000 width=100%>
+            </td>
+        </tr>
+    </table>
+    <table border="0" align="center" width="100%" cellspacing="0" cellpadding="0" class=MsoNormalTable>
+        <tbody class="add">
+        <tr>
+            <td width="30">序号</td>
+            <td width="70">委托单号</td>
+            <td width="100">流转单号</td>
+            <td width="100">登记号</td>
+            <td width="150">器具名称</td>
+            <td width="50">套数</td>
+            <td width="50">件数</td>
+            <td width="100">服务类型</td>
+            <td width="100">收费标准</td>
+            <td width="100">检测费</td>
+        </tr>
+        </tbody>
+    </table>
+    <table border="0" align="center" width="100%" cellspacing="0" cellpadding="0" class=MsoNormalTable>
+        <tr>
+            <td>
+                <hr color=#000000 width=100%>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+<script>
+    function receive(data) {
+        var script = document.createElement('script');
+        script.src = 'static/js/jquery/jquery-3.3.1.js';
+        document.body.appendChild(script);
+        script.onload = function () {
+            $("#orderNo").html(data['orderNo']);
+            var wtdId = data.wtdId;
+            var add = document.querySelector('.add')
+            $.post('/back/entrustSjd/preQuotedPrice', {wtdId: wtdId}, (res) => {
+                var arr = res.rows;
+                for (let i = 0; i < arr.length; i++) {
+                    var str = "<td class=\"trTop1 font_table_title\">" + (i + 1) + "</td>" +
+                        "<td class=\"trTop1 font_num\">" + judgeNull(arr[i].orderNo) + "</td>" +
+                        "<td class=\"trTop1\">" + judgeNull(arr[i].orderSingleNo) + "</td>" +
+                        "<td class=\"trTop1\">" + judgeNull(arr[i].registrationNo) + "</td>" +
+                        "<td class=\"trTop1\">" + judgeNull(arr[i].applianceName) + "</td>" +
+                        "<td class=\"trTop1\">" + judgeNull(arr[i].setNumber) + "</td>" +
+                        "<td class=\"trTop1\">" + judgeNull(arr[i].pieceNumber) + "</td>" +
+                        "<td class=\"trTop1\">" + judgeNull(arr[i].certificateType) + "</td>" +
+                        "<td class=\"trTop1\">" + judgeNull(arr[i].detectionFee) + "</td>" +
+                        "<td class=\"trTop1\">" + judgeNull(arr[i].jdfActual) + "</td>";
+                    let one = document.createElement('TR');
+                    one.innerHTML = str;
+                    add.appendChild(one)
+                }
+            });
+        }
+
+    }
+
+
+    function judgeNull(str) {
+        if (str == null || str == undefined) {
+            str = "";
+        }
+        return str;
+    }
+</script>
+</html>

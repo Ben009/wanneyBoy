@@ -1,0 +1,19 @@
+@charset "gbk";
+
+/*自定义Web字体引入*/
+@font-face {
+    font-family: njmindFont;
+    src: url("fonts/njmind-icons.woff") format("woff"), 
+    url("fonts/njmind-icons.ttf") format("truetype");
+}
+
+
+/*下面的代码需要注视掉，不然有的浏览器会报错*/
+/*@font-face {*/
+/*font-family: njmindFont;*/
+/*src: url(njmindFont.ttf);*/
+/*}*/
+
+.njmindFont {
+    font-family: "njmindFont";
+}

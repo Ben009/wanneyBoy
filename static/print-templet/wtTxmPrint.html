@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>打印委托条码</title>
+    <style>
+        /* 头部中间样式 */
+        .mid {
+            text-align: center;
+        }
+
+        .mid p, .mid h2 {
+            margin: 0;
+        }
+
+        .mid .button {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .mid button {
+            background-color: rgb(50, 122, 183);
+            border: none;
+            padding: 3px 15px;
+            color: white;
+        }
+    </style>
+    <style media="print">
+
+        .Noprint {
+            display: none;
+        }
+
+        .PageNext {
+            page-break-after: always;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="mid">
+        <p class="button">
+            <button onclick="window.print()" class="Noprint">打印</button>
+            <!-- <button class="specialButton" onclick="closePage()">关闭</button> -->
+        </p>
+    </div>
+</div>
+</body>
+<script>
+    function receive(data) {
+        var script = document.createElement('script');
+        script.src = 'static/js/jquery/jquery-3.3.1.js';
+        document.body.appendChild(script);
+        script.onload = function () {
+            //jquery初始化加载完毕调用
+            setPrintParam(data);
+        };
+    }
+
+    /**
+     * 设定参数
+     * @param {*} data
+     */
+    function setPrintParam(data) {
+        if (data && data != null) {
+            let add = document.querySelector('.container');
+            for (let i = 0; i < data.arr.length; i++) {
+                let registrationNo = data.arr[i].registrationNo;
+                $.get("/back/entrustWtd/getSampleByRegistr/" + registrationNo, {}, res => {
+                    if (res.code === 200) {
+                        let obj = res.map;
+                        let detail = '<table align="center" cellpadding="0" cellspacing="0" style="margin-bottom:25px; ">\n' +
+                            '    <tr align="center" height="0">\n' +
+                            '        <td colspan="2"><font style="font-size:6.0pt;" face="宋体">\n' +
+                            '            <b>&nbsp;<span>' + localStorage.getItem("defaultCompanyName") + '</span></b></font></td>\n' +
+                            '    </tr>\n' +
+                            '    <tr align="center" height="0">\n' +
+                            '        <td colspan="2"><font style="font-size:8.0pt;" face="宋体">\n' +
+                            '            <b><span>' + judgeNull(obj.COMPANY_NAME) + '</span></b></font>\n' +
+                            '        </td>\n' +
+                            '    </tr>\n' +
+                            '    <tr align="center" height="0">\n' +
+                            '        <td colspan="2"><font style="font-size:8.0pt;" face="宋体">\n' +
+                            '            <b><span>' + judge(obj.APPLIANCE_ACTUAL_NAME, obj.APPLIANCE_NAME) + '</span>&nbsp;<span>' + obj.ENTRUST_DATE + '</span></b></font>\n' +
+                            '        </td>\n' +
+                            '    </tr>\n' +
+                            '    <tr><td><img src="/njmind/attachment/certificateBarCode?zsbh=' + obj.REGISTRATION_NO + '"></td>' +
+                            '        <td width="30%" align="right">\n' +
+                            '            <span style="display: inherit;">● 未检</span>\n' +
+                            '            <span style="display: inline-block;">○ 已检</span>\n' +
+                            '        </td>\n' +
+                            '</tr>\n' +
+                            '    <tr>\n' +
+                            '        <td align="left" width="70%">\n' +
+                            '            <table align="center" cellpadding="0" cellspacing="0">\n' +
+                            '                <tr align="center">\n' +
+                            '                    <td colspan="2">' + obj.REGISTRATION_NO + '</td>\n' +
+                            '                </tr>\n' +
+                            '            </table>\n' +
+                            '        </td>\n' +
+                            '    </tr>\n' +
+                            '</table>';
+                        let one = document.createElement('div');
+                        one.innerHTML = detail;
+                        console.log(one)
+                        add.appendChild(one);
+                    }
+                });
+            }
+
+        }
+    }
+
+    function judgeNull(str) {
+        if (str == null || str == undefined) {
+            str = "";
+        }
+        return str;
+    }
+
+    function judge(a, b) {
+        let res = "";
+        if (a === null || a == undefined) {
+            res = judgeNull(b);
+        } else {
+            res = judgeNull(a);
+        }
+        return res;
+    }
+
+    function flow(num) {
+        let res = '';
+        if (num < 10) {
+            res = '00' + num
+        } else if (num >= 10 && num < 100) {
+            res = '0' + num;
+        } else {
+            res = num;
+        }
+        return res;
+    }
+</script>
+</html>

@@ -1,0 +1,73 @@
+<html>
+<body>
+<!-- 模板编辑内容都写在body中 -->
+<style>
+ table{
+     background: red;
+ }
+ /* 头部中间样式 */
+ .mid{
+            text-align: center;
+        }
+        .mid p,.mid h2{
+            margin: 0;
+        }
+        .mid .button{
+            display: flex;
+            justify-content: space-around;
+        }
+        .mid button{
+            background-color:rgb(50, 122, 183); 
+            border: none;
+            padding: 3px 15px;
+            color: white;
+        }
+</style>
+<style media="print">
+
+    .Noprint {
+      display: none;
+    }
+  
+    .PageNext {
+      page-break-after: always;
+    }
+  </style>
+<script>
+//var $ =null;//该对象为外部传入的jquery对象
+ /**
+  * 如果方法存在则不会直接操作模板
+  * $ jquery对象
+  * data 页面中传入的相应参数
+  */
+function receive(data){
+   var script=document.createElement('script');
+   script.src='static/js/jquery/jquery-3.3.1.js';
+   document.body.appendChild(script);
+   script.onload=function(){
+     //jquery初始化加载完毕调用
+     setPrintParam(data);
+   };
+}
+ /**
+ * 设定参数
+ * @param {*} data
+ */
+function setPrintParam (data){
+    if(data && data!=null){
+        $("#div1").html(data['key1']);
+        $("#div2").html(data['key1']);
+    }
+}
+
+</script>
+<div class="mid">
+<p class="button">
+    <button onclick="window.print()" class="Noprint">打印</button>
+    <!-- <button class="specialButton" onclick="closePage()">关闭</button> -->
+</p>
+</div>
+<div id="div1" class="PageNext" style="width:100%;text-align: center;margin: auto"></div>
+<div id="div2" style="width:100%;text-align: center;margin: auto"></div>
+</body>
+</html>

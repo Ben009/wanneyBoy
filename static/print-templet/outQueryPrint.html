@@ -1,0 +1,327 @@
+<html>
+<body>
+<!-- 模板编辑内容都写在body中 -->
+<style>
+  table{
+    border-collapse: collapse;
+  }
+  .borderColor{
+    border:1px solid #000;
+  }
+  .borderRightColor{
+    border-right:1px solid #000;
+  }
+  .borderBottomColor{
+    border-bottom:1px solid #000;
+  }
+  .textCenter{
+    text-align: center;
+  }
+  .print{
+    background: #4a90c5;
+    border:1px solid #4a90c5;
+    color: #fff;
+    font-weight: 500;
+    padding: 6px 15px;
+    font-size: 12px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  .printReview{
+    background: #4a90c5;
+    border:1px solid #4a90c5;
+    color: #fff;
+    font-weight: 500;
+    padding: 6px 15px;
+    font-size: 12px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  .close{
+    background: #fff;
+    border:1px solid #4a90c5;
+    color: #000;
+    font-weight: 500;
+    padding: 6px 15px;
+    font-size: 12px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+</style>
+<script>
+  //var $ =null;//该对象为外部传入的jquery对象
+  /**
+   * 如果方法存在则不会直接操作模板
+   * $ jquery对象
+   * data 页面中传入的相应参数
+   */
+  function receive(data){
+    var script=document.createElement('script');
+    script.src='static/js/jquery/jquery-3.3.1.js';
+    document.body.appendChild(script);
+    script.onload=function(){
+      //jquery初始化加载完毕调用
+      alert(" 使用 receive 方法 ，则不直接对模板操作，接收到的参数："+ JSON.stringify(data))
+//      setPrintParam(data);
+      let sampleTotal=0;let certificateTotal=0;
+      for(let i=0;i<data.printList.length;i++){// +"<td>"+data.printList[i].+"</td>"
+        var trs=$("#tableBody").append("<tr class='borderBottomColor textCenter'></tr>");
+        var trs2=$("#tableBody2").append("<tr class='borderBottomColor textCenter'></tr>");
+        var sfws="";
+        if(data.printList.subcontractArea==0){
+          sfws="否";
+        }else{
+          sfws="是";
+        }
+        var tds=$("<td class='borderRightColor'>"+(i+1)+"</td>"+"<td class='borderRightColor'>"+data.printList[i].registrationNo +"</td>"+"<td class='borderRightColor'>"+data.printList[i].applianceName+"</td>"+"<td class='borderRightColor'>"+data.printList[i].setNumber+"</td>"+"<td class='borderRightColor'>"+data.printList[i].pieceNumber+"</td>"+"<td class='borderRightColor'>"+sfws+"</td>"+"<td class='borderRightColor'>"+data.printList[i].sampleNum+"</td>"+"<td class='borderRightColor'>"+data.printList[i].certificateNum+"</td>");
+        var tds2=$("<td class='borderRightColor'>"+(i+1)+"</td>"+"<td class='borderRightColor'>"+data.printList[i].registrationNo +"</td>"+"<td class='borderRightColor'>"+data.printList[i].applianceName+"</td>"+"<td class='borderRightColor'>"+data.printList[i].setNumber+"</td>"+"<td class='borderRightColor'>"+data.printList[i].pieceNumber+"</td>"+"<td class='borderRightColor'>"+sfws+"</td>"+"<td class='borderRightColor'>"+data.printList[i].sampleNum+"</td>"+"<td class='borderRightColor'>"+data.printList[i].certificateNum+"</td>");
+      trs.append(tds);
+      trs2.append(tds2);
+        sampleTotal=sampleTotal+data.printList[i].sampleNum;
+        certificateTotal=certificateTotal+data.printList[i].certificateNum;
+        $(".cTotal").text(certificateTotal);
+        $(".yTotal").text(sampleTotal);
+      }
+    };
+  }
+  /**
+   * 设定参数
+   * @param {*} data
+   */
+  function setPrintParam (data){
+    if(data && data!=null){
+      $(document.body).find("span").each(function(i,row){
+        if($(this).attr("id")){
+          if(data[$(this).attr("id")]){
+            $(this).html(data[$(this).attr("id")]);
+          }else{
+            $(this).html("");
+          }
+        }
+      });
+    }
+  }
+</script>
+<div style="width:100%;text-align: center;">
+  <button type="button" onclick="window.print();" class="print">打印</button>
+  <!--<button type="button" onclick="printMore();" class="printReview">备份打印</button>-->
+  <!--<button type="button" onclick="printReview();" class="printReview">打印预览</button>-->
+  <!--<button type="button" onclick="sign();" class="close">设置签名</button>-->
+  <!--<button type="button" onclick="close();" class="close">关闭</button>-->
+</div>
+  <div style="width:1000px;margin:0 auto;margin-top:10px;" class="bigDiv">
+    <table border="0" cellspacing="0" cellpadding="0" style="width: 1005px; border-collapse: collapse; border: medium none">
+      <tbody>
+      <tr>
+        <td colspan="3" valign="middle" style="border:medium none black;    padding-top: 0cm; padding-bottom: 0cm">
+          <p class="MsoNormal" style="text-align: center">
+              <span style="font-size: 18.0pt; font-family: '华文新魏'">
+                <b>综合版</b>
+                <br>送货单(客户联)
+              </span>
+          </p>
+        </td>
+      </tr>
+      <tr style="text-align: left;">
+        <td colspan="2" width="70%">
+          <span style="font-family: '宋体'; font-size: 11pt">客户名称：</span>　
+        </td>
+        <td width="30%">
+          <span style="font-family: '宋体'; font-size: 11pt">联 系 人：</span>　
+        </td>
+      </tr>
+      <tr style="text-align: left;">
+        <td colspan="2">
+          <span style="font-family: '宋体'; font-size: 11pt">地&nbsp;&nbsp;&nbsp;&nbsp;址：</span>　
+        </td>
+        <td>
+          <span style="font-family: '宋体'; font-size: 11pt">电&nbsp;&nbsp;&nbsp;&nbsp;话：</span>　
+        </td>
+      </tr>
+      <tr style="text-align: left;">
+        <td style="text-align: right;" colspan="3">
+          2180711001
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <table style="width:100%;" class="borderColor tableCenter">
+      <thead class="borderBottomColor">
+      <th class="borderRightColor">序号</th>
+      <th class="borderRightColor">登记号</th>
+      <th class="borderRightColor">器具名称</th>
+      <th class="borderRightColor">套数</th>
+      <th class="borderRightColor">件数</th>
+      <th class="borderRightColor">是否外送</th>
+      <th class="borderRightColor">样品出库数量</th>
+      <th class="borderRightColor">证书出库数量</th>
+      </thead>
+      <tbody id="tableBody">
+      </tbody>
+    </table>
+    <table class="MsoNormalTable" cellspacing="0" cellpadding="0" align="center" style="border-collapse: collapse; border: medium none;table-layout:fixed;word-wrap:break-word;overflow:auto !important;" width="1005px">
+      <tbody>
+      <tr style="page-break-inside:avoid;">
+        <td style="  padding-middle: 0cm; padding-bottom: 0cm" colspan="10">
+          <p class="MsoNormal" style="margin-left: 4pt; margin-middle: 0cm; margin-bottom: .0001pt">
+            <span style="font-size:15px">出库合计：&nbsp;&nbsp;&nbsp;&nbsp;证书：<span class="cTotal"></span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;&nbsp;&nbsp; 样品：<span class="yTotal"></span></span>
+          </p>
+        </td>
+      </tr>
+      <tr style="page-break-inside:avoid;">
+        <td style="  padding-middle: 0cm; padding-bottom: 0cm" colspan="10">
+          <p class="MsoNormal" style="margin-left: 4pt; margin-middle: 0cm; margin-bottom: .0001pt">
+            <span style="font-size:15px">供应商：&nbsp; 综合版</span>
+          </p>
+        </td>
+      </tr>
+      <tr style="page-break-inside:avoid;">
+        <td style="  padding-middle: 0cm; padding-bottom: 0cm" colspan="10">
+          <p class="MsoNormal" style="margin-left: 4pt; margin-middle: 0cm; margin-bottom: .0001pt">
+            <span style="font-size:15px">地址：&nbsp; 苏州市吴中区文曲路69号</span>
+          </p>
+        </td>
+      </tr>
+      <tr style="page-break-inside:avoid;">
+        <td style="  padding-middle: 0cm; padding-bottom: 0cm" colspan="10">
+          <p class="MsoNormal" style="margin-left: 4pt; margin-middle: 0cm; margin-bottom: .0001pt">
+            <span style="font-size:15px">电  话：&nbsp;0512-65120073/65154065    &nbsp;&nbsp;&nbsp;&nbsp;    传  真：&nbsp;0512-65223973</span>
+          </p>
+        </td>
+      </tr>
+      <tr style="page-break-inside:avoid;">
+        <td style="  padding-middle: 0cm; padding-bottom: 0cm" colspan="5">
+          <p class="MsoNormal" style="margin-left: 4pt; margin-middle: 0cm; margin-bottom: .0001pt">
+            <span style="font-size:15px">送货人:</span>
+          </p>
+        </td>
+        <td style="  padding-middle: 0cm; padding-bottom: 0cm" colspan="5">
+          <p class="MsoNormal" style="margin-left: 4pt; margin-middle: 0cm; margin-bottom: .0001pt">
+            <span style="font-size:15px">客户确认:</span>
+          </p>
+        </td>
+      </tr>
+      <tr style="page-break-inside:avoid;">
+        <td style="  padding-middle: 0cm; padding-bottom: 0cm" colspan="5">
+          <p class="MsoNormal" style="margin-left: 4pt; margin-middle: 0cm; margin-bottom: .0001pt">
+            <span style="font-size:15px">&nbsp;&nbsp;&nbsp;&nbsp;日期:</span>
+          </p>
+        </td>
+        <td style="  padding-middle: 0cm; padding-bottom: 0cm" colspan="5">
+          <p class="MsoNormal" style="margin-left: 4pt; margin-middle: 0cm; margin-bottom: .0001pt">
+            <span style="font-size:15px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日期:</span>
+          </p>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="width:1000px;margin:0 auto;margin-top:10px;" class="bigDiv">
+    <table border="0" cellspacing="0" cellpadding="0" style="width: 1005px; border-collapse: collapse; border: medium none">
+      <tbody>
+      <tr>
+        <td colspan="3" valign="middle" style="border:medium none black;    padding-top: 0cm; padding-bottom: 0cm">
+          <p class="MsoNormal" style="text-align: center">
+              <span style="font-size: 18.0pt; font-family: '华文新魏'">
+                <b>综合版</b>
+                <br>送货单(存根联)
+              </span>
+          </p>
+        </td>
+      </tr>
+      <tr style="text-align: left;">
+        <td colspan="2" width="70%">
+          <span style="font-family: '宋体'; font-size: 11pt">客户名称：</span>　
+        </td>
+        <td width="30%">
+          <span style="font-family: '宋体'; font-size: 11pt">联 系 人：</span>　
+        </td>
+      </tr>
+      <tr style="text-align: left;">
+        <td colspan="2">
+          <span style="font-family: '宋体'; font-size: 11pt">地&nbsp;&nbsp;&nbsp;&nbsp;址：</span>　
+        </td>
+        <td>
+          <span style="font-family: '宋体'; font-size: 11pt">电&nbsp;&nbsp;&nbsp;&nbsp;话：</span>　
+        </td>
+      </tr>
+      <tr style="text-align: left;">
+        <td style="text-align: right;" colspan="3">
+          2180711001
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <table style="width:100%;" class="borderColor tableCenter">
+      <thead class="borderBottomColor">
+      <th class="borderRightColor">序号</th>
+      <th class="borderRightColor">登记号</th>
+      <th class="borderRightColor">器具名称</th>
+      <th class="borderRightColor">套数</th>
+      <th class="borderRightColor">件数</th>
+      <th class="borderRightColor">是否外送</th>
+      <th class="borderRightColor">样品出库数量</th>
+      <th class="borderRightColor">证书出库数量</th>
+      </thead>
+      <tbody id="tableBody2">
+      </tbody>
+    </table>
+    <table class="MsoNormalTable" cellspacing="0" cellpadding="0" align="center" style="border-collapse: collapse; border: medium none;table-layout:fixed;word-wrap:break-word;overflow:auto !important;" width="1005px">
+      <tbody>
+      <tr style="page-break-inside:avoid;">
+        <td style="  padding-middle: 0cm; padding-bottom: 0cm" colspan="10">
+          <p class="MsoNormal" style="margin-left: 4pt; margin-middle: 0cm; margin-bottom: .0001pt">
+            <span style="font-size:15px">出库合计：&nbsp;&nbsp;&nbsp;&nbsp;证书：<span class="cTotal"></span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;&nbsp;&nbsp; 样品：<span class="yTotal"></span></span>
+          </p>
+        </td>
+      </tr>
+      <tr style="page-break-inside:avoid;">
+        <td style="  padding-middle: 0cm; padding-bottom: 0cm" colspan="10">
+          <p class="MsoNormal" style="margin-left: 4pt; margin-middle: 0cm; margin-bottom: .0001pt">
+            <span style="font-size:15px">供应商：&nbsp; 综合版</span>
+          </p>
+        </td>
+      </tr>
+      <tr style="page-break-inside:avoid;">
+        <td style="  padding-middle: 0cm; padding-bottom: 0cm" colspan="10">
+          <p class="MsoNormal" style="margin-left: 4pt; margin-middle: 0cm; margin-bottom: .0001pt">
+            <span style="font-size:15px">地址：&nbsp; 苏州市吴中区文曲路69号</span>
+          </p>
+        </td>
+      </tr>
+      <tr style="page-break-inside:avoid;">
+        <td style="  padding-middle: 0cm; padding-bottom: 0cm" colspan="10">
+          <p class="MsoNormal" style="margin-left: 4pt; margin-middle: 0cm; margin-bottom: .0001pt">
+            <span style="font-size:15px">电  话：&nbsp;0512-65120073/65154065    &nbsp;&nbsp;&nbsp;&nbsp;    传  真：&nbsp;0512-65223973</span>
+          </p>
+        </td>
+      </tr>
+      <tr style="page-break-inside:avoid;">
+        <td style="  padding-middle: 0cm; padding-bottom: 0cm" colspan="5">
+          <p class="MsoNormal" style="margin-left: 4pt; margin-middle: 0cm; margin-bottom: .0001pt">
+            <span style="font-size:15px">送货人:</span>
+          </p>
+        </td>
+        <td style="  padding-middle: 0cm; padding-bottom: 0cm" colspan="5">
+          <p class="MsoNormal" style="margin-left: 4pt; margin-middle: 0cm; margin-bottom: .0001pt">
+            <span style="font-size:15px">客户确认:</span>
+          </p>
+        </td>
+      </tr>
+      <tr style="page-break-inside:avoid;">
+        <td style="  padding-middle: 0cm; padding-bottom: 0cm" colspan="5">
+          <p class="MsoNormal" style="margin-left: 4pt; margin-middle: 0cm; margin-bottom: .0001pt">
+            <span style="font-size:15px">&nbsp;&nbsp;&nbsp;&nbsp;日期:</span>
+          </p>
+        </td>
+        <td style="  padding-middle: 0cm; padding-bottom: 0cm" colspan="5">
+          <p class="MsoNormal" style="margin-left: 4pt; margin-middle: 0cm; margin-bottom: .0001pt">
+            <span style="font-size:15px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日期:</span>
+          </p>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

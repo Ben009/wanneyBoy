@@ -1,0 +1,102 @@
+<html>
+<body>
+<!-- 模板编辑内容都写在body中 -->
+<style>
+  table{
+    border-collapse: collapse;
+  }
+  .print{
+    background: #4a90c5;
+    border:1px solid #4a90c5;
+    color: #fff;
+    font-weight: 500;
+    padding: 6px 15px;
+    font-size: 12px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  .printReview{
+    background: #4a90c5;
+    border:1px solid #4a90c5;
+    color: #fff;
+    font-weight: 500;
+    padding: 6px 15px;
+    font-size: 12px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  .close{
+    background: #fff;
+    border:1px solid #4a90c5;
+    color: #000;
+    font-weight: 500;
+    padding: 6px 15px;
+    font-size: 12px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+</style>
+<script>
+  //var $ =null;//该对象为外部传入的jquery对象
+  /**
+   * 如果方法存在则不会直接操作模板
+   * $ jquery对象
+   * data 页面中传入的相应参数
+   */
+  function receive(data){
+    var script=document.createElement('script');
+    script.src='static/js/jquery/jquery-3.3.1.js';
+    document.body.appendChild(script);
+    script.onload=function(){
+      //jquery初始化加载完毕调用
+      alert(" 使用 receive 方法 ，则不直接对模板操作，接收到的参数："+ JSON.stringify(data))
+      setPrintParam(data);
+    };
+  }
+  /**
+   * 设定参数
+   * @param {*} data
+   */
+  function setPrintParam (data){
+    if(data && data!=null){
+      $(document.body).find("span").each(function(i,row){
+        if($(this).attr("id")){
+          if(data[$(this).attr("id")]){
+            $(this).html(data[$(this).attr("id")]);
+          }else{
+            $(this).html("");
+          }
+        }
+      });
+    }
+  }
+</script>
+<div style="width:100%;text-align: center;">
+  <button type="button" onclick="window.print();" class="print">打印</button>
+  <!--<button type="button" onclick="printReview();" class="printReview">打印预览</button>-->
+  <!--<button type="button" onclick="close();" class="close">关闭</button>-->
+</div>
+<div style="width:100%;margin-top:10px;">
+  <table style="width:500px;margin:0 auto;border:1px solid #000;">
+    <tbody>
+    <tr style="border-bottom:1px solid #000;">
+      <td> 快递单（单号）：</td>
+      <td><span id="key1"></span></td>
+    </tr>
+    <tr style="border-bottom:1px solid #000;">
+      <td>地址：</td>
+      <td><span id="key2"></span></td>
+    </tr>
+    <tr style="border-bottom:1px solid #000;">
+      <td>收件人：</td>
+      <td><span id="key3"></span></td>
+    </tr>
+    <tr>
+      <td>登记号：</td>
+      <td><span style="font-weight: 600;"  id="key4"></span></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

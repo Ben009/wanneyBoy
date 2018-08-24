@@ -1,0 +1,56 @@
+@charset "utf-8";
+/* CSS Document */
+.center{width:1200px; margin:0 auto; margin-top:125px;}
+.center:before{content:""; display:table;}
+.center:after{clear:both;}
+.center .img{width:600px; float:left;}
+.center .login_form{width:380px; height:400px; float:left; background:#fff; margin-left:150px; margin-top:32px;border-top-right-radius: 1em;
+    border-top-left-radius: 1em; border-bottom-right-radius: 0.5em;border-bottom-left-radius: 0.5em;}
+.center .login_form .login .login-two{background: #7dacff;
+    text-align: center;
+    height: 60px;
+    border-top-right-radius: 0.5em;
+    border-top-left-radius: 0.5em; line-height:60px;}
+
+* { margin:0; padding:0; }
+	img { border:none;vertical-align: middle}
+
+	#supersized {  display:block; position:fixed; left:0; top:0; overflow:hidden; z-index:-999; height:100%; width:100%; }
+		#supersized img { width:auto; height:auto; position:relative; display:none; outline:none; border:none; }
+			#supersized.speed img { -ms-interpolation-mode:nearest-neighbor; image-rendering: -moz-crisp-edges; }	/*Speed*/
+			#supersized.quality img { -ms-interpolation-mode:bicubic; image-rendering: optimizeQuality; }			/*Quality*/
+
+
+		#supersized a { width:100%; height:100%; display:block; }
+			#supersized li.prevslide { z-index:-20; }
+			#supersized li.activeslide { z-index:-10; }
+				#supersized li.image-loading img{ visibility:hidden; }
+			#supersized li.prevslide img, #supersized li.activeslide img{ display:inline; }
+
+
+#supersized img { max-width: none !important }
+
+
+.form-control{display: block;
+  width: 90%;
+  height: 45px;
+  padding: 6px 12px;
+  overflow: hidden;
+  font-size: 18px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 2em;
+  margin: 0 auto;
+  vertical-align:middle; box-sizing: border-box;
+}
+.form-control .text{border:none; font-size: 18px;width:85%;height: 30px; padding-top:5px; padding-bottom:5px;
+  ;vertical-align: middle}
+.form-control .text:focus{border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.9); }
+.btn{background:#4588fe; border:none; color:#fff; font-size:16px; outline:none;}
+

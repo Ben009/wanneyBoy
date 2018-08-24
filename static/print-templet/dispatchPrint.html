@@ -1,0 +1,203 @@
+<html>
+<body>
+<!-- 模板编辑内容都写在body中 -->
+<style>
+
+  #printDiv {
+    width: 1000px;
+    text-align: center;
+    margin: auto;
+  }
+
+  .trTop1 {
+    border-top: #808080 solid 2px;
+  }
+
+  .font_table_title {
+    font-size: 11pt;
+    font-family: "华文中宋";
+    font-weight: normal;
+  }
+
+  .font_num {
+    font-size: 12pt;
+    font-family: "Arial";
+  }
+
+  table.MsoNormalTable {
+    font-family: "Times New Roman";
+    word-wrap: break-word;
+    overflow: auto !important;
+  }
+
+
+</style>
+<script>
+  var talbehtml = "";//表模板
+  var talbehead = "";//表头模板
+  var talbedata = "";
+  var talbesum = "";
+
+
+  /**
+   * 如果方法存在则不会直接操作模板
+   * $ jquery对象
+   * data 页面中传入的相应参数
+   */
+  function receive(data) {
+    var script = document.createElement('script');
+    script.src = 'static/js/jquery/jquery-3.3.1.js';
+    document.body.appendChild(script);
+    script.onload = function () {
+      //获取模板
+      getTemplate("applianceList");
+      //使用for判断是否分页
+      $("#currentDate").text(new Date().format("YYYY-MM-DD"))
+      if (data) {
+        $("#defaultCompanyName").text(localStorage.getItem("defaultCompanyName"));
+        for (var p in data.data) {
+          $("#" + p).text(data.data[p]);
+        }
+        ;
+      }
+    };
+  }
+
+
+  /**
+   *
+   * 根据id抽取模板
+   */
+  function getTemplate(id) {
+    $("#" + id).find("tr").each(function (i, row) {
+      if ("data" == $(this).attr("t_type")) {
+        talbedata = $(this).prop("outerHTML");
+      } else if ("sum" == $(this).attr("t_type")) {
+        talbesum = $(this).prop("outerHTML");
+      } else if ("head" == $(this).attr("t_type")) {
+        talbehead = $(this).prop("outerHTML");
+      }
+    });
+    $("#" + id).empty();
+    talbehtml = $("#" + id).prop("outerHTML");
+  }
+
+  Date.prototype.format = function (format) {
+    if (isNaN(this.getMonth())) {
+      return null;
+    }
+    let o = {
+      "M+": this.getMonth() + 1,
+      "D+": this.getDate(),
+      "h+": this.getHours(),
+      "m+": this.getMinutes(),
+      "s+": this.getSeconds(),
+      "q+": Math.floor((this.getMonth() + 3) / 3),
+      "S": this.getMilliseconds()
+    };
+    if (/(Y+)/.test(format)) {
+      format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    }
+    for (let k in o) {
+      if (new RegExp("(" + k + ")").test(format)) {
+        format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
+      }
+    }
+    return format;
+  };
+
+
+</script>
+<button onclick="window.print()" class="Noprint">print</button>
+
+<div id="printDiv">
+  <table align=center border=0 cellpadding=0 cellspacing=0>
+    <tr>
+      <td colspan="2">
+        <p align="center">
+          <span style="font-size: 24.0pt; font-family: '华文新魏'"> <span id="defaultCompanyName"></span>派车单</span>
+      </td>
+    </tr>
+    <tr>
+      <td align="left" style="font-size: 13.0pt;">带队人：<span id="leaderName"></span>
+      </td>
+      <td align="right" style="font-size: 13.0pt;">
+        打印时间：<span id="currentDate"></span>
+      </td>
+    </tr>
+  </table>
+  <table border="1" cellspacing="0" cellpadding="0" id="table1" align="center"
+         style=" font-size:16px;border-collapse: collapse;border: 1.0pt solid windowtext;word-wrap: break-word;word-break:break-all; ">
+    <tr>
+      <td width="12.5%"></td>
+      <td width="12.5%"></td>
+      <td width="12.5%"></td>
+      <td width="12.5%"></td>
+      <td width="12.5%"></td>
+      <td width="12.5%"></td>
+      <td width="12.5%"></td>
+      <td width="12.5%"></td>
+    </tr>
+    <tr style="height:25.0pt">
+      <td align="center" style="border: 1.0pt solid windowtext;">车牌号:</td>
+      <td align="center" colspan="2" style="border: 1.0pt solid windowtext;"><span id="vehicle"></span></td>
+      <td align="center" style="border: 1.0pt solid windowtext;">驾驶员:</td>
+      <td align="center" style="border: 1.0pt solid windowtext;"><span id="driverName"></span></td>
+      <td align="center" style="border: 1.0pt solid windowtext;">派车日期:</td>
+      <td align="center" colspan="2" style="border: 1.0pt solid windowtext;"><span id="planTime"></span></td>
+    </tr>
+    <tr style="height:25.0pt">
+      <td align="center" style="border: 1.0pt solid windowtext;">单位名称:</td>
+      <td align="center" style="border: 1.0pt solid windowtext;" colspan="7"><span id="companyName"></span></td>
+    </tr>
+    <tr style="height:25.0pt">
+      <td align="center" style="border: 1.0pt solid windowtext;">上门检测地址:</td>
+      <td align="center" style="border: 1.0pt solid windowtext;" colspan="7"><span id="detectionSite"></span></td>
+    </tr>
+    <tr style="height:25.0pt">
+      <td align="center" style="border: 1.0pt solid windowtext;">联系人:</td>
+      <td align="center" style="border: 1.0pt solid windowtext;" colspan="3"><span id="contacter"></span></td>
+      <td align="center" style="border: 1.0pt solid windowtext;">联系电话:</td>
+      <td align="center" style="border: 1.0pt solid windowtext;" colspan="3"><span id="telephone"></span></td>
+    </tr>
+    <tr style="height:25.0pt">
+      <td align="center" style="border: 1.0pt solid windowtext;">用车部门:</td>
+      <td align="center" style="border: 1.0pt solid windowtext;" colspan="7"><span id="departName"></span></td>
+    </tr>
+    <tr style="height:25.0pt">
+      <td align="center" style="border: 1.0pt solid windowtext;">检定员:</td>
+      <td align="center" style="border: 1.0pt solid windowtext;" colspan="7"><span id="inspector"></span></td>
+    </tr>
+    <tr style="height:25.0pt">
+      <td align="center" style="border: 1.0pt solid windowtext;">加油数量:</td>
+      <td align="center" style="border: 1.0pt solid windowtext;" colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（升）</td>
+      <td align="center" style="border: 1.0pt solid windowtext;" colspan="2"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（元）</td>
+      <td align="center" style="border: 1.0pt solid windowtext;">返回时间:</td>
+      <td align="center" style="border: 1.0pt solid windowtext;" colspan="2"></td>
+    </tr>
+    <tr style="height:25.0pt">
+      <td align="center" style="border: 1.0pt solid windowtext;" colspan="2">起始公里数:</td>
+      <td align="center" style="border: 1.0pt solid windowtext;" colspan="2"></td>
+      <td align="center" style="border: 1.0pt solid windowtext;" colspan="2">返回公里数:</td>
+      <td align="center" style="border: 1.0pt solid windowtext;" colspan="2"></td>
+    </tr>
+    <tr style="height:25.0pt">
+      <td align="center" style="border: 1.0pt solid windowtext;" colspan="2">派车人签字:</td>
+      <td align="center" style="border: 1.0pt solid windowtext;" colspan="2"></td>
+      <td align="center" style="border: 1.0pt solid windowtext;" colspan="2">驾驶员签字:</td>
+      <td align="center" style="border: 1.0pt solid windowtext;" colspan="2"></td>
+    </tr>
+    <tr style="height:25.0pt">
+      <td align="center" style="border: 1.0pt solid windowtext;" colspan="2">办公室签字:</td>
+      <td align="center" style="border: 1.0pt solid windowtext;" colspan="2"></td>
+      <td align="center" style="border: 1.0pt solid windowtext;" colspan="2">负责人签字:</td>
+      <td align="center" style="border: 1.0pt solid windowtext;" colspan="2"></td>
+    </tr>
+    <tr style="height:25.0pt">
+      <td align="center" style="border: 1.0pt solid windowtext;">备注:</td>
+      <td align="center" style="border: 1.0pt solid windowtext;" colspan="7"><span id="remark"></span></td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

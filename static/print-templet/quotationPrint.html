@@ -1,0 +1,433 @@
+<html>
+<body>
+<!-- 模板编辑内容都写在body中 -->
+<style>
+
+  #printDiv {
+    width: 800px;
+    text-align: center;
+    margin: auto;
+  }
+
+  .trTop1 {
+    border-top: #808080 solid 2px;
+  }
+
+  .font_table_title {
+    font-size: 11pt;
+    font-family: "华文中宋";
+    font-weight: normal;
+  }
+
+  .font_num {
+    font-size: 12pt;
+    font-family: "Arial";
+  }
+
+  table.MsoNormalTable {
+    font-family: "Times New Roman";
+    word-wrap: break-word;
+    overflow: auto !important;
+  }
+
+
+</style>
+<script>
+  var talbehtml = "";//表模板
+  var talbehead = "";//表头模板
+  var talbedata = "";
+  var talbesum = "";
+
+
+  /**
+   * 如果方法存在则不会直接操作模板
+   * $ jquery对象
+   * data 页面中传入的相应参数
+   */
+  function receive(data) {
+    var script=document.createElement('script');
+    script.src='static/js/jquery/jquery-3.3.1.js';
+    document.body.appendChild(script);
+    script.onload=function(){
+      //获取模板
+      getTemplate("applianceList");
+      //使用for判断是否分页
+      $("#currentDate").text(new Date().format("YYYY-MM-DD"))
+      if(data){
+        //基本信息
+        $.get('/back/quotation/' +data.quotationId, (res) => {
+          for(var p in res.daoResult){
+            if("isConclusion"==p){
+              var flag = "";
+              if(res.daoResult[p]=="0"){
+                flag = "● 否 ○ 是"
+              }else {
+                flag = "○ 否 ● 是"
+              }
+              $("#" + p).text(flag);
+            }else if("isRecheck"==p){
+              var flag = "";
+              if(res.daoResult[p]=="0"){
+                flag = "● 否 ○ 是"
+              }else {
+                flag = "○ 否 ● 是"
+              }
+              $("#" + p).text(flag);
+            }else if("companyName"==p){
+              $("#" + p).text(res.daoResult[p]);
+              $("#companyName1").text(res.daoResult[p]);
+            }else if("businessCompanyName1"==p){
+              $("#" + p).text(res.daoResult[p]);
+              $("#businessCompanyName11").text(res.daoResult[p]);
+            }else{
+              $("#" + p).text(res.daoResult[p]);
+            }
+          }
+        });
+        $("#defaultCompanyName").html(localStorage.getItem("defaultCompanyName"));
+        $("#businessCompanyName1").html(localStorage.getItem("defaultCompanyName"));
+
+        //器具信息
+        $.get('/back/quotationAppliance/retrieve?quotationId=' +data.quotationId, (res) => {
+          createTable("applianceList",  res.rows);
+        });
+      }
+    };
+  }
+
+
+  //创建器具行
+  function createTable(id,  list) {
+    $("#" + id).append(talbehead);
+    var sumTs = 0;
+    var sumMoney = 0;
+    for (var i = 0; i < list.length; i++) {
+      //talbedata  赋值
+      var tempData = $(talbedata);
+      tempData.find("td").each(function(index,row){
+        var name = $(this).attr("column-name");
+        if("index"==name){
+          $(this).html(index+1);
+        }else if("detectionMethod"==name){
+          var methods = "";
+          // 0现场 1送检 2带回
+          if(list[i][name]=="0"){
+            methods ="现场"
+          }else if(list[i][name]=="1"){
+            methods ="送检"
+          }else if(list[i][name]=="2"){
+            methods = "带回";
+          }
+          $(this).html(methods);
+        }else if("setNumber" ==name){
+          $(this).html(list[i][name]);
+          //套数
+          sumTs += list[i][name];
+        }else if("afterDiscountTotal" ==name){
+          $(this).html(list[i][name]);
+          //实收价格
+          sumMoney += list[i][name];
+        }else{
+          $(this).html(list[i][name]);
+        }
+      })
+      $("#" + id).append(tempData.prop("outerHTML"));
+    }
+    //合计
+    var tempSum = $(talbesum);
+    $("#" + id).append(tempSum.prop("outerHTML"));
+    $("#sumTs").html(sumTs)
+    $("#sumMoney").html(sumMoney)
+  }
+
+  /**
+   *
+   * 根据id抽取模板
+   */
+  function getTemplate(id) {
+    $("#" + id).find("tr").each(function (i, row) {
+      if ("data" == $(this).attr("t_type")) {
+        talbedata = $(this).prop("outerHTML");
+      } else if ("sum" == $(this).attr("t_type")) {
+        talbesum = $(this).prop("outerHTML");
+      } else if ("head" == $(this).attr("t_type")) {
+        talbehead = $(this).prop("outerHTML");
+      }
+    });
+    $("#" + id).empty();
+    talbehtml = $("#" + id).prop("outerHTML");
+  }
+
+  Date.prototype.format = function (format) {
+    if(isNaN(this.getMonth())){
+      return null;
+    }
+    let o = {
+      "M+": this.getMonth() + 1,
+      "D+": this.getDate(),
+      "h+": this.getHours(),
+      "m+": this.getMinutes(),
+      "s+": this.getSeconds(),
+      "q+": Math.floor((this.getMonth() + 3) / 3),
+      "S": this.getMilliseconds()
+    };
+    if (/(Y+)/.test(format)) {
+      format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    }
+    for (let k in o) {
+      if (new RegExp("(" + k + ")").test(format)) {
+        format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
+      }
+    }
+    return format;
+  };
+
+
+</script>
+
+<div id="printDiv">
+  <table id="quotation" width="800px" class="MsoNormalTable">
+    <tr>
+      <td align=center valign=middle height=40px>
+        <b><span face="宋体" size="4"><span id="defaultCompanyName"></span>检校报价单</span></b>
+      </td>
+    </tr>
+
+    <tr>
+      <td height="44">
+        <table height=20px width=100%>
+          <tr>
+            <td align="left" style="font-size:16px;font-family:'黑体'">报价单编号：<span id="quotationNo"></span></td>
+            <td width="141" align="right">打印时间：<span id="currentDate"></span></td>
+          </tr>
+          <tr>
+            <td width=100% colspan=2>
+              <hr color=#000000 width=100% size="0.1">
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <div align="left">
+          <table border="0" width="100%" cellspacing="0" cellpadding="0" style="font-size: 11pt" class="MsoNormalTable">
+            <tr>
+              <td width="500">检校单位：<span id="businessCompanyName"></span></td>
+              <td width="250">地&nbsp;&nbsp;&nbsp;&nbsp;址：<span id="businessAddress"></span></td>
+            </tr>
+
+            <tr>
+              <td>联系电话：<span id="businessTelephone"></span></td>
+              <td>业务员：<span id="businessStaffName"></span></td>
+            </tr>
+
+            <tr>
+              <td>手机号码：<span id="businessMobilePhone"></span></td>
+              <td>Email：<span id="businessEmail"></span></td>
+            </tr>
+
+            <tr>
+              <td width=100% colspan=2>
+                <hr color=#000000 width=100% size="0.1">
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <span>委托单位：<span id="companyName"></span></span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>单位地址：<span id="customerAddress"></span></span>
+              </td>
+              <td colspan="2">
+                <span>传真：<span id="customerFox"></span></span>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <span>联 系 人：<span id="customerContact"></span></span>
+              </td>
+              <td colspan="2">
+                <span>联系电话：<span id="customerTelephone"></span></span>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <hr color="#000000" width="100%" size="0.1">
+      </td>
+    </tr>
+
+
+    <tr>
+
+      <td>
+        <div align="left">
+          <table border="0" width="800px" cellspacing="0" cellpadding="0" class="MsoNormalTable">
+            <tr>
+              <td align="left" colspan="6">
+                是否出具结论： <span id="isConclusion"></span>
+              </td>
+            </tr>
+
+            <tr>
+              <td align="left" colspan="6">
+                是否出具复检/校日期：○ 否 ● 是
+              </td>
+            </tr>
+
+            <tr>
+              <td width="100%" colspan="6">
+                <hr color=#000000 width=100% size="0.1">
+              </td>
+            </tr>
+
+            <tr>
+              <td>检测费：<span id="afterDiscountsTotal"></span></td>
+              <td>现场服务费：<span id="serviceCharge"></span></td>
+              <td>加急费:<span id="urgentProportions"></span></td>
+              <td>交通费：<span id="carFare"></span></td>
+              <td>快递费：<span id="postage"></span></td>
+              <td>总计：<span id="totalCost"></span></td>
+            </tr>
+
+            <tr>
+              <td colspan="6">如仪器型号规格与上述不符，校准时将以实际为准．</td>
+            </tr>
+
+            <tr>
+              <td colspan="6">以上报价不含修理费与配件费，如涉及计量器具的维修，请于现场确认修理及配件费．</td>
+            </tr>
+
+            <tr>
+              <td width=100% colspan=6>
+                <hr color=#000000 width=100% size="0.1">
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="10" align="left">其他约定事项：<span id="remark"></span></td>
+            </tr>
+
+            <tr>
+              <td width=100% colspan=6>
+                <hr color=#000000 width=100% size="0.1">
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="6">
+                <table border="0" width="100%" cellspacing="0" cellpadding="0" class="MsoNormalTable">
+                  <tr>
+                    <td width="15"></td>
+                    <td align="left">开户银行：<span id="accountName"></span></td>
+                    <td>户名：<span id="accountBankName"></span> </td>
+                    <td>账号：<span id="accountNo"></span></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <hr color=#000000 width=100%>
+      </td>
+    </tr>
+  </table>
+
+  <table id="applianceList" border="0" align="center" width="800px" cellspacing="0" cellpadding="0" class="MsoNormalTable">
+    <tr t_type="head">
+      <td width="30">序号</td>
+      <td width="110" align="center">器具名称</td>
+      <td width="105" align="center">型号/规格</td>
+      <td width="80" align="center">套数</td>
+      <td width="70" align="center">单价（元）</td>
+      <td width="70" align="center">应收（元）</td>
+      <td width="70" align="center">实收（元）</td>
+      <td width="75" align="center">服务类型</td>
+      <td width="60" align="center">检测方式</td>
+      <td width="80" align="center">备注</td>
+    </tr>
+
+    <tr t_type="data">
+      <td class="trTop1 font_table_title" column-name="index"> </td>
+      <td align="center"  class="trTop1 font_num" column-name="applianceName"></td>
+      <td align="center"  class="trTop1" column-name="model"></td>
+      <td align="center" class="trTop1 font_num" column-name="setNumber"></td>
+      <td align="center" class="trTop1 font_num" column-name="unitPrice"></td>
+      <td align="center" class="trTop1 font_num" column-name="receivablesCost"></td>
+      <td align="center" class="trTop1" column-name="afterDiscountTotal"></td>
+      <td align="center" class="trTop1" column-name="certificateType"></td>
+      <td align="center" class="trTop1" column-name="detectionMethod"></td>
+      <td align="center" class="trTop1" column-name="remark"></td>
+    </tr>
+
+
+    <tr t_type="sum">
+      <td width="30">合计</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td align="center" id="sumTs"></td>
+      　
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td align="center" id="sumMoney"></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+
+  </table>
+
+
+  <hr width=800px color=#000000 size="0.1">
+  <table align="center" width="800px" style="font-size:16px" class="MsoNormalTable">
+    <tr>
+      <td width="55%" align="left" style="font-weight: bold">
+        委托方(甲方)：<span id="companyName1"></span>
+      </td>
+      <td width="40%" align="left" style="font-weight: bold">
+        受委托方(乙方)：<span id="businessCompanyName1"></span>
+      </td>
+
+    </tr>
+    <tr>
+      <td align="left">
+        签名(盖章)：
+      </td>
+      <td width="20%" align="left">
+        <img src="" id="zhangImg"
+             style="display: none;width: 120px;height: 120px;position: absolute;z-index: -1;left: 85px;top: -45px;"/>
+        签名(盖章)：
+      </td>
+
+    </tr>
+    <tr>
+      <td align="left">
+        日期：
+      </td>
+      <td width="20%" align="left">
+        日期：
+      </td>
+    </tr>
+  </table>
+
+
+</div>
+
+
+</body>
+</html>

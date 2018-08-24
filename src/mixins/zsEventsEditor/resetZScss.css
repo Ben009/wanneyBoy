@@ -1,0 +1,164 @@
+
+	.mainEnt dd,.mainEnt dl,.mainEnt dt,.mainEnt form,.mainEnt h1,.mainEnt h2,.mainEnt h3,.mainEnt h4,.mainEnt h5,.mainEnt h6,.mainEnt li,.mainEnt ol,.mainEnt p,.mainEnt pre,.mainEnt td,.mainEnt th,.mainEnt ul {
+	    margin: initial;
+	    padding: initial;
+	    -webkit-box-sizing: initia;
+	    -moz-box-sizing: initial;
+	    box-sizing: initial;
+	    -webkit-tap-highlight-color: initial;
+	    border: initial;
+	}
+	.mainEnt input,.mainEnt textarea,.mainEnt keygen,.mainEnt select,.mainEnt button{
+		 margin: 0em;
+		 color: initial;
+		 letter-spacing: normal;
+	   word-spacing: normal;
+	   line-height: normal;
+	   text-transform: none;
+	   text-indent: 0;
+	   text-shadow: none;
+	   display: inline-block;
+	   text-align: start;
+	}
+
+	.mainEnt div{
+	    
+	}
+	.mainEnt td{
+	  display: table-cell;
+		vertical-align: inherit;
+	}
+	.mainEnt th{
+	  display: table-cell;
+		vertical-align: inherit; 
+	}
+	.mainEnt ul{
+	    
+	}
+	.mainEnt ol{
+		display: block;
+    list-style-type: decimal;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0;
+    -webkit-padding-start: 40px;
+	}
+	.mainEnt input{
+	    margin:initial;
+	    -webkit-box-sizing: initial;
+	    -moz-box-sizing: initial;
+	    box-sizing: initial;
+	    -webkit-border-radius: initial;
+	    -moz-border-radius: initial;
+	    border-radius: initial;
+	    border:initial;
+	    padding-left:initial;
+	    padding-right:initial;
+	    color:initial;
+	}
+	.mainEnt textarea{
+	    margin:0em;
+	    -webkit-box-sizing: initial;
+	    -moz-box-sizing: initial;
+	    box-sizing: initial;
+	    -webkit-border-radius:initial;
+	    -moz-border-radius: initial;
+	    border-radius: initial;
+	    border:initial;
+	    padding-left:initial;
+	    padding-right:initial;
+	    width:initial;
+	    color:text;
+	}
+
+	.mainEnt a {
+		color: -webkit-link;
+    text-decoration: underline;
+    cursor: auto;
+	}
+  .mainEnt a:hover,.mainEnt a:focus {
+    color: -webkit-link;
+    outline: initial }
+  .mainEnt a:active {
+    color: -webkit-activelink;;
+    outline: initial }
+
+	.mainEnt img {
+	    display: initial;
+	    border: initial
+	}
+
+	.mainEnt li {
+	    list-style: initial;
+	    display: list-item;
+	}
+
+	.mainEnt table {
+	  display: table;
+    border-collapse: collapse;
+	}
+
+	.mainEnt button,.mainEnt input,.mainEnt optgroup,.mainEnt option,.mainEnt select,.mainEnt textarea {
+	    font-family: inherit;
+	    font-size: inherit;
+	    font-style: inherit;
+	    font-weight: inherit;
+	    outline: initial
+	}
+
+	.mainEnt iframe {
+	    display: initial;
+	    width: initial;
+	    height: initial;
+	}
+
+	.mainEnt h1,.mainEnt h2,.mainEnt h3,.mainEnt h4,.mainEnt h5,.mainEnt h6 {
+	  color: initial;
+	  font-weight: inherit; }
+	  h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+	    margin-top: initial; }
+	  h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:last-child {
+	    margin-bottom: initial; }
+
+	.mainEnt h1 {
+	  font-size: 2em; }
+
+	.mainEnt h2 {
+	  font-size: 1.5em; }
+
+	.mainEnt h3 {
+	  font-size: 1.17em; }
+
+	.mainEnt h4 {
+	  font-size: 1.33em; }
+	
+	.mainEnt h5 {
+		font-size: .83em
+	}
+
+	.mainEnt h6 {
+		font-size: .67em
+	}
+	.mainEnt p {
+		font-size:initial;
+	  line-height: initial; }
+	  .mainEnt p:first-child {
+	    margin-top: initial; }
+	  .mainEnt p:last-child {
+	    margin-bottom: initial; }
+
+	.mainEnt sup,.mainEnt sub {
+	  font-size: smaller }
+
+	.mainEnt small {
+	  font-size: smaller; }
+
+	.mainEnt hr {
+	  display: block;
+    -webkit-margin-before: 0.5em;
+    -webkit-margin-after: 0.5em;
+    -webkit-margin-start: auto;
+    -webkit-margin-end: auto;
+    border-style: inset;
+    border-width: 1px; }

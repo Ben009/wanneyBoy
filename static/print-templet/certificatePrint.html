@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title>证书打印</title>
+
+  <link rel="stylesheet" type="text/css" href="../njmindFont.css"/>
+  <script src="../js/jquery/jquery-3.3.1.js"></script>
+</head>
+<body>
+<!--A4纸尺寸:210 x 297mm-->
+<div id="certificateContent" style="width: 210mm;margin: 0 auto;">
+</div>
+
+<input type="hidden" id="emzObjArr" value="">
+
+<script>
+  //条形码、二维码手动触发文件服务器去生成文件，后台返回文件的ID，生成的文件就存放在证书服务器上面（证书服务器有定时任务每天删除作废的文件）
+
+  //获取url上的参数
+  function getQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var reg_rewrite = new RegExp("(^|/)" + name + "/([^/]*)(/|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    var q = window.location.pathname.substr(1).match(reg_rewrite);
+    if(r != null){
+      return unescape(r[2]);
+    }else if(q != null){
+      return unescape(q[2]);
+    }else{
+      return null;
+    }
+  }
+
+  //自动更新证书文字大小
+  function updateZsSizeAuto(thisObject) {
+    var sizeUnit = $(thisObject).attr("data-zs-size-unit");
+    if (sizeUnit) {
+      var sizeInit = parseInt($(thisObject).attr("data-zs-size-init"));
+      var sizeMin = parseInt($(thisObject).attr("data-zs-size-min"));
+      var heightMax = parseInt($(thisObject).attr("data-zs-height-max"));
+
+      $(thisObject).attr("data-zs-size-update", "1");
+      $(thisObject).css("font-size", sizeInit + sizeUnit);
+      while (parseInt($(thisObject).css("height")) > heightMax && sizeInit > sizeMin) {
+        sizeInit = sizeInit - 1;
+        $(thisObject).css("font-size", sizeInit + sizeUnit);
+      }
+    }
+  }
+
+  //获取对象距离页面顶端的距离
+  function getElementOffsetTop(currentObject) {
+    var currentTop = 0;
+    while (currentObject.offsetParent) {
+      currentTop += currentObject.offsetTop;
+      currentObject = currentObject.offsetParent;
+    }
+    return currentTop;
+  }
+
+  //获取对象距离页面左端的距离
+  function getElementOffsetLeft(currentObject) {
+    var currentLeft = 0;
+    while (currentObject.offsetParent) {
+      currentLeft += currentObject.offsetLeft;
+      currentObject = currentObject.offsetParent;
+    }
+    return currentLeft;
+  }
+
+  $(document).ready(function () {
+    //获取证书信息
+    $.get('/back/certificatePublic/getCertificateByZsId?zsId=' + getQueryString("zsId"), (res) => {
+      if(res.code == 200){
+        $('#certificateContent').html(res.daoResult.xxyContent + res.daoResult.jgyContent);
+
+        //文字缩放
+        $(".zs_size_auto").each(function () {
+          if ($(this).attr("data-zs-size-update") != "1") {
+            //证书文字大小未进行过更新
+            updateZsSizeAuto(this);
+          }
+        });
+
+        //检定员
+        var jdyList = res.daoResult.jdyList;
+        for(var i=0,len=jdyList.length;i<len;i++){
+          $("[name='zs_jdy_img']").eq(i).attr("src","/njmind/attachment/down/"+jdyList[i]["dataValue3"]);
+          $("[name='zs_jdy_job']").eq(i).html(jdyList[i]["dataValue4"]);
+          $("[name='zs_jdy_name']").eq(i).html(jdyList[i]["dataValue1"]);
+        }
+
+        //核验员
+        var hyyList = res.daoResult.hyyList;
+        for(var i=0,len=hyyList.length;i<len;i++){
+          $("[name='zs_hyy_img']").eq(i).attr("src","/njmind/attachment/down/"+hyyList[i]["dataValue3"]);
+          $("[name='zs_hyy_job']").eq(i).html(hyyList[i]["dataValue4"]);
+          $("[name='zs_hyy_name']").eq(i).html(hyyList[i]["dataValue1"]);
+        }
+
+        //批准人
+        $("[name='zs_pzr_img']").attr("src","/njmind/attachment/down/"+res.daoResult["pzrPath"]);
+        $("[name='zs_pzr_job']").html(res.daoResult["pzrJob"]);
+        $("[name='zs_pzr_name']").html(res.daoResult["pzrName"]);
+
+        //条形码
+        var zsbh = res.daoResult['zsbh'];
+        if (zsbh.length > 13) {
+          zsbh = zsbh.substring(zsbh.length - 13);
+        }
+        $("[name='zs_code_bar_img']").attr("src","/njmind/attachment/certificateBarCode?zsbh="+zsbh);
+
+        //二维码
+        $.get('/njmind/findParam/certificateQrCodeUrl', (res) => {
+          //console.log("certificateQrCodeUrl",res);
+          $("[name='zs_code_qr_img']").attr("src","/njmind/attachment/certificateQRCode?zsbh="+escape(res["value"]+"?zsId="+getQueryString("zsId")));
+        });
+
+        //计算EMZ图片位置
+        if ($("[name='zs_jgy_red_img']").length > 0 || $("[name='zs_jgy_blue_img']").length > 0) {
+          $(".zs_print_none").css("display", "none");
+          $(".zs_print_inline").css("display", "inline");
+
+          var emzPageLeft = getElementOffsetLeft($("#certificateContent")[0]);
+
+          var emzObjArr = new Array();
+          {
+            var emzObj = new Object();
+            emzObjArr.push(emzObj);
+            $(".zs_page_break_before_always").each(function(){
+              emzObj = new Object();
+              emzObjArr.push(emzObj);
+
+              var emzElement = $("[name='zs_jgy_red_img']",this)[0];
+              if(emzElement){
+                emzObj["emzTableTop"] = getElementOffsetTop($("[name='zs_jgy_red']",this)[0]) - getElementOffsetTop(this);
+                emzObj["emzTableLeft"] = getElementOffsetLeft(this) - emzPageLeft;
+                emzObj["emzTableWidth"] = parseFloat($("[name='zs_jgy_red']",this).css("width"));
+                emzObj["emzTableHeight"] = parseFloat($("[name='zs_jgy_red']",this).css("height"));
+                emzObj["emzFileId"] = $(emzElement).attr("data-emz-file-id");
+                emzObj["emzWidth"] = parseFloat($(emzElement).css("width"));
+                emzObj["emzHeight"] = parseFloat($(emzElement).css("height"));
+                emzObj["emzTop"] = getElementOffsetTop(emzElement) - getElementOffsetTop($("[name='zs_jgy_red']",this)[0]);
+                emzObj["emzLeft"] = getElementOffsetLeft(emzElement) - getElementOffsetLeft($("[name='zs_jgy_red']",this)[0]);
+              }else{
+                emzElement = $("[name='zs_jgy_blue_img']",this)[0];
+                if(emzElement){
+                  emzObj["emzTableTop"] = getElementOffsetTop($("[name='zs_jgy_blue']",this)[0]) - getElementOffsetTop(this);
+                  emzObj["emzTableLeft"] = getElementOffsetLeft(this) - emzPageLeft;
+                  emzObj["emzTableWidth"] = parseFloat($("[name='zs_jgy_blue']",this).css("width"));
+                  emzObj["emzTableHeight"] = parseFloat($("[name='zs_jgy_blue']",this).css("height"));
+                  emzObj["emzFileId"] = $(emzElement).attr("data-emz-file-id");
+                  emzObj["emzWidth"] = parseFloat($(emzElement).css("width"));
+                  emzObj["emzHeight"] = parseFloat($(emzElement).css("height"));
+                  emzObj["emzTop"] = getElementOffsetTop(emzElement) - getElementOffsetTop($("[name='zs_jgy_blue']",this)[0]);
+                  emzObj["emzLeft"] = getElementOffsetLeft(emzElement) - getElementOffsetLeft($("[name='zs_jgy_blue']",this)[0]);
+                }
+              }
+              $(emzElement).addClass("zs_print_none");
+            });
+          }
+          //$('#emzObjArr').val(JSON.stringify(emzObjArr));//另外容器超时自己也会处理的
+
+          var imgLoadComplete = function () {
+            var flag = true;
+            $('img').each(function () {
+              if (!this.complete) {
+                flag = false;
+                return false;
+              }
+            })
+            if (flag) {
+              $('#emzObjArr').val(JSON.stringify(emzObjArr));//另外容器超时自己也会处理的
+            } else {
+              setTimeout(imgLoadComplete, 500);
+            }
+          }
+          setTimeout(imgLoadComplete, 500);
+        }else{
+          //$('#emzObjArr').val("1");//没有EMZ图片
+
+          var imgLoadComplete = function () {
+            var flag = true;
+            $('img').each(function () {
+              if (!this.complete) {
+                flag = false;
+                return false;
+              }
+            })
+            if (flag) {
+              $('#emzObjArr').val("1");//没有EMZ图片
+            } else {
+              setTimeout(imgLoadComplete, 500);
+            }
+          }
+          setTimeout(imgLoadComplete, 500);
+        }
+      } else {
+        //alert("证书不存在！");//另外容器超时自己也会处理的
+        $('#emzObjArr').val("0");//证书不存在
+      }
+    });
+  });
+</script>
+</body>
+</html>

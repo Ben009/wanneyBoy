@@ -1,0 +1,173 @@
+
+<html>
+<body>
+
+<style>
+
+  #printDiv {
+    width: 1000px;
+    text-align: center;
+    margin: auto;
+  }
+
+  .trTop1 {
+    border-top: #808080 solid 2px;
+  }
+
+  .font_table_title {
+    font-size: 11pt;
+    font-family: "华文中宋";
+    font-weight: normal;
+  }
+
+  .font_num {
+    font-size: 12pt;
+    font-family: "Arial";
+  }
+
+  table.MsoNormalTable {
+    font-family: "Times New Roman";
+    word-wrap: break-word;
+    overflow: auto !important;
+  }
+
+
+</style>
+<script>
+  var talbehtml = "";//表模板
+  var talbehead = "";//表头模板
+  var talbedata = "";
+  var talbesum = "";
+
+
+  //var $ =null;//该对象为外部传入的jquery对象
+  /**
+   * 如果方法存在则不会直接操作模板
+   * $ jquery对象
+   * data 页面中传入的相应参数
+   */
+  function receive(data) {
+    var script = document.createElement('script');
+    script.src = 'static/js/jquery/jquery-3.3.1.js';
+    document.body.appendChild(script);
+    script.onload = function () {
+      getTemplate("tableData");
+      let planTime = (data.planTime.split(" "))[0];
+      $("#defaultCompanyName").text(localStorage.getItem("defaultCompanyName"));
+      $.get('/back/arrange/vehicleArrByPlanTime',{planTime:planTime}, (res) => {
+        console.log(res);
+        createTable("tableData",  res.rows);
+        $("#planTime").text(planTime);
+      });
+    };
+  }
+
+  //创建表格
+  function createTable(id, list){
+    var newId = id;
+    var t = 0;
+    $("#" + id).append(talbehead);
+    for (var i = 0; i < list.length; i++) {
+      var tempData = $(talbedata);
+      tempData.find("td").each(function (index, row) {
+        var name = $(this).attr("column-name");
+        $(this).html(list[i][name]);
+      })
+      $("#" + newId).append(tempData.prop("outerHTML"));
+    }
+  }
+
+
+
+  /**
+   *
+   * 根据id抽取模板
+   */
+  function getTemplate(id) {
+    $("#" + id).find("tr").each(function (i, row) {
+      if ("data" == $(this).attr("t_type")) {
+        talbedata = $(this).prop("outerHTML");
+      } else if ("sum" == $(this).attr("t_type")) {
+        talbesum = $(this).prop("outerHTML");
+      } else if ("head" == $(this).attr("t_type")) {
+        talbehead = $(this).prop("outerHTML");
+      }
+    });
+    $("#" + id).empty();
+    talbehtml = $("#" + id).prop("outerHTML");
+  }
+
+
+
+
+
+  Date.prototype.format = function (format) {
+    if(isNaN(this.getMonth())){
+      return null;
+    }
+    let o = {
+      "M+": this.getMonth() + 1,
+      "D+": this.getDate(),
+      "h+": this.getHours(),
+      "m+": this.getMinutes(),
+      "s+": this.getSeconds(),
+      "q+": Math.floor((this.getMonth() + 3) / 3),
+      "S": this.getMilliseconds()
+    };
+    if (/(Y+)/.test(format)) {
+      format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    }
+    for (let k in o) {
+      if (new RegExp("(" + k + ")").test(format)) {
+        format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
+      }
+    }
+    return format;
+  };
+
+
+
+</script>
+
+
+<button onclick="window.print()" class="Noprint">print</button>
+
+<div id="printDiv">
+<table align=center border=0 cellpadding=0 cellspacing=0 >
+  <tr>
+    <td>
+      <p align="center">
+        <span style="font-size: 15.0pt; font-family: '华文新魏'"> <span id="defaultCompanyName"></span>车辆安排</span>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td align="right">安排日期：<span id="planTime"></span></td>
+  </tr>
+</table>
+<table id="tableData" border="1" cellspacing="0" cellpadding="0" align="center" class="MsoNormalTable">
+  <tr t_type="head">
+    <td align="center">车辆</td>
+    <td align="center">委托单位</td>
+    <td align="center">上门检测地址</td>
+    <td align="center">带队人</td>
+    <td align="center">备注</td>
+    <td align="center">委托单号</td>
+    <td align="center">检定员</td>
+  </tr>
+  <tr t_type="data">
+    <td align="center" class="trTop1" column-name="vehicle"></td>
+    <td align="center" class="trTop1" column-name="companyName"></td>
+    <td align="center" class="trTop1" column-name="detectionSite"></td>
+    <td align="center" class="trTop1" column-name="leaderName"></td>
+    <td align="center" class="trTop1" column-name="remark"></td>
+    <td align="center" class="trTop1" column-name="orderNo"></td>
+    <td align="center" class="trTop1" column-name="inspector"></td>
+  </tr>
+</table>
+</div>
+</body>
+</html>
+
+
+

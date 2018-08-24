@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>委托单</title>
+    <style>
+        /* 整体布局 */
+        .container{
+            margin: 20px auto;
+            width: 70%;
+        }
+        /* ************头部************ */
+        header{
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            vertical-align: bottom;
+        }
+        /* 头部左侧样式 */
+        .left #contractNo{
+            font-size: 20px;
+        }
+        /* 头部中间样式 */
+        .mid{
+            text-align: center;
+        }
+        .mid p,.mid h2{
+            margin: 0;
+        }
+        .mid .button{
+            display: flex;
+            justify-content: space-around;
+        }
+        .mid button{
+            background-color:rgb(50, 122, 183); 
+            border: none;
+            padding: 3px 15px;
+            color: white;
+        }
+        .mid .specialButton{
+            background-color: rgb(217, 82, 78);
+        }
+        /* 头部右侧样式 */
+        .right {
+            width: 150px;
+            height: 50px;
+        }
+        /* **************表格内容************** */
+        main{
+            margin-top: 10px;
+        }
+        .position{
+            position: relative;
+            top: -1px;
+        }
+        .table{
+            text-align: center;
+            width: 100%;
+            border-collapse :collapse ;
+        }
+        thead td{
+            padding: 5px;
+        }
+        .add tr:nth-of-type(n+1) td{
+            padding: 5px 10px
+        }
+        .bottom td{
+            padding: 5px;
+        }
+        /* 选中的方格 */
+        span.noCheck,span.check{
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border: solid 1px black;
+        }
+        .check{
+            background-color: black;
+        }
+        /* *********底部提示信息************** */
+        footer p{
+            margin: 0;
+            font-size: 14px;
+        }
+
+    </style>
+    <style media="print">
+
+      .Noprint {
+        display: none;
+      }
+    
+      .PageNext {
+        page-break-after: always;
+      }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="left">
+              &#X3000;<span>委托单号 : </span>
+                <span id="orderNo" style="font-size: 20px"></span>
+            </div>
+            <div class="mid">
+                <p class="button">
+                    <button onclick="window.print()" class="Noprint">打印</button>
+                    <!-- <button class="specialButton" onclick="closePage()">关闭</button> -->
+                </p>
+                <h2 id="defaultCompanyName">请维护本单位名称</h2>
+                <p>器具校准/检测委托单(送检)</p>
+            </div>
+            <div id="wtdTxm" style="height: 50px" >
+                
+            </div>
+        </header>
+        <main>
+            <table class="table"border=1 cellpadding="0">
+                <thead>
+                    <tr>
+                        <td width="100">委托单位 :</td>
+                        <td width="700" id="companyName" style="text-align: left"></td>
+                        <td width="100">联系人 :</td>
+                        <td colspan="3" width="300" id="contacter"></td>
+                    </tr>
+                    <tr>
+                        <td width="100">证书单位 :</td>
+                        <td width="700" id="certificateCompanyName" style="text-align: left"></td>
+                        <td width="100">联系电话 :</td>
+                        <td colspan="3" width="300" id="telephone"></td>
+                    </tr>
+                    <tr>
+                        <td width="100">联系地址 :</td>
+                        <td width="700" id="address" style="text-align: left"></td>
+                        <td width="100">收发员 :</td>
+                        <td width="100" id="addPersonName"></td>
+                        <td width="100">委托日期 :</td>
+                        <td width="100" id="entrustDate"></td>
+                    </tr>
+                </table>
+                <table class="table position" border="1" cellpadding="0">
+                <tbody class="add">
+                    <tr>
+                        <td>序号</td>
+                        <td>器具名称</td>
+                        <td>型号规格</td>
+                        <td>设备/出厂编号</td>
+                        <td>套数/退</td>
+                        <td>件/套</td>
+                        <td>登记号</td>
+                        <td>报告形式</td>
+                        <td>是否强检</td>
+                        <td>是否加急</td>
+                        <td>异常是否修理</td>
+                        <td>备注(若使用非220v电压，请明示)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table position bottom" border="1" cellpadding="0" >
+                <tr>
+                    <td colspan="3">
+                        检/校完短信通知 : 是 <span class="noCheck" id="messageYes"></span >  否 <span class="check" id="messageNo"></span> &#X3000;<span id="mobilePhone"></span>&#X3000;&#X3000;&#X3000;&#X3000;
+                        若报告形式为校准或检测时，是否出具结论 : 是 <span class="noCheck" id="isConclusionYes"></span> 否 <span class="check" id="isConclusionNo"></span>
+                    </td>
+                </tr>
+                <tr style="text-align: left">
+                    <td colspan="3">
+                        客户声明 : 我方保证对所提供的一切资料信息和样品的真实性负责，并提供必要的合作，所委托工作发生的费用由我方支付。<br>
+                        校准/检测方法 : ①<span class="noCheck"></span>同意贵<span id="defaultLevel1"></span>依据国家相关计量检测规程和校准规范选定的校准和检测方法。 <br>
+                        &#X3000;&#X3000;&#X3000;&#X3000;&#X3000;&#X3000;&#X3000;&#X3000;②<span class="noCheck"></span>顾客指定的方法_______________________________。（如未选择检测方法，默认为①）
+                    </td>
+                </tr>
+                <tr style="text-align: left">
+                    <td width="40%">上述内容经确认无误后，由<strong>委托人签字 : </strong></td>
+                    <td width="30%"><strong>取样人签字 : </strong></td>
+                    <td width="30%"><strong>取证人签字 : </strong></td>
+                </tr>
+                <tr style="text-align: left">
+                    <td colspan="3">
+                        检测期限 : <span id="detectionDeadline"></span> ，如遇标准器送检或器具需要修理等情况，则需适当延长工作日。<br>
+                        本<span id="defaultLevel2"></span>收发员支队样品外观等明显状况进行核查，其他性能将在流转至实验室后由检测人员进行核查。
+                    </td>
+                </tr>
+            </table>
+        </main>
+        <footer>
+            <p style="font-size: 15px;">本<span id="defaultLevel3"></span>地址 : <span id="defaultAddress"></span>&#X3000;&#X3000;&#X3000;邮编 : <span id="defaultZipcode"></span> &#X3000;&#X3000;&#X3000;收发电话 : <span id="defaultSendReceivephone"></span>&#X3000;&#X3000;&#X3000;传真 : <span id="defaultMarketFax"></span>&#X3000;&#X3000;&#X3000;业务电话 : <span id="defaultMarketphone"></span> &#X3000;</p>
+            <p style="font-size: 10px;">银行账号 : <span id="defaultBankAccount"></span>&#X3000;&#X3000;&#X3000;开户行: <span id="defaultBank"></span>&#X3000;&#X3000;&#X3000;收款人 : 代收财政款项<span id="defaultCompanyName1"></span></p>
+            <p style="font-size: 10px;">客户须知 : 1、此单为取件凭证，若遗失，需出具单位介绍信及取件人身份证方可取件。
+                    2、样品保管期为自送检之日起壹年，逾期作无主处理。3、请客户主动与我<span id="defaultLevel4"></span>联系取货等事宜。<br>4、合同客户按期结账的，请取件前联系片区<span id="defaultBusinessStaff"></span>提前做好担保手续。
+            5、客户对检定校准结果有疑议的需在证书发出3个月内申诉，如需复检的请保持送检仪器的初检状态。
+            </p>
+            <p></p>
+        </footer>
+    </div>
+    <script>
+  function receive(data) {
+    var script = document.createElement('script');
+    script.src = 'static/js/jquery/jquery-3.3.1.js';
+    document.body.appendChild(script);
+    script.onload = function () {
+      $("#wtdTxm").html(data['key1']);
+      var wtdId = data.wtdId;
+      // var quotationId = data.quotationId;//报价单ID
+      //加载单位信息
+      $.get('/back/entrustWtd/' +wtdId, (res) => {
+        console.log(res)
+        $("#orderNo").html(res.daoResult.orderNo)
+        $("#defaultCompanyName").html(localStorage.getItem("defaultCompanyName"));
+        $("#defaultCompanyName1").html("（"+localStorage.getItem("defaultCompanyName")+"）");
+        $("#companyName").html(res.daoResult.companyName);
+        $("#contacter").html(res.daoResult.contacter);
+        $("#certificateCompanyName").html(res.daoResult.certificateCompanyName);
+        $("#telephone").html(res.daoResult.telephone);
+        $("#address").html(res.daoResult.address);
+        $("#addPersonName").html(res.daoResult.addPersonName);
+        $("#entrustDate").html(res.daoResult.entrustDate);
+        if(res.daoResult.isMessage == 1){
+            $("#messageNo").removeClass("check");
+            $("#messageNo").addClass("noCheck");
+            $("#messageYes").removeClass("noCheck");
+            $("#messageYes").addClass("check");
+        }else{
+            $("#messageNo").removeClass("noCheck");
+            $("#messageNo").addClass("check");
+            $("#messageYes").removeClass("check");
+            $("#messageYes").addClass("noCheck");
+        }
+        $("#mobilePhone").html("短信号码 : "+res.daoResult.mobilePhone);
+        if(res.daoResult.isConclusion == 1){
+            $("#isConclusionNo").removeClass("check");
+            $("#isConclusionNo").addClass("noCheck");
+            $("#isConclusionYes").removeClass("noCheck");
+            $("#isConclusionYes").addClass("check");
+        }else{
+            $("#isConclusionNo").removeClass("noCheck");
+            $("#isConclusionNo").addClass("check");
+            $("#isConclusionYes").removeClass("check");
+            $("#isConclusionYes").addClass("noCheck");
+        }
+        $("#detectionDeadline").html(res.daoResult.detectionDeadline);
+
+        $("#defaultLevel1").html(localStorage.getItem("defaultLevel"));
+        $("#defaultLevel2").html(localStorage.getItem("defaultLevel"));
+        $("#defaultLevel3").html(localStorage.getItem("defaultLevel"));
+        $("#defaultLevel4").html(localStorage.getItem("defaultLevel"));
+        $("#defaultAddress").html(localStorage.getItem("defaultAddress"));
+        $("#defaultZipcode").html(localStorage.getItem("defaultZipcode"));
+        $("#defaultSendReceivephone").html(localStorage.getItem("defaultSendReceivephone"));
+        $("#defaultMarketFax").html(localStorage.getItem("defaultMarketFax"));
+        $("#defaultMarketphone").html(localStorage.getItem("defaultMarketphone"));
+        $("#defaultBankAccount").html(localStorage.getItem("defaultBankAccount"));
+        $("#defaultBank").html(localStorage.getItem("defaultBank"));
+        $("#defaultBusinessStaff").html(localStorage.getItem("defaultBusinessStaff"));
+      });
+
+      //加载器具
+      $.get('/back/entrustSjd/getEntrustSjdDetails' ,{wtdId:wtdId}, (res) => {
+            var sjdInfos = res.rows;
+            console.log(sjdInfos,'sjdInfossjdInfos')
+            console.log(sjdInfos.length,'sjdInfossjdInfoslength')
+            var newNum = 10;
+            var add = document.querySelector('.add')
+            if(sjdInfos.length > 0){
+              if(sjdInfos.length >= 10){
+                newNum = 0;
+              }else{
+                newNum = newNum - sjdInfos.length;
+              }
+              for(let i =0 ; i < sjdInfos.length ; i ++){
+                var str = "<td>"+(i+1)+"</td>"+
+                "<td>"+judgeNull(sjdInfos[i].applianceName)+"</td>"+
+                "<td>"+judgeNull(sjdInfos[i].model)+"</td>"+
+                "<td>"+judgeNull(sjdInfos[i].equipmentNo)+"/"+judgeNull(sjdInfos[i].factoryNo)+"</td>"+
+                "<td>"+sjdInfos[i].setNumber+(sjdInfos[i].returnNumber > 0 ? "/"+sjdInfos[i].returnNumber : "")+"</td>"+
+                "<td>"+judgeNull(sjdInfos[i].pieceNumber)+"</td>"+
+                "<td>"+judgeNull(sjdInfos[i].registrationNo)+"</td>"+
+                "<td>"+judgeNull(sjdInfos[i].certificateType)+"</td>"+
+                "<td>"+judgeNull(sjdInfos[i].isCompulsoryVerifys)+"</td>"+
+                "<td>"+judgeNull(sjdInfos[i].isUrgents)+"</td>"+
+                "<td>"+judgeNull(sjdInfos[i].isRepairs)+"</td>"+
+                "<td>"+judgeNull(sjdInfos[i].remark)+"</td>";
+                    
+                    let one = document.createElement('TR')
+                    one.innerHTML = str
+                    add.appendChild(one)
+          }
+            }
+
+
+          for(let i =0 ; i < newNum ; i ++){
+            var str = "<td>"+(sjdInfos.length+i+1)+"</td>"+
+                "<td></td>"+
+                "<td></td>"+
+                "<td></td>"+
+                "<td></td>"+
+                "<td></td>"+
+                "<td></td>"+
+                "<td></td>"+
+                "<td></td>"+
+                "<td><span class='noCheck'></span></td>"+
+                "<td><span class='noCheck'></span></td>"+
+                "<td></td>";
+
+            let one = document.createElement('TR')
+            one.innerHTML = str
+            add.appendChild(one)
+        }
+
+          })
+
+    };
+  }
+
+  function judgeNull(str){
+    if(str == null || str == undefined){
+        str = "";
+    }
+    return str;
+  }
+
+    </script>
+</body>
+</html>

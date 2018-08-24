@@ -1,0 +1,2196 @@
+<div name="zs_div_xxy">
+<!--zs_div_xxy_start-->
+
+	<!--固定样式_开始-->
+	<style>
+		/*屏幕显示样式*/
+		/*证书分页样式*/
+		.zs_page_break_before_always {
+			page-break-before: always;
+		}
+
+		/*证书A4纸张样式*/
+		.zs_page_a4 {
+			width: 210mm;
+			height: 297mm;
+			overflow: hidden;
+		}
+
+		/*证书A4纸张宽度样式*/
+		.zs_page_a4_width {
+			width: 210mm;
+		}
+
+		/*证书A4纸张高度样式*/
+		.zs_page_a4_height {
+			height: 297mm;
+		}
+
+		/*证书元素编辑样式*/
+		.zs_element_edit {
+			background-color: #ffff00;
+			border: 1pt solid #ff6d00;
+		}
+	</style>
+	<style media="print">
+		/*打印显示样式*/
+		/*证书打印不显示*/
+		.zs_print_none {
+			display: none !important;
+		}
+
+		/*证书打印显示*/
+		.zs_print_inline {
+			display: inline !important;
+		}
+
+		/*证书元素编辑样式*/
+		.zs_element_edit {
+			background-color: #ffffff !important;
+			border: 1pt solid #ffffff !important;
+		}
+
+		/*证书元素编辑样式*/
+		.zs_print_min_width_none {
+			min-width: 0mm !important;
+		}
+	</style>
+	<!--固定样式_结束-->
+
+  <!--自定义样式_开始-->
+  <style>
+    /*自定义的样式名称请以zs_class_custom_开头进行命名，千万不要定义全局样式*/
+    .zs_class_custom_one {
+      margin-left: 170px;
+      font-size: 14px;
+    }
+
+    .zs_class_custom_two {
+      font-family: "Microsoft YaHei", Arial;
+      font-size: 14px;
+    }
+  </style>
+  <!--自定义样式_结束-->
+
+  <!--zs_xxy_zmb_id_start-->
+  <input type="hidden" name="zs_xxy_zmb_id" value="">
+  <!--zs_xxy_zmb_id_end-->
+
+  <!--zs_page_start-->
+	<div style="margin:0 auto;" class="zs_page_a4">
+		<div style="text-align: center;font-family: '黑体';font-size: 24pt;line-height: 25pt;margin-top: 20mm;">
+			湖州市计量测试研究所
+		</div>
+		<div style="text-align: center;font-family: 'Times New Roman';font-size: 11pt;line-height: 15pt;">
+			HuZhou Institute of Metrology and Testing
+		</div>
+
+		<div style="text-align: center;font-family: '黑体';font-size: 26pt;font-weight: 700;margin-top: 8mm;">
+			检 定 证 书
+		</div>
+		<div style="text-align: center;font-family: 'Times New Roman';font-size: 10pt;line-height: 13pt;">
+			Verification Certificate
+		</div>
+
+		<div style="text-align: center;font-family: '黑体';margin-top: 10pt;">
+			<div style="display: inline-table;">
+				<div style="font-family: '黑体';font-size: 12pt;">
+					证书编号：
+				</div>
+				<div style="font-family: 'Times New Roman';font-size: 8pt;">
+					Certificate No：
+				</div>
+			</div>
+			<div style="display: inline-table;text-align: left;min-width: 150pt;">
+				<!--zs_code_bar_start-->
+				<div name="zs_code_bar" style="text-align: center;font-family: '黑体';font-size: 12pt;display: inline-table;min-width: 50pt;min-height: 15pt;" class="zs_element_edit zs_print_none">
+					条形码
+				</div>
+				<!--zs_code_bar_end-->
+
+				<!--zs_code_bar_img_start-->
+				<img name="zs_code_bar_img" src="" style="width: 4.5cm;height: 0.6cm;display: none;" class="zs_print_inline">
+				<!--zs_code_bar_img_end-->
+
+				<br>
+
+				<!--zs_zsbh_start-->
+				<div name="zs_zsbh" style="text-align: center;font-family: 'Times New Roman';font-size: 12pt;display: inline-table;min-width: 80pt;min-height: 15pt;" class="zs_element_edit">
+					证书编号
+				</div>
+				<!--zs_zsbh_end-->
+			</div>
+		</div>
+
+		<div style="text-align: center;font-family: '黑体';margin-top: 10pt;min-width: 3cm;min-height: 3cm;">
+			<!--zs_code_qr_start-->
+			<div name="zs_code_qr" style="text-align: center;font-family: '黑体';font-size: 12pt;display: inline-table;min-width: 50pt;min-height: 15pt;" class="zs_element_edit zs_print_none">
+				二维码
+			</div>
+			<!--zs_code_qr_end-->
+
+			<!--zs_code_qr_img_start-->
+			<img name="zs_code_qr_img" src="" style="width: 3cm;height: 3cm;display: none;" class="zs_print_inline">
+			<!--zs_code_qr_img_end-->
+		</div>
+
+		<div style="text-align: center;margin-top: 2mm;">
+			<div style="display: inline-table;width: 30mm;">
+				<div style="text-align: left;font-family: '黑体';font-size: 12pt;">
+					送 检 单 位
+				</div>
+				<div style="text-align: left;font-family: '黑体';font-size: 7pt;">
+					Applicant
+				</div>
+			</div>
+			<div style="display: inline-table;width: 120mm;min-height: 22pt;border-bottom: 1pt solid #000000;vertical-align: middle;text-align: center;padding: 1pt;">
+				<!--zs_zsdwmc_start-->
+				<div name="zs_zsdwmc" style="display: inline-table;min-width: 60mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_size_auto"
+					 data-zs-click-show-name="zs_zsdwmc_input" data-zs-size-update="0" data-zs-size-unit="pt" data-zs-size-init="14" data-zs-size-min="5" data-zs-height-max="30">
+					证书单位名称（内容过多时文字会自动进行缩放）
+					证书单位名称（内容过多时文字会自动进行缩放）
+				</div>
+				<!--zs_zsdwmc_end-->
+				<input type="text" name="zs_zsdwmc_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+					   data-zs-blur-show-name="zs_zsdwmc">
+			</div>
+		</div>
+
+		<div style="text-align: center;margin-top: 2mm;">
+			<div style="display: inline-table;width: 30mm;">
+				<div style="text-align: left;font-family: '黑体';font-size: 12pt;">
+					送 检 单 位
+				</div>
+				<div style="text-align: left;font-family: '黑体';font-size: 7pt;">
+					Applicant
+				</div>
+			</div>
+			<div style="display: inline-table;width: 120mm;min-height: 22pt;border-bottom: 1pt solid #000000;vertical-align: middle;text-align: center;padding: 1pt;">
+				<!--zs_zsdwmc_eng_start-->
+				<div name="zs_zsdwmc_eng" style="display: inline-table;min-width: 60mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click"
+					 data-zs-click-show-name="zs_zsdwmc_eng_input">
+					证书单位名称英文
+				</div>
+				<!--zs_zsdwmc_eng_end-->
+				<input type="text" name="zs_zsdwmc_eng_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+					   data-zs-blur-show-name="zs_zsdwmc_eng">
+			</div>
+		</div>
+
+		<div style="text-align: center;margin-top: 2mm;">
+			<div style="display: inline-table;width: 30mm;">
+				<div style="text-align: left;font-family: '黑体';font-size: 12pt;">
+					计量器具名称
+				</div>
+				<div style="text-align: left;font-family: '黑体';font-size: 7pt;">
+					Name of Instrument
+				</div>
+			</div>
+			<div style="display: inline-table;width: 120mm;min-height: 22pt;border-bottom: 1pt solid #000000;vertical-align: middle;text-align: center;padding: 1pt;">
+				<!--zs_zsqjmc_start-->
+				<div name="zs_zsqjmc" style="display: inline-table;min-width: 60mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click"
+					 data-zs-click-show-name="zs_zsqjmc_input">
+					证书器具名称
+				</div>
+				<!--zs_zsqjmc_end-->
+				<input type="text" name="zs_zsqjmc_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+					   data-zs-blur-show-name="zs_zsqjmc">
+			</div>
+		</div>
+
+		<div style="text-align: center;margin-top: 2mm;">
+			<div style="display: inline-table;width: 30mm;">
+				<div style="text-align: left;font-family: '黑体';font-size: 12pt;">
+					计量器具名称
+				</div>
+				<div style="text-align: left;font-family: '黑体';font-size: 7pt;">
+					Name of Instrument
+				</div>
+			</div>
+			<div style="display: inline-table;width: 120mm;min-height: 22pt;border-bottom: 1pt solid #000000;vertical-align: middle;text-align: center;padding: 1pt;">
+				<!--zs_zsqjmc_eng_start-->
+				<div name="zs_zsqjmc_eng" style="display: inline-table;min-width: 60mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click"
+					 data-zs-click-show-name="zs_zsqjmc_eng_input">
+					证书器具名称英文
+				</div>
+				<!--zs_zsqjmc_eng_end-->
+				<input type="text" name="zs_zsqjmc_eng_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+					   data-zs-blur-show-name="zs_zsqjmc_eng">
+			</div>
+		</div>
+
+		<div style="text-align: center;margin-top: 2mm;">
+			<div style="display: inline-table;width: 30mm;">
+				<div style="text-align: left;font-family: '黑体';font-size: 12pt;">
+					委托者地址
+				</div>
+				<div style="text-align: left;font-family: '黑体';font-size: 7pt;">
+					Name of Instrument
+				</div>
+			</div>
+			<div style="display: inline-table;width: 120mm;min-height: 22pt;border-bottom: 1pt solid #000000;vertical-align: middle;text-align: center;padding: 1pt;">
+				<!--zs_wtzdz_start-->
+				<div name="zs_wtzdz" style="display: inline-table;min-width: 60mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click"
+					 data-zs-click-show-name="zs_wtzdz_input">
+					委托者地址
+				</div>
+				<!--zs_wtzdz_end-->
+				<input type="text" name="zs_wtzdz_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+					   data-zs-blur-show-name="zs_wtzdz">
+			</div>
+		</div>
+
+		<div style="text-align: center;margin-top: 2mm;">
+			<div style="display: inline-table;width: 30mm;">
+				<div style="text-align: left;font-family: '黑体';font-size: 12pt;">
+					委托者地址
+				</div>
+				<div style="text-align: left;font-family: '黑体';font-size: 7pt;">
+					Name of Instrument
+				</div>
+			</div>
+			<div style="display: inline-table;width: 120mm;min-height: 22pt;border-bottom: 1pt solid #000000;vertical-align: middle;text-align: center;padding: 1pt;">
+				<!--zs_wtzdz_eng_start-->
+				<div name="zs_wtzdz_eng" style="display: inline-table;min-width: 60mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click"
+					 data-zs-click-show-name="zs_wtzdz_eng_input">
+					委托者地址英文
+				</div>
+				<!--zs_wtzdz_eng_end-->
+				<input type="text" name="zs_wtzdz_eng_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+					   data-zs-blur-show-name="zs_wtzdz_eng">
+			</div>
+		</div>
+
+		<div style="text-align: center;margin-top: 2mm;">
+			<div style="display: inline-table;width: 30mm;">
+				<div style="text-align: left;font-family: '黑体';font-size: 12pt;">
+					制造厂商
+				</div>
+				<div style="text-align: left;font-family: '黑体';font-size: 7pt;">
+					Type/Specification
+				</div>
+			</div>
+			<div style="display: inline-table;width: 120mm;min-height: 22pt;border-bottom: 1pt solid #000000;vertical-align: middle;text-align: center;padding: 1pt;">
+				<!--zs_zzcs_start-->
+				<div name="zs_zzcs" style="display: inline-table;min-width: 60mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+					 data-zs-click-show-name="zs_zzcs_input" data-zs-contextmenu-show-name="zs_zzcs_select">
+					制造厂商
+				</div>
+				<!--zs_zzcs_end-->
+
+				<input type="text" name="zs_zzcs_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+					   data-zs-blur-show-name="zs_zzcs">
+
+				<!--zs_zzcs_select_start-->
+				<select name="zs_zzcs_select" style="display: none;max-width: 120mm;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_blur"
+						data-zs-blur-show-name="zs_zzcs">
+				</select>
+				<!--zs_zzcs_select_end-->
+			</div>
+		</div>
+
+		<div style="text-align: center;margin-top: 2mm;">
+			<div style="display: inline-table;width: 30mm;">
+				<div style="text-align: left;font-family: '黑体';font-size: 12pt;">
+					制造厂商
+				</div>
+				<div style="text-align: left;font-family: '黑体';font-size: 7pt;">
+					Type/Specification
+				</div>
+			</div>
+			<div style="display: inline-table;width: 120mm;min-height: 22pt;border-bottom: 1pt solid #000000;vertical-align: middle;text-align: center;padding: 1pt;">
+				<!--zs_zzcs_eng_start-->
+				<div name="zs_zzcs_eng" style="display: inline-table;min-width: 60mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click"
+					 data-zs-click-show-name="zs_zzcs_eng_input">
+					制造厂商英文
+				</div>
+				<!--zs_zzcs_eng_end-->
+
+				<input type="text" name="zs_zzcs_eng_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+					   data-zs-blur-show-name="zs_zzcs_eng">
+			</div>
+		</div>
+
+		<div style="text-align: center;margin-top: 2mm;">
+			<div style="display: inline-table;width: 30mm;">
+				<div style="text-align: left;font-family: '黑体';font-size: 12pt;">
+					型 号 / 规 格
+				</div>
+				<div style="text-align: left;font-family: '黑体';font-size: 7pt;">
+					Type/Specification
+				</div>
+			</div>
+			<div style="display: inline-table;width: 120mm;min-height: 22pt;border-bottom: 1pt solid #000000;vertical-align: middle;text-align: center;padding: 1pt;">
+				<!--zs_xhgg_start-->
+				<div name="zs_xhgg" style="display: inline-table;min-width: 60mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+					 data-zs-click-show-name="zs_xhgg_input" data-zs-contextmenu-show-name="zs_xhgg_select">
+					型号规格
+				</div>
+				<!--zs_xhgg_end-->
+
+				<input type="text" name="zs_xhgg_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+					   data-zs-blur-show-name="zs_xhgg">
+
+				<!--zs_xhgg_select_start-->
+				<select name="zs_xhgg_select" style="display: none;max-width: 120mm;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_blur"
+						data-zs-blur-show-name="zs_xhgg">
+				</select>
+				<!--zs_xhgg_select_end-->
+			</div>
+		</div>
+
+		<div style="text-align: center;margin-top: 2mm;">
+			<div style="display: inline-table;width: 30mm;">
+				<div style="text-align: left;font-family: '黑体';font-size: 12pt;">
+					出厂编号
+				</div>
+				<div style="text-align: left;font-family: '黑体';font-size: 7pt;">
+					Name of Instrument
+				</div>
+			</div>
+			<div style="display: inline-table;width: 120mm;min-height: 22pt;border-bottom: 1pt solid #000000;vertical-align: middle;text-align: center;padding: 1pt;">
+				<!--zs_ccbh_start-->
+				<div name="zs_ccbh" style="display: inline-table;min-width: 60mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click"
+					 data-zs-click-show-name="zs_ccbh_input">
+					出厂编号
+				</div>
+				<!--zs_ccbh_end-->
+				<input type="text" name="zs_ccbh_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+					   data-zs-blur-show-name="zs_ccbh">
+			</div>
+		</div>
+
+		<div style="text-align: center;margin-top: 2mm;">
+			<div style="display: inline-table;width: 30mm;">
+				<div style="text-align: left;font-family: '黑体';font-size: 12pt;">
+					设备编号
+				</div>
+				<div style="text-align: left;font-family: '黑体';font-size: 7pt;">
+					Name of Instrument
+				</div>
+			</div>
+			<div style="display: inline-table;width: 120mm;min-height: 22pt;border-bottom: 1pt solid #000000;vertical-align: middle;text-align: center;padding: 1pt;">
+				<!--zs_sbbh_zkh_start-->
+				<div name="zs_sbbh_zkh" style="display: inline-table;min-width: 20mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click"
+					 data-zs-click-show-name="zs_sbbh_zkh_input">
+					左括号
+				</div>
+				<!--zs_sbbh_zkh_end-->
+				<input type="text" name="zs_sbbh_zkh_input" style="display: none;width: 20mm;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+					   data-zs-blur-show-name="zs_sbbh_zkh">
+
+				<!--zs_sbbh_start-->
+				<div name="zs_sbbh" style="display: inline-table;min-width: 40mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click"
+					 data-zs-click-show-name="zs_sbbh_input">
+					设备编号
+				</div>
+				<!--zs_sbbh_end-->
+				<input type="text" name="zs_sbbh_input" style="display: none;width: 80mm;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+					   data-zs-blur-show-name="zs_sbbh">
+
+				<!--zs_sbbh_ykh_start-->
+				<div name="zs_sbbh_ykh" style="display: inline-table;min-width: 20mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click"
+					 data-zs-click-show-name="zs_sbbh_ykh_input">
+					右括号
+				</div>
+				<!--zs_sbbh_ykh_end-->
+				<input type="text" name="zs_sbbh_ykh_input" style="display: none;width: 20mm;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+					   data-zs-blur-show-name="zs_sbbh_ykh">
+			</div>
+		</div>
+
+		<div style="text-align: center;margin-top: 2mm;">
+			<div style="display: inline-table;width: 30mm;">
+				<div style="text-align: left;font-family: '黑体';font-size: 12pt;">
+					准确度等级
+				</div>
+				<div style="text-align: left;font-family: '黑体';font-size: 7pt;">
+					Name of Instrument
+				</div>
+			</div>
+			<div style="display: inline-table;width: 120mm;min-height: 22pt;border-bottom: 1pt solid #000000;vertical-align: middle;text-align: center;padding: 1pt;">
+				<!--zs_zqddj_start-->
+				<div name="zs_zqddj" style="display: inline-table;min-width: 60mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click"
+					 data-zs-click-show-name="zs_zqddj_input">
+					准确度等级
+				</div>
+				<!--zs_zqddj_end-->
+				<input type="text" name="zs_zqddj_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+					   data-zs-blur-show-name="zs_zqddj">
+			</div>
+		</div>
+
+		<div style="text-align: center;margin-top: 2mm;">
+			<div style="display: inline-table;width: 30mm;">
+				<div style="text-align: left;font-family: '黑体';font-size: 12pt;">
+					检定日期
+				</div>
+				<div style="text-align: left;font-family: '黑体';font-size: 7pt;">
+					Name of Instrument
+				</div>
+			</div>
+			<div style="display: inline-table;width: 120mm;min-height: 22pt;border-bottom: 1pt solid #000000;vertical-align: middle;text-align: center;padding: 1pt;">
+				<!--zs_zsjdrq_year_start-->
+				<div name="zs_zsjdrq_year" style="display: inline-table;min-width: 10mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click"
+					 data-zs-click-show-name="zs_zsjdrq_year_input">
+					2017
+				</div>
+				<!--zs_zsjdrq_year_end-->
+				<input type="text" name="zs_zsjdrq_year_input" style="display: none;width: 10mm;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+					   data-zs-blur-show-name="zs_zsjdrq_year">
+				年
+
+				<!--zs_zsjdrq_month_start-->
+				<div name="zs_zsjdrq_month" style="display: inline-table;min-width: 5mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click"
+					 data-zs-click-show-name="zs_zsjdrq_month_input">
+					08
+				</div>
+				<!--zs_zsjdrq_month_end-->
+				<input type="text" name="zs_zsjdrq_month_input" style="display: none;width: 5mm;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+					   data-zs-blur-show-name="zs_zsjdrq_month">
+				月
+
+				<!--zs_zsjdrq_day_start-->
+				<div name="zs_zsjdrq_day" style="display: inline-table;min-width: 5mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click"
+					 data-zs-click-show-name="zs_zsjdrq_day_input">
+					09
+				</div>
+				<!--zs_zsjdrq_day_end-->
+				<input type="text" name="zs_zsjdrq_day_input" style="display: none;width: 5mm;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+					   data-zs-blur-show-name="zs_zsjdrq_day">
+				日
+			</div>
+		</div>
+
+		<div style="text-align: center;margin-top: 2mm;">
+			<div style="display: inline-table;width: 30mm;">
+				<div style="text-align: left;font-family: '黑体';font-size: 12pt;">
+					有效日期
+				</div>
+				<div style="text-align: left;font-family: '黑体';font-size: 7pt;">
+					Name of Instrument
+				</div>
+			</div>
+			<div style="display: inline-table;width: 120mm;min-height: 22pt;border-bottom: 1pt solid #000000;vertical-align: middle;text-align: center;padding: 1pt;">
+				<!--zs_zsyxrq_year_start-->
+				<div name="zs_zsyxrq_year" style="display: inline-table;min-width: 10mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click"
+					 data-zs-click-show-name="zs_zsyxrq_year_input">
+					2017
+				</div>
+				<!--zs_zsyxrq_year_end-->
+				<input type="text" name="zs_zsyxrq_year_input" style="display: none;width: 10mm;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+					   data-zs-blur-show-name="zs_zsyxrq_year">
+				年
+
+				<!--zs_zsyxrq_month_start-->
+				<div name="zs_zsyxrq_month" style="display: inline-table;min-width: 5mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click"
+					 data-zs-click-show-name="zs_zsyxrq_month_input">
+					08
+				</div>
+				<!--zs_zsyxrq_month_end-->
+				<input type="text" name="zs_zsyxrq_month_input" style="display: none;width: 5mm;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+					   data-zs-blur-show-name="zs_zsyxrq_month">
+				月
+
+				<!--zs_zsyxrq_day_start-->
+				<div name="zs_zsyxrq_day" style="display: inline-table;min-width: 5mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click"
+					 data-zs-click-show-name="zs_zsyxrq_day_input">
+					09
+				</div>
+				<!--zs_zsyxrq_day_end-->
+				<input type="text" name="zs_zsyxrq_day_input" style="display: none;width: 5mm;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+					   data-zs-blur-show-name="zs_zsyxrq_day">
+				日
+			</div>
+		</div>
+	</div>
+	<!--zs_page_end-->
+
+	<!--zs_page_start-->
+	<div style="margin:0 auto;" class="zs_page_a4 zs_page_break_before_always">
+		<div style="text-align: center;margin-top: 2mm;">
+			<div style="display: inline-table;width: 120mm;min-height: 22pt;vertical-align: middle;text-align: center;padding: 1pt;">
+				第
+				<!--zs_page_index_start-->
+				<div name="zs_page_index" style="display: inline-table;min-width: 12pt;min-height: 15pt;font-family: 'Times New Roman';font-size: 12pt;" class="zs_element_edit">
+					?
+				</div>
+				<!--zs_page_index_end-->
+				页
+
+				共
+				<!--zs_page_total_start-->
+				<div name="zs_page_total" style="display: inline-table;min-width: 12pt;min-height: 15pt;font-family: 'Times New Roman';font-size: 12pt;" class="zs_element_edit">
+					?
+				</div>
+				<!--zs_page_total_end-->
+				页
+			</div>
+		</div>
+
+		<div style="text-align: center;margin-top: 2mm;">
+			部门
+			<!--zs_dept_select_start-->
+			<select name="zs_dept_select" style="max-width: 50mm;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_blur">
+				<option value="">请选择部门</option>
+			</select>
+			<!--zs_dept_select_end-->
+
+			<br>
+
+			检定员
+			<!--zs_jdy_id_start-->
+			<input type="hidden" name="zs_jdy_id" value="">
+			<!--zs_jdy_id_end-->
+
+			<!--zs_jdy_start-->
+			<div name="zs_jdy" style="display: inline-table;min-width: 10mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click"
+				 data-zs-click-show-name="zs_jdy_select">
+				无检定员
+			</div>
+			<!--zs_jdy_end-->
+
+			<!--zs_jdy_select_start-->
+			<select name="zs_jdy_select" style="display: none;max-width: 25mm;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_blur"
+					data-zs-blur-show-name="zs_jdy">
+				<option value="">无检定员</option>
+			</select>
+			<!--zs_jdy_select_end-->
+
+			<!--zs_jdy_button_start-->
+			<button type="button" name="zs_jdy_button" style="font-size: 10pt;font-family: 'Times New Roman';" class="zs_click">
+				检定
+			</button>
+			<!--zs_jdy_button_end-->
+
+			<!--zs_jdy_audit_status_start-->
+			<input type="hidden" name="zs_jdy_audit_status" value="">
+			<!--zs_jdy_audit_status_end-->
+
+		  <!--zs_jdy_img_start-->
+			<img name="zs_jdy_img" src="" style="width: 3cm;height: 1cm;" class="zs_print_inline">
+			<!--zs_jdy_img_end-->
+
+			<!--zs_jdy_job_start-->
+			<div name="zs_jdy_job" style="display: inline-table;min-width: 10mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit"
+					data-zs-value-default="校准员职务">
+				校准员职务
+			</div>
+			<!--zs_jdy_job_end-->
+
+			<!--zs_jdy_name_start-->
+			<div name="zs_jdy_name" style="display: inline-table;min-width: 10mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit"
+					data-zs-value-default="校准员姓名">
+				校准员姓名
+			</div>
+			<!--zs_jdy_name_end-->
+
+			<br>
+
+			核验员
+			<!--zs_hyy_id_start-->
+			<input type="hidden" name="zs_hyy_id" value="">
+			<!--zs_hyy_id_end-->
+
+			<!--zs_hyy_start-->
+			<div name="zs_hyy" style="display: inline-table;min-width: 10mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click"
+				 data-zs-click-show-name="zs_hyy_select">
+				无核验员
+			</div>
+			<!--zs_hyy_end-->
+
+			<!--zs_hyy_select_start-->
+			<select name="zs_hyy_select" style="display: none;max-width: 25mm;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_blur"
+					data-zs-blur-show-name="zs_hyy">
+				<option value="">无核验员</option>
+			</select>
+			<!--zs_hyy_select_end-->
+
+			<!--zs_hyy_button_start-->
+			<button type="button" name="zs_hyy_button" style="font-size: 10pt;font-family: 'Times New Roman';" class="zs_click">
+				核验
+			</button>
+			<!--zs_hyy_button_end-->
+
+			<!--zs_hyy_audit_status_start-->
+			<input type="hidden" name="zs_hyy_audit_status" value="">
+			<!--zs_hyy_audit_status_end-->
+
+			<!--zs_hyy_img_start-->
+			<img name="zs_hyy_img" src="" style="width: 3cm;height: 1cm;" class="zs_print_inline">
+			<!--zs_hyy_img_end-->
+
+			<!--zs_hyy_job_start-->
+			<div name="zs_hyy_job" style="display: inline-table;min-width: 10mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit"
+					data-zs-value-default="核准员职务">
+				核准员职务
+			</div>
+			<!--zs_hyy_job_end-->
+
+			<!--zs_hyy_name_start-->
+			<div name="zs_hyy_name" style="display: inline-table;min-width: 10mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit"
+					data-zs-value-default="核准员姓名">
+				核准员姓名
+			</div>
+			<!--zs_hyy_name_end-->
+
+			<br>
+
+			批准人
+			<!--zs_pzr_id_start-->
+			<input type="hidden" name="zs_pzr_id" value="">
+			<!--zs_pzr_id_end-->
+
+			<!--zs_pzr_start-->
+			<div name="zs_pzr" style="display: inline-table;min-width: 10mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click"
+				 data-zs-click-show-name="zs_pzr_select">
+				无批准人
+			</div>
+			<!--zs_pzr_end-->
+
+			<!--zs_pzr_select_start-->
+			<select name="zs_pzr_select" style="display: none;max-width: 25mm;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_blur"
+					data-zs-blur-show-name="zs_pzr">
+				<option value="">无批准人</option>
+			</select>
+			<!--zs_pzr_select_end-->
+
+			<!--zs_pzr_audit_status_start-->
+			<input type="hidden" name="zs_pzr_audit_status" value="">
+			<!--zs_pzr_audit_status_end-->
+
+			<!--zs_pzr_img_start-->
+			<img name="zs_pzr_img" src="" style="width: 3cm;height: 1cm;" class="zs_print_inline">
+			<!--zs_pzr_img_end-->
+
+			<!--zs_pzr_job_start-->
+			<div name="zs_pzr_job" style="display: inline-table;min-width: 10mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit"
+				 data-zs-value-default="批准员职务">
+				批准员职务
+			</div>
+			<!--zs_pzr_job_end-->
+
+			<!--zs_pzr_name_start-->
+			<div name="zs_pzr_name" style="display: inline-table;min-width: 10mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit"
+				 data-zs-value-default="批准员姓名">
+				批准员姓名
+			</div>
+			<!--zs_pzr_name_end-->
+		</div>
+
+		<div style="text-align: center;margin-top: 2mm;">
+			<div style="display: inline-table;width: 30mm;">
+				<div style="text-align: left;font-family: '黑体';font-size: 12pt;">
+					模板名称
+				</div>
+				<div style="text-align: left;font-family: '黑体';font-size: 7pt;">
+					Applicant
+				</div>
+			</div>
+			<div style="display: inline-table;width: 120mm;min-height: 22pt;border-bottom: 1pt solid #000000;vertical-align: middle;text-align: center;padding: 1pt;">
+				<!--zs_mbmc_start-->
+				<div name="zs_mbmc" style="display: inline-table;min-width: 60mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click"
+					 data-zs-click-show-name="zs_mbmc_input">
+					模板名称（信息页上的模板名称控件）
+				</div>
+				<!--zs_mbmc_end-->
+				<input type="text" name="zs_mbmc_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+					   data-zs-blur-show-name="zs_mbmc">
+			</div>
+		</div>
+
+		<div style="text-align: center;margin-top: 2mm;">
+			<div style="display: inline-table;width: 30mm;">
+				<div style="text-align: left;font-family: '黑体';font-size: 12pt;">
+					受控编号
+				</div>
+				<div style="text-align: left;font-family: '黑体';font-size: 7pt;">
+					Applicant
+				</div>
+			</div>
+			<div style="display: inline-table;width: 120mm;min-height: 22pt;border-bottom: 1pt solid #000000;vertical-align: middle;text-align: center;padding: 1pt;">
+				<!--zs_skbh_start-->
+				<div name="zs_skbh" style="display: inline-table;min-width: 60mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click"
+					 data-zs-click-show-name="zs_skbh_input">
+					受控编号
+				</div>
+				<!--zs_skbh_end-->
+				<input type="text" name="zs_skbh_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+					   data-zs-blur-show-name="zs_skbh">
+			</div>
+		</div>
+
+		<div style="text-align: center;margin-top: 2mm;">
+			<div style="display: inline-table;width: 30mm;">
+				<div style="text-align: left;font-family: '黑体';font-size: 12pt;">
+					检定结论
+				</div>
+				<div style="text-align: left;font-family: '黑体';font-size: 7pt;">
+					Applicant
+				</div>
+			</div>
+			<div style="display: inline-table;width: 120mm;min-height: 22pt;border-bottom: 1pt solid #000000;vertical-align: middle;text-align: center;padding: 1pt;">
+				<!--zs_jdjl_start-->
+				<div name="zs_jdjl" style="display: inline-table;min-width: 30mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+					 data-zs-click-show-name="zs_jdjl_select" data-zs-contextmenu-show-name="zs_jdjl_input">
+					检定结论
+				</div>
+				<!--zs_jdjl_end-->
+
+				<!--zs_jdjl_select_start-->
+				<select name="zs_jdjl_select" style="display: none;max-width: 120mm;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_blur"
+						data-zs-blur-show-name="zs_jdjl">
+				</select>
+				<!--zs_jdjl_select_end-->
+
+				<input type="text" name="zs_jdjl_input" style="display: none;width: 30mm;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+					   data-zs-blur-show-name="zs_jdjl">
+
+				<!--zs_jdjl_eng_start-->
+				<div name="zs_jdjl_eng" style="display: inline-table;min-width: 30mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+					 data-zs-click-show-name="zs_jdjl_eng_select" data-zs-contextmenu-show-name="zs_jdjl_eng_input">
+					检定结论英文
+				</div>
+				<!--zs_jdjl_eng_end-->
+
+				<!--zs_jdjl_eng_select_start-->
+				<select name="zs_jdjl_eng_select" style="display: none;max-width: 120mm;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_blur"
+						data-zs-blur-show-name="zs_jdjl_eng">
+				</select>
+				<!--zs_jdjl_eng_select_end-->
+
+				<input type="text" name="zs_jdjl_eng_input" style="display: none;width: 30mm;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+					   data-zs-blur-show-name="zs_jdjl_eng">
+			</div>
+		</div>
+
+		<div style="text-align: center;margin-top: 2mm;">
+			<div style="display: inline-table;width: 30mm;">
+				<div style="text-align: left;font-family: '黑体';font-size: 12pt;">
+					检定周期
+				</div>
+				<div style="text-align: left;font-family: '黑体';font-size: 7pt;">
+					Applicant
+				</div>
+			</div>
+			<div style="display: inline-table;width: 120mm;min-height: 22pt;border-bottom: 1pt solid #000000;vertical-align: middle;text-align: center;padding: 1pt;">
+				<!--zs_jdzq_start-->
+				<div name="zs_jdzq" style="display: inline-table;min-width: 10mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click"
+					 data-zs-click-show-name="zs_jdzq_select">
+					12
+				</div>
+				<!--zs_jdzq_end-->
+
+				<!--zs_jdzq_select_start-->
+				<select name="zs_jdzq_select" style="display: none;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_blur"
+						data-zs-blur-show-name="zs_jdzq">
+				</select>
+				<!--zs_jdzq_select_end-->
+
+				个月
+			</div>
+		</div>
+
+		<div style="text-align: center;margin-top: 2mm;">
+			<div style="display: inline-table;width: 30mm;">
+				<div style="text-align: left;font-family: '黑体';font-size: 12pt;">
+					检定地点
+				</div>
+				<div style="text-align: left;font-family: '黑体';font-size: 7pt;">
+					Applicant
+				</div>
+			</div>
+			<div style="display: inline-table;width: 120mm;min-height: 22pt;border-bottom: 1pt solid #000000;vertical-align: middle;text-align: center;padding: 1pt;">
+				<!--zs_jddd_start-->
+				<div name="zs_jddd" style="display: inline-table;min-width: 60mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+					 data-zs-click-show-name="zs_jddd_select" data-zs-contextmenu-show-name="zs_jddd_input"
+					 data-zs-value-sjdd="送检地点" data-zs-value-xcdd="现场地点">
+					检定地点
+				</div>
+				<!--zs_jddd_end-->
+
+				<!--zs_jddd_select_start-->
+				<select name="zs_jddd_select" style="display: none;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_blur"
+						data-zs-blur-show-name="zs_jddd">
+					<option value="送检地点">送检地点</option>
+					<option value="现场地点">现场地点</option>
+				</select>
+				<!--zs_jddd_select_end-->
+
+				<input type="text" name="zs_jddd_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+					   data-zs-blur-show-name="zs_jddd">
+			</div>
+		</div>
+
+		<div style="text-align: center;margin-top: 2mm;">
+			<div style="display: inline-table;width: 30mm;">
+				<div style="text-align: left;font-family: '黑体';font-size: 12pt;">
+					检定地点2
+				</div>
+				<div style="text-align: left;font-family: '黑体';font-size: 7pt;">
+					Applicant
+				</div>
+			</div>
+			<div style="display: inline-table;width: 120mm;min-height: 22pt;border-bottom: 1pt solid #000000;vertical-align: middle;text-align: center;padding: 1pt;">
+				<!--zs_jddd2_start-->
+				<div name="zs_jddd2" style="display: inline-table;min-width: 60mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click"
+					 data-zs-click-show-name="zs_jddd2_input">
+					检定地点2
+				</div>
+				<!--zs_jddd2_end-->
+				<input type="text" name="zs_jddd2_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+					   data-zs-blur-show-name="zs_jddd2">
+			</div>
+		</div>
+
+		<div style="text-align: center;margin-top: 2mm;">
+			<div style="display: inline-table;width: 30mm;">
+				<div style="text-align: left;font-family: '黑体';font-size: 12pt;">
+					检定温度
+				</div>
+				<div style="text-align: left;font-family: '黑体';font-size: 7pt;">
+					Applicant
+				</div>
+			</div>
+			<div style="display: inline-table;width: 120mm;min-height: 22pt;border-bottom: 1pt solid #000000;vertical-align: middle;text-align: center;padding: 1pt;">
+				<!--zs_jdwd_start-->
+				<div name="zs_jdwd" style="display: inline-table;min-width: 60mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click"
+					 data-zs-click-show-name="zs_jdwd_input">
+					检定温度
+				</div>
+				<!--zs_jdwd_end-->
+				<input type="text" name="zs_jdwd_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+					   data-zs-blur-show-name="zs_jdwd">
+			</div>
+		</div>
+
+		<div style="text-align: center;margin-top: 2mm;">
+			<div style="display: inline-table;width: 30mm;">
+				<div style="text-align: left;font-family: '黑体';font-size: 12pt;">
+					检定湿度
+				</div>
+				<div style="text-align: left;font-family: '黑体';font-size: 7pt;">
+					Applicant
+				</div>
+			</div>
+			<div style="display: inline-table;width: 120mm;min-height: 22pt;border-bottom: 1pt solid #000000;vertical-align: middle;text-align: center;padding: 1pt;">
+				<!--zs_jdsd_start-->
+				<div name="zs_jdsd" style="display: inline-table;min-width: 60mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click"
+					 data-zs-click-show-name="zs_jdsd_input">
+					检定湿度
+				</div>
+				<!--zs_jdsd_end-->
+				<input type="text" name="zs_jdsd_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+					   data-zs-blur-show-name="zs_jdsd">
+			</div>
+		</div>
+
+		<div style="text-align: center;margin-top: 2mm;">
+			<div style="display: inline-table;width: 30mm;">
+				<div style="text-align: left;font-family: '黑体';font-size: 12pt;">
+					检定其他
+				</div>
+				<div style="text-align: left;font-family: '黑体';font-size: 7pt;">
+					Applicant
+				</div>
+			</div>
+			<div style="display: inline-table;width: 120mm;min-height: 22pt;border-bottom: 1pt solid #000000;vertical-align: middle;text-align: center;padding: 1pt;">
+				<!--zs_jdqt_start-->
+				<div name="zs_jdqt" style="display: inline-table;min-width: 60mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click"
+					 data-zs-click-show-name="zs_jdqt_input">
+					检定其他
+				</div>
+				<!--zs_jdqt_end-->
+				<input type="text" name="zs_jdqt_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+					   data-zs-blur-show-name="zs_jdqt">
+			</div>
+		</div>
+
+		<div style="text-align: center;margin-top: 2mm;">
+			<div style="display: inline-table;width: 30mm;">
+				<div style="text-align: left;font-family: '黑体';font-size: 12pt;">
+					其他控件1
+				</div>
+				<div style="text-align: left;font-family: '黑体';font-size: 7pt;">
+					Applicant
+				</div>
+			</div>
+			<div style="display: inline-table;width: 120mm;min-height: 22pt;border-bottom: 1pt solid #000000;vertical-align: middle;text-align: center;padding: 1pt;">
+				<!--zs_field_other_one_start-->
+				<div name="zs_field_other_one" style="display: inline-table;min-width: 60mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click"
+					 data-zs-click-show-name="zs_field_other_one_input">
+					其他控件1（name命名规则为zs_field_other_xxx）
+				</div>
+				<!--zs_field_other_one_end-->
+				<input type="text" name="zs_field_other_one_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+					   data-zs-blur-show-name="zs_field_other_one">
+			</div>
+		</div>
+
+		<div style="text-align: center;margin-top: 2mm;">
+			<div style="display: inline-table;width: 30mm;">
+				<div style="text-align: left;font-family: '黑体';font-size: 12pt;">
+					其他控件2
+				</div>
+				<div style="text-align: left;font-family: '黑体';font-size: 7pt;">
+					Applicant
+				</div>
+			</div>
+			<div style="display: inline-table;width: 120mm;min-height: 22pt;border-bottom: 1pt solid #000000;vertical-align: middle;text-align: center;padding: 1pt;">
+				<!--zs_field_other_two_start-->
+				<div name="zs_field_other_two" style="display: inline-table;min-width: 60mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click"
+					 data-zs-click-show-name="zs_field_other_two_input">
+					其他控件2（name命名规则为zs_field_other_xxx）
+				</div>
+				<!--zs_field_other_two_end-->
+				<input type="text" name="zs_field_other_two_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+					   data-zs-blur-show-name="zs_field_other_two">
+			</div>
+		</div>
+	</div>
+	<!--zs_page_end-->
+
+	<!--zs_page_start-->
+	<div style="margin:0 auto;" class="zs_page_a4 zs_page_break_before_always">
+		<div style="text-align: center;margin-top: 2mm;">
+			<div style="display: inline-table;width: 120mm;min-height: 22pt;vertical-align: middle;text-align: center;padding: 1pt;">
+				第
+				<!--zs_page_index_start-->
+				<div name="zs_page_index" style="display: inline-table;min-width: 12pt;min-height: 15pt;font-family: 'Times New Roman';font-size: 12pt;" class="zs_element_edit">
+					?
+				</div>
+				<!--zs_page_index_end-->
+				页
+
+				共
+				<!--zs_page_total_start-->
+				<div name="zs_page_total" style="display: inline-table;min-width: 12pt;min-height: 15pt;font-family: 'Times New Roman';font-size: 12pt;" class="zs_element_edit">
+					?
+				</div>
+				<!--zs_page_total_end-->
+				页
+			</div>
+		</div>
+
+		<div style="margin-top: 2mm;">
+			<div>
+				本次检定所使用的技术依据：
+			</div>
+
+			<!--zs_jsgc_row_start-->
+			<div name="zs_jsgc_row">
+				<!--zs_jsgc_id_start-->
+				<input type="hidden" name="zs_jsgc_id" value="">
+				<!--zs_jsgc_id_end-->
+
+				<!--zs_jsgc_canzhao_start-->
+				<div name="zs_jsgc_canzhao" style="display: inline-table;min-width: 10mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_print_min_width_none zs_click"
+					 data-zs-click-show-name="zs_jsgc_canzhao_select">
+					参照
+				</div>
+				<!--zs_jsgc_canzhao_end-->
+
+				<!--zs_jsgc_canzhao_select_start-->
+				<select name="zs_jsgc_canzhao_select" style="display: none;max-width: 25mm;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_blur"
+						data-zs-blur-show-name="zs_jsgc_canzhao">
+					<option value=""></option>
+					<option value="参照">参照</option>
+				</select>
+				<!--zs_jsgc_canzhao_select_end-->
+
+				<!--zs_jsgc_name_start-->
+				<div name="zs_jsgc_name" style="display: inline-table;min-width: 20mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu zs_size_auto"
+					 data-zs-contextmenu-show-name="zs_jsgc_name_input" data-zs-size-update="0" data-zs-size-unit="pt" data-zs-size-init="14" data-zs-size-min="5" data-zs-height-max="30">
+					技术规程名称
+				</div>
+				<!--zs_jsgc_name_end-->
+
+				<input type="text" name="zs_jsgc_name_input" style="display: none;width: 100mm;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+					   data-zs-blur-show-name="zs_jsgc_name">
+
+				<!--zs_jsgc_name_eng_start-->
+				<div name="zs_jsgc_name_eng" style="display: inline-table;min-width: 20mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+					 data-zs-contextmenu-show-name="zs_jsgc_name_eng_input">
+					技术规程名称英文
+				</div>
+				<!--zs_jsgc_name_eng_end-->
+
+				<input type="text" name="zs_jsgc_name_eng_input" style="display: none;width: 100mm;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+					   data-zs-blur-show-name="zs_jsgc_name_eng">
+			</div>
+			<!--zs_jsgc_row_end-->
+
+			<!--zs_jsgc_row_start-->
+			<div name="zs_jsgc_row">
+				<!--zs_jsgc_id_start-->
+				<input type="hidden" name="zs_jsgc_id" value="">
+				<!--zs_jsgc_id_end-->
+
+				<!--zs_jsgc_canzhao_start-->
+				<div name="zs_jsgc_canzhao" style="display: inline-table;min-width: 10mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_print_min_width_none zs_click"
+					 data-zs-click-show-name="zs_jsgc_canzhao_select">
+					参照
+				</div>
+				<!--zs_jsgc_canzhao_end-->
+
+				<!--zs_jsgc_canzhao_select_start-->
+				<select name="zs_jsgc_canzhao_select" style="display: none;max-width: 25mm;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_blur"
+						data-zs-blur-show-name="zs_jsgc_canzhao">
+					<option value=""></option>
+					<option value="参照">参照</option>
+				</select>
+				<!--zs_jsgc_canzhao_select_end-->
+
+				<!--zs_jsgc_name_start-->
+				<div name="zs_jsgc_name" style="display: inline-table;min-width: 20mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu zs_size_auto"
+					 data-zs-contextmenu-show-name="zs_jsgc_name_input" data-zs-size-update="0" data-zs-size-unit="pt" data-zs-size-init="14" data-zs-size-min="5" data-zs-height-max="30">
+					技术规程名称
+				</div>
+				<!--zs_jsgc_name_end-->
+
+				<input type="text" name="zs_jsgc_name_input" style="display: none;width: 100mm;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+					   data-zs-blur-show-name="zs_jsgc_name">
+
+				<!--zs_jsgc_name_eng_start-->
+				<div name="zs_jsgc_name_eng" style="display: inline-table;min-width: 20mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+					 data-zs-contextmenu-show-name="zs_jsgc_name_eng_input">
+					技术规程名称英文
+				</div>
+				<!--zs_jsgc_name_eng_end-->
+
+				<input type="text" name="zs_jsgc_name_eng_input" style="display: none;width: 100mm;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+					   data-zs-blur-show-name="zs_jsgc_name_eng">
+			</div>
+			<!--zs_jsgc_row_end-->
+
+			<!--zs_jsgc_row_start-->
+			<div name="zs_jsgc_row">
+				<!--zs_jsgc_id_start-->
+				<input type="hidden" name="zs_jsgc_id" value="">
+				<!--zs_jsgc_id_end-->
+
+				<!--zs_jsgc_canzhao_start-->
+				<div name="zs_jsgc_canzhao" style="display: inline-table;min-width: 10mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_print_min_width_none zs_click"
+					 data-zs-click-show-name="zs_jsgc_canzhao_select">
+					参照
+				</div>
+				<!--zs_jsgc_canzhao_end-->
+
+				<!--zs_jsgc_canzhao_select_start-->
+				<select name="zs_jsgc_canzhao_select" style="display: none;max-width: 25mm;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_blur"
+						data-zs-blur-show-name="zs_jsgc_canzhao">
+					<option value=""></option>
+					<option value="参照">参照</option>
+				</select>
+				<!--zs_jsgc_canzhao_select_end-->
+
+				<!--zs_jsgc_name_start-->
+				<div name="zs_jsgc_name" style="display: inline-table;min-width: 20mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu zs_size_auto"
+					 data-zs-contextmenu-show-name="zs_jsgc_name_input" data-zs-size-update="0" data-zs-size-unit="pt" data-zs-size-init="14" data-zs-size-min="5" data-zs-height-max="30">
+					技术规程名称
+				</div>
+				<!--zs_jsgc_name_end-->
+
+				<input type="text" name="zs_jsgc_name_input" style="display: none;width: 100mm;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+					   data-zs-blur-show-name="zs_jsgc_name">
+
+				<!--zs_jsgc_name_eng_start-->
+				<div name="zs_jsgc_name_eng" style="display: inline-table;min-width: 20mm;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+					 data-zs-contextmenu-show-name="zs_jsgc_name_eng_input">
+					技术规程名称英文
+				</div>
+				<!--zs_jsgc_name_eng_end-->
+
+				<input type="text" name="zs_jsgc_name_eng_input" style="display: none;width: 100mm;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+					   data-zs-blur-show-name="zs_jsgc_name_eng">
+			</div>
+			<!--zs_jsgc_row_end-->
+		</div>
+
+		<div style="margin-top: 2mm;">
+			<div>
+				本次检定所使用的社会公用计量标准：
+			</div>
+
+			<!--zs_jlbz_row_start-->
+			<div name="zs_jlbz_row">
+				<!--zs_jlbz_id_start-->
+				<input type="hidden" name="zs_jlbz_id" value="">
+				<!--zs_jlbz_id_end-->
+
+				<div style="display: inline-table;width: 35mm;">
+					<!--zs_jlbz_name_start-->
+					<div name="zs_jlbz_name" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbz_name_input">
+						计量标准名称
+					</div>
+					<!--zs_jlbz_name_end-->
+					<input type="text" name="zs_jlbz_name_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbz_name">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbz_name_eng_start-->
+					<div name="zs_jlbz_name_eng" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbz_name_eng_input">
+						计量标准名称英文
+					</div>
+					<!--zs_jlbz_name_eng_end-->
+					<input type="text" name="zs_jlbz_name_eng_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbz_name_eng">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbz_clfw_start-->
+					<div name="zs_jlbz_clfw" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbz_clfw_input">
+						测量范围
+					</div>
+					<!--zs_jlbz_clfw_end-->
+					<input type="text" name="zs_jlbz_clfw_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbz_clfw">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbz_clfw_eng_start-->
+					<div name="zs_jlbz_clfw_eng" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbz_clfw_eng_input">
+						测量范围英文
+					</div>
+					<!--zs_jlbz_clfw_eng_end-->
+					<input type="text" name="zs_jlbz_clfw_eng_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbz_clfw_eng">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbz_zqddj_start-->
+					<div name="zs_jlbz_zqddj" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbz_zqddj_input">
+						准确度等级
+					</div>
+					<!--zs_jlbz_zqddj_end-->
+					<input type="text" name="zs_jlbz_zqddj_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbz_zqddj">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbz_zqddj_eng_start-->
+					<div name="zs_jlbz_zqddj_eng" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbz_zqddj_eng_input">
+						准确度等级英文
+					</div>
+					<!--zs_jlbz_zqddj_eng_end-->
+					<input type="text" name="zs_jlbz_zqddj_eng_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbz_zqddj_eng">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbz_zsbh_start-->
+					<div name="zs_jlbz_zsbh" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbz_zsbh_input" data-zs-value-suffix="/">
+						<!--证书编号和日期的分隔符在主模板中进行配置-->
+						证书编号/
+					</div>
+					<!--zs_jlbz_zsbh_end-->
+					<input type="text" name="zs_jlbz_zsbh_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbz_zsbh">
+				</div>
+
+				<div style="display: inline-table;width: 24mm;vertical-align: middle;">
+					<!--zs_jlbz_yxrq_start-->
+					<div name="zs_jlbz_yxrq" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbz_yxrq_input" data-zs-value-date-format="yyyy-mm-dd">
+						2017-04-09
+					</div>
+					<!--zs_jlbz_yxrq_end-->
+					<input type="text" name="zs_jlbz_yxrq_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbz_yxrq">
+				</div>
+
+        <div style="display: inline-table;width: 30mm;vertical-align: middle;">
+          <!--zs_jlbz_zsbh_social_start-->
+          <div name="zs_jlbz_zsbh_social" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+               data-zs-contextmenu-show-name="zs_jlbz_zsbh_social_input" data-zs-value-suffix="/">
+            <!--证书编号和日期的分隔符在主模板中进行配置-->
+            溯源证书编号/
+          </div>
+          <!--zs_jlbz_zsbh_social_end-->
+          <input type="text" name="zs_jlbz_zsbh_social_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+                 data-zs-blur-show-name="zs_jlbz_zsbh_social">
+        </div>
+
+        <div style="display: inline-table;width: 24mm;vertical-align: middle;">
+          <!--zs_jlbz_yxrq_social_start-->
+          <div name="zs_jlbz_yxrq_social" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+               data-zs-contextmenu-show-name="zs_jlbz_yxrq_social_input" data-zs-value-date-format="yyyy-mm-dd">
+            2017-04-09
+          </div>
+          <!--zs_jlbz_yxrq_social_end-->
+          <input type="text" name="zs_jlbz_yxrq_social_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+                 data-zs-blur-show-name="zs_jlbz_yxrq_social">
+        </div>
+
+				<div style="display: inline-table;width: 25mm;vertical-align: middle;">
+					<!--zs_jlbz_kzxm_start-->
+					<div name="zs_jlbz_kzxm" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click"
+						 data-zs-click-show-name="zs_jlbz_kzxm_select">
+						开展项目
+					</div>
+					<!--zs_jlbz_kzxm_end-->
+
+					<!--zs_jlbz_kzxm_select_start-->
+					<select name="zs_jlbz_kzxm_select" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_blur"
+							data-zs-blur-show-name="zs_jlbz_kzxm">
+						<option value="项目1">项目1</option>
+						<option value="项目2">项目2</option>
+					</select>
+					<!--zs_jlbz_kzxm_select_end-->
+				</div>
+			</div>
+			<!--zs_jlbz_row_end-->
+
+			<!--zs_jlbz_row_start-->
+			<div name="zs_jlbz_row">
+				<!--zs_jlbz_id_start-->
+				<input type="hidden" name="zs_jlbz_id" value="">
+				<!--zs_jlbz_id_end-->
+
+				<div style="display: inline-table;width: 35mm;">
+					<!--zs_jlbz_name_start-->
+					<div name="zs_jlbz_name" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbz_name_input">
+						计量标准名称
+					</div>
+					<!--zs_jlbz_name_end-->
+					<input type="text" name="zs_jlbz_name_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbz_name">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbz_name_eng_start-->
+					<div name="zs_jlbz_name_eng" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbz_name_eng_input">
+						计量标准名称英文
+					</div>
+					<!--zs_jlbz_name_eng_end-->
+					<input type="text" name="zs_jlbz_name_eng_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbz_name_eng">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbz_clfw_start-->
+					<div name="zs_jlbz_clfw" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbz_clfw_input">
+						测量范围
+					</div>
+					<!--zs_jlbz_clfw_end-->
+					<input type="text" name="zs_jlbz_clfw_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbz_clfw">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbz_clfw_eng_start-->
+					<div name="zs_jlbz_clfw_eng" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbz_clfw_eng_input">
+						测量范围英文
+					</div>
+					<!--zs_jlbz_clfw_eng_end-->
+					<input type="text" name="zs_jlbz_clfw_eng_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbz_clfw_eng">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbz_zqddj_start-->
+					<div name="zs_jlbz_zqddj" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbz_zqddj_input">
+						准确度等级
+					</div>
+					<!--zs_jlbz_zqddj_end-->
+					<input type="text" name="zs_jlbz_zqddj_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbz_zqddj">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbz_zqddj_eng_start-->
+					<div name="zs_jlbz_zqddj_eng" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbz_zqddj_eng_input">
+						准确度等级英文
+					</div>
+					<!--zs_jlbz_zqddj_eng_end-->
+					<input type="text" name="zs_jlbz_zqddj_eng_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbz_zqddj_eng">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbz_zsbh_start-->
+					<div name="zs_jlbz_zsbh" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbz_zsbh_input" data-zs-value-suffix="/">
+						<!--证书编号和日期的分隔符在主模板中进行配置-->
+						证书编号/
+					</div>
+					<!--zs_jlbz_zsbh_end-->
+					<input type="text" name="zs_jlbz_zsbh_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbz_zsbh">
+				</div>
+
+				<div style="display: inline-table;width: 24mm;vertical-align: middle;">
+					<!--zs_jlbz_yxrq_start-->
+					<div name="zs_jlbz_yxrq" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbz_yxrq_input" data-zs-value-date-format="yyyy-mm-dd">
+						2017-04-09
+					</div>
+					<!--zs_jlbz_yxrq_end-->
+					<input type="text" name="zs_jlbz_yxrq_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbz_yxrq">
+				</div>
+
+        <div style="display: inline-table;width: 30mm;vertical-align: middle;">
+          <!--zs_jlbz_zsbh_social_start-->
+          <div name="zs_jlbz_zsbh_social" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+               data-zs-contextmenu-show-name="zs_jlbz_zsbh_social_input" data-zs-value-suffix="/">
+            <!--证书编号和日期的分隔符在主模板中进行配置-->
+            溯源证书编号/
+          </div>
+          <!--zs_jlbz_zsbh_social_end-->
+          <input type="text" name="zs_jlbz_zsbh_social_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+                 data-zs-blur-show-name="zs_jlbz_zsbh_social">
+        </div>
+
+        <div style="display: inline-table;width: 24mm;vertical-align: middle;">
+          <!--zs_jlbz_yxrq_social_start-->
+          <div name="zs_jlbz_yxrq_social" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+               data-zs-contextmenu-show-name="zs_jlbz_yxrq_social_input" data-zs-value-date-format="yyyy-mm-dd">
+            2017-04-09
+          </div>
+          <!--zs_jlbz_yxrq_social_end-->
+          <input type="text" name="zs_jlbz_yxrq_social_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+                 data-zs-blur-show-name="zs_jlbz_yxrq_social">
+        </div>
+
+				<div style="display: inline-table;width: 25mm;vertical-align: middle;">
+					<!--zs_jlbz_kzxm_start-->
+					<div name="zs_jlbz_kzxm" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click"
+						 data-zs-click-show-name="zs_jlbz_kzxm_select">
+						开展项目
+					</div>
+					<!--zs_jlbz_kzxm_end-->
+
+					<!--zs_jlbz_kzxm_select_start-->
+					<select name="zs_jlbz_kzxm_select" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_blur"
+							data-zs-blur-show-name="zs_jlbz_kzxm">
+						<option value="项目1">项目1</option>
+						<option value="项目2">项目2</option>
+					</select>
+					<!--zs_jlbz_kzxm_select_end-->
+				</div>
+			</div>
+			<!--zs_jlbz_row_end-->
+
+			<!--zs_jlbz_row_start-->
+			<div name="zs_jlbz_row">
+				<!--zs_jlbz_id_start-->
+				<input type="hidden" name="zs_jlbz_id" value="">
+				<!--zs_jlbz_id_end-->
+
+				<div style="display: inline-table;width: 35mm;">
+					<!--zs_jlbz_name_start-->
+					<div name="zs_jlbz_name" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbz_name_input">
+						计量标准名称
+					</div>
+					<!--zs_jlbz_name_end-->
+					<input type="text" name="zs_jlbz_name_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbz_name">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbz_name_eng_start-->
+					<div name="zs_jlbz_name_eng" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbz_name_eng_input">
+						计量标准名称英文
+					</div>
+					<!--zs_jlbz_name_eng_end-->
+					<input type="text" name="zs_jlbz_name_eng_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbz_name_eng">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbz_clfw_start-->
+					<div name="zs_jlbz_clfw" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbz_clfw_input">
+						测量范围
+					</div>
+					<!--zs_jlbz_clfw_end-->
+					<input type="text" name="zs_jlbz_clfw_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbz_clfw">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbz_clfw_eng_start-->
+					<div name="zs_jlbz_clfw_eng" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbz_clfw_eng_input">
+						测量范围英文
+					</div>
+					<!--zs_jlbz_clfw_eng_end-->
+					<input type="text" name="zs_jlbz_clfw_eng_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbz_clfw_eng">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbz_zqddj_start-->
+					<div name="zs_jlbz_zqddj" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbz_zqddj_input">
+						准确度等级
+					</div>
+					<!--zs_jlbz_zqddj_end-->
+					<input type="text" name="zs_jlbz_zqddj_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbz_zqddj">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbz_zqddj_eng_start-->
+					<div name="zs_jlbz_zqddj_eng" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbz_zqddj_eng_input">
+						准确度等级英文
+					</div>
+					<!--zs_jlbz_zqddj_eng_end-->
+					<input type="text" name="zs_jlbz_zqddj_eng_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbz_zqddj_eng">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbz_zsbh_start-->
+					<div name="zs_jlbz_zsbh" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbz_zsbh_input" data-zs-value-suffix="/">
+						<!--证书编号和日期的分隔符在主模板中进行配置-->
+						证书编号/
+					</div>
+					<!--zs_jlbz_zsbh_end-->
+					<input type="text" name="zs_jlbz_zsbh_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbz_zsbh">
+				</div>
+
+				<div style="display: inline-table;width: 24mm;vertical-align: middle;">
+					<!--zs_jlbz_yxrq_start-->
+					<div name="zs_jlbz_yxrq" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbz_yxrq_input" data-zs-value-date-format="yyyy-mm-dd">
+						2017-04-09
+					</div>
+					<!--zs_jlbz_yxrq_end-->
+					<input type="text" name="zs_jlbz_yxrq_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbz_yxrq">
+				</div>
+
+        <div style="display: inline-table;width: 30mm;vertical-align: middle;">
+          <!--zs_jlbz_zsbh_social_start-->
+          <div name="zs_jlbz_zsbh_social" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+               data-zs-contextmenu-show-name="zs_jlbz_zsbh_social_input" data-zs-value-suffix="/">
+            <!--证书编号和日期的分隔符在主模板中进行配置-->
+            溯源证书编号/
+          </div>
+          <!--zs_jlbz_zsbh_social_end-->
+          <input type="text" name="zs_jlbz_zsbh_social_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+                 data-zs-blur-show-name="zs_jlbz_zsbh_social">
+        </div>
+
+        <div style="display: inline-table;width: 24mm;vertical-align: middle;">
+          <!--zs_jlbz_yxrq_social_start-->
+          <div name="zs_jlbz_yxrq_social" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+               data-zs-contextmenu-show-name="zs_jlbz_yxrq_social_input" data-zs-value-date-format="yyyy-mm-dd">
+            2017-04-09
+          </div>
+          <!--zs_jlbz_yxrq_social_end-->
+          <input type="text" name="zs_jlbz_yxrq_social_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+                 data-zs-blur-show-name="zs_jlbz_yxrq_social">
+        </div>
+
+				<div style="display: inline-table;width: 25mm;vertical-align: middle;">
+					<!--zs_jlbz_kzxm_start-->
+					<div name="zs_jlbz_kzxm" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click"
+						 data-zs-click-show-name="zs_jlbz_kzxm_select">
+						开展项目
+					</div>
+					<!--zs_jlbz_kzxm_end-->
+
+					<!--zs_jlbz_kzxm_select_start-->
+					<select name="zs_jlbz_kzxm_select" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_blur"
+							data-zs-blur-show-name="zs_jlbz_kzxm">
+						<option value="项目1">项目1</option>
+						<option value="项目2">项目2</option>
+					</select>
+					<!--zs_jlbz_kzxm_select_end-->
+				</div>
+			</div>
+			<!--zs_jlbz_row_end-->
+		</div>
+
+		<div style="margin-top: 2mm;">
+			<div>
+				本次检定所使用的主要计量标准器：
+			</div>
+
+			<!--zs_jlbzq_row_start-->
+			<div name="zs_jlbzq_row">
+				<!--zs_jlbzq_id_start-->
+				<input type="hidden" name="zs_jlbzq_id" value="">
+				<!--zs_jlbzq_id_end-->
+
+				<div style="display: inline-table;width: 35mm;">
+					<!--zs_jlbzq_name_start-->
+					<div name="zs_jlbzq_name" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbzq_name_input">
+						计量标准器名称
+					</div>
+					<!--zs_jlbzq_name_end-->
+					<input type="text" name="zs_jlbzq_name_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbzq_name">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbzq_name_eng_start-->
+					<div name="zs_jlbzq_name_eng" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbzq_name_eng_input">
+						计量标准器名称英文
+					</div>
+					<!--zs_jlbzq_name_eng_end-->
+					<input type="text" name="zs_jlbzq_name_eng_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbzq_name_eng">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbzq_clfw_start-->
+					<div name="zs_jlbzq_clfw" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbzq_clfw_input">
+						测量范围
+					</div>
+					<!--zs_jlbzq_clfw_end-->
+					<input type="text" name="zs_jlbzq_clfw_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbzq_clfw">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbzq_zqddj_start-->
+					<div name="zs_jlbzq_zqddj" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbzq_zqddj_input">
+						准确度等级
+					</div>
+					<!--zs_jlbzq_zqddj_end-->
+					<input type="text" name="zs_jlbzq_zqddj_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbzq_zqddj">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbzq_zqddj_eng_start-->
+					<div name="zs_jlbzq_zqddj_eng" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbzq_zqddj_eng_input">
+						准确度等级英文
+					</div>
+					<!--zs_jlbzq_zqddj_eng_end-->
+					<input type="text" name="zs_jlbzq_zqddj_eng_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbzq_zqddj_eng">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbzq_xhgg_start-->
+					<div name="zs_jlbzq_xhgg" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbzq_xhgg_input">
+						型号规格
+					</div>
+					<!--zs_jlbzq_xhgg_end-->
+					<input type="text" name="zs_jlbzq_xhgg_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbzq_xhgg">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbzq_ccbh_start-->
+					<div name="zs_jlbzq_ccbh" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbzq_ccbh_input">
+						出厂编号
+					</div>
+					<!--zs_jlbzq_ccbh_end-->
+					<input type="text" name="zs_jlbzq_ccbh_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbzq_ccbh">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbzq_sbbh_start-->
+					<div name="zs_jlbzq_sbbh" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbzq_sbbh_input">
+						设备编号
+					</div>
+					<!--zs_jlbzq_sbbh_end-->
+					<input type="text" name="zs_jlbzq_sbbh_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbzq_sbbh">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbzq_jddw_start-->
+					<div name="zs_jlbzq_jddw" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbzq_jddw_input">
+						检定单位
+					</div>
+					<!--zs_jlbzq_jddw_end-->
+					<input type="text" name="zs_jlbzq_jddw_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbzq_jddw">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbzq_zzcs_start-->
+					<div name="zs_jlbzq_zzcs" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbzq_zzcs_input">
+						制造厂商
+					</div>
+					<!--zs_jlbzq_zzcs_end-->
+					<input type="text" name="zs_jlbzq_zzcs_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbzq_zzcs">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbzq_zsbh_start-->
+					<div name="zs_jlbzq_zsbh" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbzq_zsbh_input" data-zs-value-suffix="/">
+						<!--证书编号和日期的分隔符在主模板中进行配置-->
+						证书编号/
+					</div>
+					<!--zs_jlbzq_zsbh_end-->
+					<input type="text" name="zs_jlbzq_zsbh_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbzq_zsbh">
+				</div>
+
+				<div style="display: inline-table;width: 24mm;vertical-align: middle;">
+					<!--zs_jlbzq_yxrq_start-->
+					<div name="zs_jlbzq_yxrq" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbzq_yxrq_input" data-zs-value-date-format="yyyy-mm-dd">
+						2017-04-09
+					</div>
+					<!--zs_jlbzq_yxrq_end-->
+					<input type="text" name="zs_jlbzq_yxrq_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbzq_yxrq">
+				</div>
+			</div>
+			<!--zs_jlbzq_row_end-->
+
+			<!--zs_jlbzq_row_start-->
+			<div name="zs_jlbzq_row">
+				<!--zs_jlbzq_id_start-->
+				<input type="hidden" name="zs_jlbzq_id" value="">
+				<!--zs_jlbzq_id_end-->
+
+				<div style="display: inline-table;width: 35mm;">
+					<!--zs_jlbzq_name_start-->
+					<div name="zs_jlbzq_name" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbzq_name_input">
+						计量标准器名称
+					</div>
+					<!--zs_jlbzq_name_end-->
+					<input type="text" name="zs_jlbzq_name_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbzq_name">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbzq_name_eng_start-->
+					<div name="zs_jlbzq_name_eng" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbzq_name_eng_input">
+						计量标准器名称英文
+					</div>
+					<!--zs_jlbzq_name_eng_end-->
+					<input type="text" name="zs_jlbzq_name_eng_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbzq_name_eng">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbzq_clfw_start-->
+					<div name="zs_jlbzq_clfw" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbzq_clfw_input">
+						测量范围
+					</div>
+					<!--zs_jlbzq_clfw_end-->
+					<input type="text" name="zs_jlbzq_clfw_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbzq_clfw">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbzq_zqddj_start-->
+					<div name="zs_jlbzq_zqddj" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbzq_zqddj_input">
+						准确度等级
+					</div>
+					<!--zs_jlbzq_zqddj_end-->
+					<input type="text" name="zs_jlbzq_zqddj_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbzq_zqddj">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbzq_zqddj_eng_start-->
+					<div name="zs_jlbzq_zqddj_eng" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbzq_zqddj_eng_input">
+						准确度等级英文
+					</div>
+					<!--zs_jlbzq_zqddj_eng_end-->
+					<input type="text" name="zs_jlbzq_zqddj_eng_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbzq_zqddj_eng">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbzq_xhgg_start-->
+					<div name="zs_jlbzq_xhgg" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbzq_xhgg_input">
+						型号规格
+					</div>
+					<!--zs_jlbzq_xhgg_end-->
+					<input type="text" name="zs_jlbzq_xhgg_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbzq_xhgg">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbzq_ccbh_start-->
+					<div name="zs_jlbzq_ccbh" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbzq_ccbh_input">
+						出厂编号
+					</div>
+					<!--zs_jlbzq_ccbh_end-->
+					<input type="text" name="zs_jlbzq_ccbh_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbzq_ccbh">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbzq_sbbh_start-->
+					<div name="zs_jlbzq_sbbh" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbzq_sbbh_input">
+						设备编号
+					</div>
+					<!--zs_jlbzq_sbbh_end-->
+					<input type="text" name="zs_jlbzq_sbbh_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbzq_sbbh">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbzq_jddw_start-->
+					<div name="zs_jlbzq_jddw" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbzq_jddw_input">
+						检定单位
+					</div>
+					<!--zs_jlbzq_jddw_end-->
+					<input type="text" name="zs_jlbzq_jddw_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbzq_jddw">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbzq_zzcs_start-->
+					<div name="zs_jlbzq_zzcs" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbzq_zzcs_input">
+						制造厂商
+					</div>
+					<!--zs_jlbzq_zzcs_end-->
+					<input type="text" name="zs_jlbzq_zzcs_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbzq_zzcs">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbzq_zsbh_start-->
+					<div name="zs_jlbzq_zsbh" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbzq_zsbh_input" data-zs-value-suffix="/">
+						<!--证书编号和日期的分隔符在主模板中进行配置-->
+						证书编号/
+					</div>
+					<!--zs_jlbzq_zsbh_end-->
+					<input type="text" name="zs_jlbzq_zsbh_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbzq_zsbh">
+				</div>
+
+				<div style="display: inline-table;width: 24mm;vertical-align: middle;">
+					<!--zs_jlbzq_yxrq_start-->
+					<div name="zs_jlbzq_yxrq" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbzq_yxrq_input" data-zs-value-date-format="yyyy-mm-dd">
+						2017-04-09
+					</div>
+					<!--zs_jlbzq_yxrq_end-->
+					<input type="text" name="zs_jlbzq_yxrq_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbzq_yxrq">
+				</div>
+			</div>
+			<!--zs_jlbzq_row_end-->
+
+			<!--zs_jlbzq_row_start-->
+			<div name="zs_jlbzq_row">
+				<!--zs_jlbzq_id_start-->
+				<input type="hidden" name="zs_jlbzq_id" value="">
+				<!--zs_jlbzq_id_end-->
+
+				<div style="display: inline-table;width: 35mm;">
+					<!--zs_jlbzq_name_start-->
+					<div name="zs_jlbzq_name" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbzq_name_input">
+						计量标准器名称
+					</div>
+					<!--zs_jlbzq_name_end-->
+					<input type="text" name="zs_jlbzq_name_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbzq_name">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbzq_name_eng_start-->
+					<div name="zs_jlbzq_name_eng" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbzq_name_eng_input">
+						计量标准器名称英文
+					</div>
+					<!--zs_jlbzq_name_eng_end-->
+					<input type="text" name="zs_jlbzq_name_eng_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbzq_name_eng">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbzq_clfw_start-->
+					<div name="zs_jlbzq_clfw" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbzq_clfw_input">
+						测量范围
+					</div>
+					<!--zs_jlbzq_clfw_end-->
+					<input type="text" name="zs_jlbzq_clfw_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbzq_clfw">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbzq_zqddj_start-->
+					<div name="zs_jlbzq_zqddj" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbzq_zqddj_input">
+						准确度等级
+					</div>
+					<!--zs_jlbzq_zqddj_end-->
+					<input type="text" name="zs_jlbzq_zqddj_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbzq_zqddj">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbzq_zqddj_eng_start-->
+					<div name="zs_jlbzq_zqddj_eng" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbzq_zqddj_eng_input">
+						准确度等级英文
+					</div>
+					<!--zs_jlbzq_zqddj_eng_end-->
+					<input type="text" name="zs_jlbzq_zqddj_eng_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbzq_zqddj_eng">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbzq_xhgg_start-->
+					<div name="zs_jlbzq_xhgg" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbzq_xhgg_input">
+						型号规格
+					</div>
+					<!--zs_jlbzq_xhgg_end-->
+					<input type="text" name="zs_jlbzq_xhgg_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbzq_xhgg">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbzq_ccbh_start-->
+					<div name="zs_jlbzq_ccbh" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbzq_ccbh_input">
+						出厂编号
+					</div>
+					<!--zs_jlbzq_ccbh_end-->
+					<input type="text" name="zs_jlbzq_ccbh_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbzq_ccbh">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbzq_sbbh_start-->
+					<div name="zs_jlbzq_sbbh" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbzq_sbbh_input">
+						设备编号
+					</div>
+					<!--zs_jlbzq_sbbh_end-->
+					<input type="text" name="zs_jlbzq_sbbh_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbzq_sbbh">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbzq_jddw_start-->
+					<div name="zs_jlbzq_jddw" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbzq_jddw_input">
+						检定单位
+					</div>
+					<!--zs_jlbzq_jddw_end-->
+					<input type="text" name="zs_jlbzq_jddw_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbzq_jddw">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbzq_zzcs_start-->
+					<div name="zs_jlbzq_zzcs" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbzq_zzcs_input">
+						制造厂商
+					</div>
+					<!--zs_jlbzq_zzcs_end-->
+					<input type="text" name="zs_jlbzq_zzcs_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbzq_zzcs">
+				</div>
+
+				<div style="display: inline-table;width: 30mm;vertical-align: middle;">
+					<!--zs_jlbzq_zsbh_start-->
+					<div name="zs_jlbzq_zsbh" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbzq_zsbh_input" data-zs-value-suffix="/">
+						<!--证书编号和日期的分隔符在主模板中进行配置-->
+						证书编号/
+					</div>
+					<!--zs_jlbzq_zsbh_end-->
+					<input type="text" name="zs_jlbzq_zsbh_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbzq_zsbh">
+				</div>
+
+				<div style="display: inline-table;width: 24mm;vertical-align: middle;">
+					<!--zs_jlbzq_yxrq_start-->
+					<div name="zs_jlbzq_yxrq" style="display: inline-table;width: 100%;min-height: 18pt;word-break: break-all;font-size: 14pt;font-family: 'Times New Roman';" class="zs_element_edit zs_click zs_contextmenu"
+						 data-zs-contextmenu-show-name="zs_jlbzq_yxrq_input" data-zs-value-date-format="yyyy-mm-dd">
+						2017-04-09
+					</div>
+					<!--zs_jlbzq_yxrq_end-->
+					<input type="text" name="zs_jlbzq_yxrq_input" style="display: none;width: 100%;font-size: 14pt;font-family: 'Times New Roman';text-align: center;" class="zs_element_edit zs_blur"
+						   data-zs-blur-show-name="zs_jlbzq_yxrq">
+				</div>
+			</div>
+			<!--zs_jlbzq_row_end-->
+		</div>
+	</div>
+	<!--zs_page_end-->
+
+<!--zs_div_xxy_end-->
+</div>
+
+
+
+<div name="zs_div_jgy">
+<!--zs_div_jgy_start-->
+
+	<!--固定样式_开始-->
+	<style>
+		/*屏幕显示样式*/
+		/*证书分页样式*/
+		.zs_page_break_before_always {
+			page-break-before: always;
+		}
+
+		/*证书A4纸张样式*/
+		.zs_page_a4 {
+			width: 210mm;
+			height: 297mm;
+			overflow: hidden;
+		}
+
+		/*证书A4纸张宽度样式*/
+		.zs_page_a4_width {
+			width: 210mm;
+		}
+
+		/*证书A4纸张高度样式*/
+		.zs_page_a4_height {
+			height: 297mm;
+		}
+
+		/*证书元素编辑样式*/
+		.zs_element_edit {
+			background-color: #ffff00;
+			border: 1pt solid #ff6d00;
+		}
+	</style>
+	<style media="print">
+		/*打印显示样式*/
+		/*证书打印不显示*/
+		.zs_print_none {
+			display: none !important;
+		}
+
+		/*证书打印显示*/
+		.zs_print_inline {
+			display: inline !important;
+		}
+
+		/*证书元素编辑样式*/
+		.zs_element_edit {
+			background-color: #ffffff !important;
+			border: 1pt solid #ffffff !important;
+		}
+
+		/*证书元素编辑样式*/
+		.zs_print_min_width_none {
+			min-width: 0mm !important;
+		}
+	</style>
+	<!--固定样式_结束-->
+
+  <!--自定义样式_开始-->
+  <style>
+    /*自定义的样式名称请以zs_class_custom_开头进行命名，千万不要定义全局样式*/
+    .zs_class_custom_one {
+      margin-left: 170px;
+      font-size: 14px;
+    }
+
+    .zs_class_custom_two {
+      font-family: "Microsoft YaHei", Arial;
+      font-size: 14px;
+    }
+  </style>
+  <!--自定义样式_结束-->
+
+  <!--zs_jgy_zmb_id_start-->
+  <input type="hidden" name="zs_jgy_zmb_id" value="">
+  <!--zs_jgy_zmb_id_end-->
+
+	<!--zs_page_start-->
+	<div style="margin:0 auto;" class="zs_page_a4 zs_page_break_before_always">
+		<div style="text-align: right;font-family: '黑体';margin-top: 10pt;">
+			<div style="display: inline-table;">
+				<div style="font-family: '黑体';font-size: 12pt;">
+					证书编号：
+				</div>
+				<div style="font-family: 'Times New Roman';font-size: 8pt;">
+					Certificate No：
+				</div>
+			</div>
+			<div style="display: inline-table;text-align: left;min-width: 150pt;">
+				<!--zs_code_bar_start-->
+				<div name="zs_code_bar" style="text-align: center;font-family: '黑体';font-size: 12pt;display: inline-table;min-width: 50pt;min-height: 15pt;" class="zs_element_edit zs_print_none">
+					条形码
+				</div>
+				<!--zs_code_bar_end-->
+
+				<!--zs_code_bar_img_start-->
+				<img name="zs_code_bar_img" src="" style="width: 4.5cm;height: 0.6cm;display: none;" class="zs_print_inline">
+				<!--zs_code_bar_img_end-->
+
+				<br>
+
+				<!--zs_zsbh_start-->
+				<div name="zs_zsbh" style="text-align: center;font-family: 'Times New Roman';font-size: 12pt;display: inline-table;min-width: 80pt;min-height: 15pt;" class="zs_element_edit">
+					证书编号
+				</div>
+				<!--zs_zsbh_end-->
+			</div>
+		</div>
+
+		<div style="margin-top: 10pt;font-family: 'Times New Roman';font-size: 12pt;">
+			检定结果/说明：
+			<br>
+			Results of verification and additional explanation
+		</div>
+
+		<!--zs_jgy_red_start-->
+		<div name="zs_jgy_red" style="margin:0 auto;width: 190mm;height: 230mm;border: 1pt solid black;overflow: hidden;" class="zs_click">
+			红框内容
+		</div>
+		<!--zs_jgy_red_end-->
+
+		<div style="margin-top: 10pt;font-family: 'Times New Roman';font-size: 12pt;">
+			<div style="display: inline-table;float: left;">
+				检定证书续页专用
+				<br>
+				Continued page of verification certificate
+			</div>
+			<div style="display: inline-table;float: right;white-space: nowrap;">
+				第
+				<!--zs_page_index_start-->
+				<div name="zs_page_index" style="display: inline-table;min-width: 12pt;min-height: 15pt;font-family: 'Times New Roman';font-size: 12pt;" class="zs_element_edit">
+					?
+				</div>
+				<!--zs_page_index_end-->
+				页
+
+				共
+				<!--zs_page_total_start-->
+				<div name="zs_page_total" style="display: inline-table;min-width: 12pt;min-height: 15pt;font-family: 'Times New Roman';font-size: 12pt;" class="zs_element_edit">
+					?
+				</div>
+				<!--zs_page_total_end-->
+				页
+			</div>
+		</div>
+	</div>
+	<!--zs_page_end-->
+
+<!--zs_div_jgy_end-->
+</div>
+
+
+
+<script src="./jquery-1.9.1.min.js"></script>
+<script>
+    //JavaScript脚本
+    $(document).ready(function () {
+        $(".zs_blur").blur(function () {
+            //证书鼠标失焦事件
+            var showName = $(this).attr("data-zs-blur-show-name");
+            if (showName) {
+                if ($(this)[0].selectedIndex == -1) {
+                    $(this).hide().parent().find("[name='" + showName + "']").show();
+                } else {
+                    $(this).hide().parent().find("[name='" + showName + "']").show().html($(this).val());
+
+                    //自动更新证书文字大小
+                    updateZsSizeAuto($(this).hide().parent().find("[name='" + showName + "']"));
+                }
+                return;
+            }
+        });
+
+        $(".zs_click").click(function () {
+            //证书鼠标左击事件
+            var showName = $(this).attr("data-zs-click-show-name");
+            if (showName) {
+                if (showName.endsWith("_input")) {
+                    //input输入框
+                    $(this).hide().parent().find("[name='" + showName + "']").show().val($(this).html()).select();
+                } else if (showName.endsWith("_select")) {
+                    //select下拉框
+                    $(this).hide().parent().find("[name='" + showName + "']").show()[0].value = $(this).html();
+                    $(this).parent().find("[name='" + showName + "']").focus();
+                }
+                return;
+            }
+            alert("其他特殊事件（比如弹窗事件）！");
+        });
+
+        $(".zs_contextmenu").contextmenu(function () {
+            //证书鼠标右击事件
+            var showName = $(this).attr("data-zs-contextmenu-show-name");
+            if (showName) {
+                if (showName.endsWith("_input")) {
+                    //input输入框
+                    $(this).hide().parent().find("[name='" + showName + "']").show().val($(this).html()).select();
+                } else if (showName.endsWith("_select")) {
+                    //select下拉框
+                    $(this).hide().parent().find("[name='" + showName + "']").show()[0].value = $(this).html();
+                    $(this).parent().find("[name='" + showName + "']").focus();
+                }
+                return false;
+            }
+            alert("其他特殊事件（比如弹窗事件）！");
+        });
+
+        $(".zs_size_auto").each(function () {
+            //证书文字大小自动缩放
+            if ($(this).attr("data-zs-size-update") == "0") {
+              //证书文字大小未进行过更新
+              updateZsSizeAuto(this);
+            }
+        });
+    });
+
+    //自动更新证书文字大小
+    function updateZsSizeAuto(thisObject) {
+        var sizeUnit = $(thisObject).attr("data-zs-size-unit");
+        if (sizeUnit) {
+            var sizeInit = parseInt($(thisObject).attr("data-zs-size-init"));
+            var sizeMin = parseInt($(thisObject).attr("data-zs-size-min"));
+            var heightMax = parseInt($(thisObject).attr("data-zs-height-max"));
+
+            $(thisObject).attr("data-zs-size-update", "1");
+            $(thisObject).css("font-size", sizeInit + sizeUnit);
+            while (parseInt($(thisObject).css("height")) > heightMax && sizeInit > sizeMin) {
+              sizeInit = sizeInit - 1;
+              $(thisObject).css("font-size", sizeInit + sizeUnit);
+            }
+        }
+    }
+</script>

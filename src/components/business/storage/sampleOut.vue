@@ -1,0 +1,81 @@
+<template>
+  <el-form ref="form" label-width="150px">
+    <el-Row :gutter="20">
+      <el-col :span="12">
+        <el-form-item>
+          <template slot="label">
+            <span>请输入单号：</span>
+            <el-tooltip content="登记号、流转单号、委托单号、缴费单编号、出库记录号">
+              <i class="el-icon-info" style="font-size: 12px !important;"></i>
+            </el-tooltip>
+          </template>
+          <el-input v-model="searchKey" @keyup.enter.native="search" ref="focusInput"></el-input>
+        </el-form-item>
+      </el-col>
+      <el-col :span="12" style="padding-top: 6px;">
+        <el-button class="el-button el-button--primary" @click="search">查询</el-button>
+      </el-col>
+    </el-Row>
+  </el-form>
+</template>
+
+<script>
+  import Vue from 'vue';
+  //vuex 是vue的状态管理工具，是一个存放多个组件公用数据的容器，公共数据一变，各个组件都会更新，数据是响应式的
+  import Vuex from 'vuex';
+  //引入表格和分页插件
+  //引入ajax工具
+  import {ajaxRequest,ajaxProxyRequest} from '../../util/base';
+  //引入jquery
+  import $ from 'jquery';
+  import ElCol from "@/common-el/packages/col/src/col";
+  import ElRow from "@/common-el/packages/row/src/row";
+
+  export default {
+    components: {
+      ElRow,
+      ElCol},
+    name:"sampleOut",
+    data() {
+      return {
+        searchKey:"",//查询单号
+      }
+    },
+    methods:{
+      search(){
+        if(this.searchKey===null||this.searchKey===""||this.searchKey===undefined){
+          this.$message.error('请输入单号');
+          return;
+        }
+        /*获取table数据，维护data数据*/
+        ajaxRequest('get','back/ruku/getRukuInfo',{
+          bh:$.trim(this.searchKey),
+          state:1,
+        },(res)=>{
+          if(res.code===200){
+            this.$router.push({
+              path: '/admin/551',
+              query:{
+                tableData:res.daoResult.bhlist,
+                tableData2:res.daoResult.wtdlist,
+                companyName:res.daoResult.bhlist[0].companyName,
+                companyType:res.daoResult.bhlist[0].companyType,
+                companyId:res.daoResult.bhlist[0].companyId,
+                sampleOrCertificate:1,
+                flag:true
+              }
+            })
+          }else{
+            this.$message.error(res.msg);
+          }
+        })
+      },
+    },
+    mounted(){
+      this.$nextTick(()=>{
+        this.$refs.focusInput.focus()
+      })
+    }
+  }
+</script>
+

@@ -1,0 +1,59 @@
+<html>
+<body>
+<!-- 模板编辑内容都写在body中 -->
+<style>
+ table{
+     background: red;
+ }
+</style>
+<script>
+//var $ =null;//该对象为外部传入的jquery对象
+ /**
+  * 如果方法存在则不会直接操作模板
+  * $ jquery对象
+  * data 页面中传入的相应参数
+  */
+function receive(data){
+   var script=document.createElement('script');
+   script.src='static/js/jquery/jquery-3.3.1.js';
+   document.body.appendChild(script);
+   script.onload=function(){
+     //jquery初始化加载完毕调用
+     alert(" 使用 receive 方法 ，则不直接对模板操作，接收到的参数："+ JSON.stringify(data))
+     setPrintParam(data);
+   };
+}
+ /**
+ * 设定参数
+ * @param {*} data
+ */
+function setPrintParam (data){
+    if(data && data!=null){
+        $(document.body).find("span").each(function(i,row){
+            if($(this).attr("id")){
+                if(data[$(this).attr("id")]){
+                    $(this).html(data[$(this).attr("id")]);
+                }else{
+                    $(this).html("");
+                }
+            }
+        });
+    }
+}
+</script>
+<table style="width: 400px;" border="1"   >
+    <tr>
+        <td>订单号：</td>
+        <td><span id="key1"></span></td>
+        <td>商品名称：</td>
+        <td><span id="key2"></span></td>
+    </tr>
+    <tr>
+        <td>价格：</td>
+        <td><span id="key3"></span></td>
+        <td>数量</td>
+        <td><span id="key4"></span></td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,84 @@
+@charset "UTF-8";
+/* 顶部菜单样式 */
+.box-top {
+	height:60px;
+	padding-left:350px;
+	padding-right:200px;
+	background:#1d74b7;
+	background-image: url('logo_njmind.png') ;
+	background-repeat: no-repeat;
+	color:white;
+}
+.box-top .menu .menu-container .menu-main .menu-item{
+	background-color:transparent;
+	margin-left: 0px;
+	width:120px; 
+}
+
+.box-top .menu .menu-container .menu-main .menu-item p:hover{
+	background:#3094e0;
+	padding:10px 0px;
+}
+.box-top .menu .menu-container .menu-main .menu-item .is-active{
+	background:#3094e0;
+}
+.box-top .menu .left-btn,.box-top .menu .right-btn {
+	background: transparent;
+}
+.box-top .menu .left-btn:hover,.box-top .menu .right-btn:hover{
+	color:#B8DBFD;
+}
+/*左侧菜单样式*/
+.box-left{
+	position: absolute;
+	width:200px;
+	top:60px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	background: #1B7BC5;
+}
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/  
+::-webkit-scrollbar  
+{  
+    width: 2px;  
+    height: 5px;  
+    background-color: #F5F5F5;  
+}  
+  
+/*定义滚动条轨道 内阴影+圆角*/  
+::-webkit-scrollbar-track  
+{  
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);  
+    border-radius: 10px;  
+    background-color: #F5F5F5;  
+}  
+  
+/*定义滑块 内阴影+圆角*/  
+::-webkit-scrollbar-thumb  
+{  
+    border-radius: 10px;  
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);  
+    background-color: #555;  
+}  
+
+.box-left .el-menu{
+	background: transparent;
+	border-right: solid 0px #e6e6e6;
+}
+.box-left .el-menu .el-menu-item i,.box-left .el-menu [class^=el-submenu_] i,.box-left *{
+	color:white;
+}
+
+.box-left .el-menu .el-menu-item:focus, .box-left .el-menu .el-menu-item:hover ,
+.box-left .el-menu [class^=el-submenu_]:focus,.box-left .el-menu [class^=el-submenu_]:hover{
+    background-color: #3094E0;
+}
+
+.box-left .el-menu .el-menu-item.is-active{
+    background-color: #3094E0 !important;
+}
+.box-right{
+    padding: 20px;
+}
+

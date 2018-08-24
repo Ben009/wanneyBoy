@@ -1,0 +1,681 @@
+@charset "UTF-8";
+/* Element Chalk Variables */
+/* Transition
+-------------------------- */
+/* Colors
+-------------------------- */
+/*  */
+/*  */
+/* 主色调 */
+/* 53a8ff */
+/* 66b1ff */
+/* 79bbff */
+/* 8cc5ff */
+/* a0cfff */
+/* b3d8ff */
+/* c6e2ff */
+/* d9ecff */
+/* ecf5ff */
+/* Link
+-------------------------- */
+/* Background
+-------------------------- */
+/* Border
+-------------------------- */
+/* Box-shadow
+-------------------------- */
+/* Fill
+-------------------------- */
+/* Font
+-------------------------- */
+/* Size
+-------------------------- */
+/* z-index
+-------------------------- */
+/* Disable base
+-------------------------- */
+/* Icon
+-------------------------- */
+/* Checkbox
+-------------------------- */
+/* Radio
+-------------------------- */
+/* Select
+-------------------------- */
+/* Alert
+-------------------------- */
+/* Message Box
+-------------------------- */
+/* Message
+-------------------------- */
+/* Notification
+-------------------------- */
+/* Input
+-------------------------- */
+/* Cascader
+-------------------------- */
+/* Group
+-------------------------- */
+/* Tab
+-------------------------- */
+/* Button
+-------------------------- */
+/* cascader
+-------------------------- */
+/* Switch
+-------------------------- */
+/* Dialog
+-------------------------- */
+/* Table
+-------------------------- */
+/* Pagination
+-------------------------- */
+/* Popover
+-------------------------- */
+/* Tooltip
+-------------------------- */
+/* Tag
+-------------------------- */
+/* Tree
+-------------------------- */
+/* Dropdown
+-------------------------- */
+/* Badge
+-------------------------- */
+/* Card
+--------------------------*/
+/* Slider
+--------------------------*/
+/* Steps
+--------------------------*/
+/* Menu
+--------------------------*/
+/* Rate
+--------------------------*/
+/* DatePicker
+--------------------------*/
+/* Loading
+--------------------------*/
+/* Scrollbar
+--------------------------*/
+/* Carousel
+--------------------------*/
+/* Collapse
+--------------------------*/
+/* Transfer
+--------------------------*/
+/* Header
+  --------------------------*/
+/* Footer
+--------------------------*/
+/* Main
+--------------------------*/
+/* Break-point
+--------------------------*/
+@font-face {
+  font-family: 'element-icons';
+  src: url("fonts/element-icons.woff") format("woff"), 
+  url("fonts/element-icons.ttf") format("truetype");
+  /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  font-weight: 400;
+  font-style: normal; }
+
+[class^="el-icon-"], [class*=" el-icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'element-icons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: baseline;
+  display: inline-block;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.el-icon-info:before {
+  content: "\e61a"; }
+
+ .el-icon-sys-remark::before{
+  content: "\E740";
+    font-size: 20px;
+    /* margin-top: 9px; */
+    position: relative;
+    top: 2px;
+ }
+
+  .shuoming .el-sm{
+    display: none;
+   } 
+  .shuoming:hover  .el-sm{
+    display: block;
+   } 
+
+
+.el-icon-error:before {
+  content: "\e62c"; }
+
+.el-icon-success:before {
+  content: "\e62d"; }
+
+.el-icon-warning:before {
+  content: "\e62e"; }
+
+.el-icon-question:before {
+  content: "\e634"; }
+
+.el-icon-back:before {
+  content: "\e606"; }
+
+.el-icon-arrow-left:before {
+  content: "\e600"; }
+
+.el-icon-arrow-down:before {
+  content: "\e603"; }
+
+.el-icon-arrow-right:before {
+  content: "\e604"; }
+
+.el-icon-arrow-up:before {
+  content: "\e605"; }
+
+.el-icon-caret-left:before {
+  content: "\e60a"; }
+
+.el-icon-caret-bottom:before {
+  content: "\e60b"; }
+
+.el-icon-caret-top:before {
+  content: "\e60c"; }
+
+.el-icon-caret-right:before {
+  content: "\e60e"; }
+
+.el-icon-d-arrow-left:before {
+  content: "\e610"; }
+
+.el-icon-d-arrow-right:before {
+  content: "\e613"; }
+
+.el-icon-minus:before {
+  content: "\e621"; }
+
+.el-icon-plus:before {
+  content: "\e62b"; }
+
+.el-icon-remove:before {
+  content: "\e635"; }
+
+.el-icon-circle-plus:before {
+  content: "\e601"; }
+
+.el-icon-remove-outline:before {
+  content: "\e63c"; }
+
+.el-icon-circle-plus-outline:before {
+  content: "\e602"; }
+
+.el-icon-close:before {
+  content: "\e60f"; }
+
+.el-icon-check:before {
+  content: "\e611"; }
+
+.el-icon-circle-close:before {
+  content: "\e607"; }
+
+.el-icon-circle-check:before {
+  content: "\e639"; }
+
+.el-icon-circle-close-outline:before {
+  content: "\e609"; }
+
+.el-icon-circle-check-outline:before {
+  content: "\e63e"; }
+
+.el-icon-zoom-out:before {
+  content: "\e645"; }
+
+.el-icon-zoom-in:before {
+  content: "\e641"; }
+
+.el-icon-d-caret:before {
+  content: "\e615"; }
+
+.el-icon-sort:before {
+  content: "\e640"; }
+
+.el-icon-sort-down:before {
+  content: "\e630"; }
+
+.el-icon-sort-up:before {
+  content: "\e631"; }
+
+.el-icon-tickets:before {
+  content: "\e63f"; }
+
+.el-icon-document:before {
+  content: "\e614"; }
+
+.el-icon-goods:before {
+  content: "\e618"; }
+
+.el-icon-sold-out:before {
+  content: "\e63b"; }
+
+.el-icon-news:before {
+  content: "\e625"; }
+
+.el-icon-message:before {
+  content: "\e61b"; }
+
+.el-icon-date:before {
+  content: "\e608"; }
+
+.el-icon-printer:before {
+  content: "\e62f"; }
+
+.el-icon-time:before {
+  content: "\e642"; }
+
+.el-icon-bell:before {
+  content: "\e622"; }
+
+.el-icon-mobile-phone:before {
+  content: "\e624"; }
+
+.el-icon-service:before {
+  content: "\e63a"; }
+
+.el-icon-view:before {
+  content: "\e643"; }
+
+.el-icon-menu:before {
+  content: "\e620"; }
+
+.el-icon-more:before {
+  content: "\e646"; }
+
+.el-icon-more-outline:before {
+  content: "\e626"; }
+
+.el-icon-star-on:before {
+  content: "\e637"; }
+
+.el-icon-star-off:before {
+  content: "\e63d"; }
+
+.el-icon-location:before {
+  content: "\e61d"; }
+
+.el-icon-location-outline:before {
+  content: "\e61f"; }
+
+.el-icon-phone:before {
+  content: "\e627"; }
+
+.el-icon-phone-outline:before {
+  content: "\e628"; }
+
+.el-icon-picture:before {
+  content: "\e629"; }
+
+.el-icon-picture-outline:before {
+  content: "\e62a"; }
+
+.el-icon-delete:before {
+  content: "\e612"; }
+
+.el-icon-search:before {
+  content: "\e619"; }
+
+.el-icon-edit:before {
+  content: "\e61c"; }
+
+.el-icon-edit-outline:before {
+  content: "\e616"; }
+
+.el-icon-rank:before {
+  content: "\e632"; }
+
+.el-icon-refresh:before {
+  content: "\e633"; }
+
+.el-icon-share:before {
+  content: "\e636"; }
+
+.el-icon-setting:before {
+  content: "\e638"; }
+
+.el-icon-upload:before {
+  content: "\e60d"; }
+
+.el-icon-upload2:before {
+  content: "\e644"; }
+
+.el-icon-download:before {
+  content: "\e617"; }
+
+.el-icon-loading:before {
+  content: "\e61e"; }
+
+/**/
+
+.el-icon-loading {
+  -webkit-animation: rotating 2s linear infinite;
+  animation: rotating 2s linear infinite; }
+
+.el-icon--right {
+  margin-left: 5px; }
+
+.el-icon--left {
+  margin-right: 5px; }
+
+  
+/*计*/ .el-icon-oa-ji:before{ content: "\E"; }
+/*日历*/ .el-icon-date:before{ content: "\E608"; }
+/*统计报表*/ .el-icon-report:before{ content: "\E648"; }
+/*首页*/ .el-icon-main:before{ content: "\E649"; }
+/*业务管理*/ .el-icon-ywgl:before{ content: "\E650"; }
+/*财务管理*/ .el-icon-cwgl:before{ content: "\E651"; }
+/*外网业务*/ .el-icon-wwyw:before{ content: "\E652"; }
+/*质量控制*/ .el-icon-zlkz:before{ content: "\E653"; }
+/*市场管理*/ .el-icon-scgl:before{ content: "\E654"; }
+/*OA系统*/ .el-icon-oasys:before{ content: "\E655"; }
+/*系统管理*/ .el-icon-system:before{ content: "\E656"; }
+/*短信平台*/ .el-icon-mess:before{ content: "\E657"; }
+/*用户服务*/ .el-icon-userser:before{ content: "\E658"; }
+/*特殊字符*/ .el-icon-other-code:before{ content: "\E659"; }
+/*消息中心*/ .el-icon-msgs:before{ content: "\E660"; }
+/*到账管理*/ .el-icon-finance-dzgl:before{ content: "\E661"; }
+/*费用结算*/ .el-icon-finance-fyjs:before{ content: "\E662"; }
+/*费用结账*/ .el-icon-finance-fyjz:before{ content: "\E663"; }
+/*挂账管理*/ .el-icon-finance-gzgl:before{ content: "\E664"; }
+/*折扣审核*/ .el-icon-finance-zksh:before{ content: "\E665"; }
+/*CNAS管理*/ .el-icon-rg-cnas:before{ content: "\E666"; }
+/*报价系统*/ .el-icon-rg-bjxt:before{ content: "\E667"; }
+/*合同管理*/ .el-icon-rg-htgl:before{ content: "\E668"; }
+/*计量标准*/ .el-icon-rg-jlbz:before{ content: "\E669"; }
+/*技术依据*/ .el-icon-rg-jsyj:before{ content: "\E670"; }
+/*客户查询*/ .el-icon-rg-khcx:before{ content: "\E671"; }
+/*器具平台*/ .el-icon-rg-qjpt:before{ content: "\E672"; }
+/*人员资质*/ .el-icon-rg-ryzz:before{ content: "\E673"; }
+/*数据支持*/ .el-icon-oa-sjzc:before{ content: "\E674"; }
+/*体系文件*/ .el-icon-rg-txwj:before{ content: "\E675"; }
+/*托管平台*/ .el-icon-rg-tgpt:before{ content: "\E676"; }
+/*网上报检*/ .el-icon-rg-wsbx:before{ content: "\E677"; }
+/*文件审批*/ .el-icon-rg-wjsp:before{ content: "\E678"; }
+/*物流管理*/ .el-icon-rg-wlgl:before{ content: "\E679"; }
+/*仪器设备*/ .el-icon-rg-yqsb:before{ content: "\E680"; }
+/*原始记录*/ .el-icon-rg-ysjl:before{ content: "\E681"; }
+/*政策法规*/ .el-icon-rg-zcfg:before{ content: "\E682"; }
+/*注册审核*/ .el-icon-rg-zcsh:before{ content: "\E683"; }
+/*咨询建议*/ .el-icon-rg-zxjy:before{ content: "\E684"; }
+/*办公设备*/ .el-icon-oa-bgsb:before{ content: "\E685"; }
+/*部门岗位*/ .el-icon-oa-bmgw:before{ content: "\E686"; }
+/*超期*/ .el-icon-oa-cq:before{ content: "\E687"; }
+/*车辆信息*/ .el-icon-oa-clxx:before{ content: "\E688"; }
+/*触摸屏*/ .el-icon-oa-cmp:before{ content: "\E689"; }
+/*费用*/ .el-icon-oa-fy:before{ content: "\E690"; }
+/*分包*/ .el-icon-oa-fb:before{ content: "\E691"; }
+/*工作任务*/ .el-icon-oa-gzrw:before{ content: "\E692"; }
+/*公文流转*/ .el-icon-oa-gwlz:before{ content: "\E693"; }
+/*基础数据*/ .el-icon-oa-jcsj:before{ content: "\E694"; }
+/*计量器具*/ .el-icon-oa-jlqj:before{ content: "\E695"; }
+/*界面logo替换*/ .el-icon-oa-logot:before{ content: "\E696"; }
+/*考勤管理*/ .el-icon-oa-kqgl:before{ content: "\E697"; }
+/*库房*/ .el-icon-oa-kf:before{ content: "\E698"; }
+/*流程*/ .el-icon-oa-liuc:before{ content: "\E699"; }
+/*流程管理*/ .el-icon-oa-lcgl:before{ content: "\E700"; }
+/*强检*/ .el-icon-oa-qj:before{ content: "\E701"; }
+/*权限管理*/ .el-icon-oa-qxgl:before{ content: "\E702"; }
+/*人员管理*/ .el-icon-oa-rygl:before{ content: "\E703"; }
+/*软件管理*/ .el-icon-oa-rjgl:before{ content: "\E704"; }
+/*首页设定*/ .el-icon-oa-sysd:before{ content: "\E705"; }
+/*数据支持*/ .el-icon-rg-sjzc:before{ content: "\E706"; }
+/*数据字典*/ .el-icon-oa-sjzd:before{ content: "\E707"; }
+/*通讯录*/ .el-icon-oa-txl:before{ content: "\E708"; }
+/*投票系统*/ .el-icon-oa-tpxt:before{ content: "\E709"; }
+/*委托*/ .el-icon-oa-wt:before{ content: "\E710"; }
+/*委托单位*/ .el-icon-oa-wtdw:before{ content: "\E711"; }
+/*现场计划*/ .el-icon-oa-xcjh:before{ content: "\E712"; }
+/*信息发布*/ .el-icon-oa-xxfb:before{ content: "\E713"; }
+/*样品*/ .el-icon-oa-yp:before{ content: "\E714"; }
+/*用户管理*/ .el-icon-oa-yhgl:before{ content: "\E715"; }
+/*用品管理*/ .el-icon-oa-ypgl:before{ content: "\E716"; }
+/*原始记录*/ .el-icon-oa-ysjl:before{ content: "\E717"; }
+/*在线人员*/ .el-icon-oa-zxry:before{ content: "\E718"; }
+/*证书抽查*/ .el-icon-oa-zscc:before{ content: "\E719"; }
+/*发件箱*/ .el-icon-sms-fjx:before{ content: "\E720"; }
+/*收发短信*/ .el-icon-sms-sfdx:before{ content: "\E721"; }
+/*证书超期短信*/ .el-icon-sms-zscqdx:before{ content: "\E722"; }
+/*组管理*/ .el-icon-sms-zgl:before{ content: "\E723"; }
+/*EXCEL处理*/ .el-icon-oth-excel:before{ content: "\E724"; }
+/*控件下载*/ .el-icon-oth-kjxz:before{ content: "\E725"; }
+/*密码维护*/ .el-icon-oth-mmwh:before{ content: "\E726"; }
+/*头像修改*/ .el-icon-oth-txxg:before{ content: "\E727"; }
+/*下载中心*/ .el-icon-oth-xzzx:before{ content: "\E728"; }
+/*二维码*/ .el-icon-qr-code:before{ content: "\E729"; }
+/*条码*/ .el-icon-bar-code:before{ content: "\E730"; }
+/*向左对齐*/ .el-icon-align-left:before{ content: "\E731"; }
+/*向右缩进*/ .el-icon-align-right:before{ content: "\E732"; }
+/*基础数据*/ .el-icon-base-data:before{ content: "\E733"; }
+/*证书记录*/ .el-icon-certi-log:before{ content: "\E734"; }
+/*工作日历*/ .el-icon-work-date:before{ content: "\E735"; }
+/*圆左移*/ .el-icon-cl-arrow-left:before{ content: "\E736"; }
+/*圆右移*/ .el-icon-cl-arrow-right:before{ content: "\E737"; }
+/*左止*/ .el-icon-limit-left:before{ content: "\E738"; }
+/*右止*/ .el-icon-limit-right:before{ content: "\E739"; }
+/*说明*/ .el-icon-sys-remark:before{ content: "\E740"; }
+/*编辑*/ .el-icon-njm-edit:before{ content: "\E741"; }
+/*删除*/ .el-icon-njm-del:before{ content: "\E742"; }
+/*详情*/ .el-icon-njm-info:before{ content: "\E743"; }
+/*审核*/ .el-icon-njm-approve:before{ content: "\E744"; }
+/*标签打印*/ .el-icon-njm-print:before{ content: "\E745"; }
+/*部门分管*/ .el-icon-njm-morg:before{ content: "\E746"; }
+/*设为默认账号*/ .el-icon-njm-default-id:before{ content: "\E747"; }
+/*重置密码*/ .el-icon-njm-reset-pwd:before{ content: "\E748"; }
+/*导入*/ .el-icon-njm-imp:before{ content: "\E749"; }
+/*导出*/ .el-icon-njm-exp:before{ content: "\E750"; }
+/*删除*/ .el-icon-njm-del-tip:before{ content: "\E751"; }
+/*拷贝*/ .el-icon-njm-copy:before{ content: "\E752"; }
+/*新增*/ .el-icon-njm-add:before{ content: "\E753"; }
+/*查询*/ .el-icon-njm-find:before{ content: "\E754"; }
+/*特殊价格查询*/ .el-icon-njm-e-find:before{ content: "\E755"; }
+/*单位审核*/ .el-icon-njm-dwsh:before{ content: "\E756"; }
+/*已审核单位查询*/ .el-icon-njm-yshdwcx:before{ content: "\E757"; }
+/*回访/拜访查询*/ .el-icon-njm-hfbfcx:before{ content: "\E758"; }
+/*业务组*/ .el-icon-njm-ywz:before{ content: "\E759"; }
+/*业务员*/ .el-icon-njm-ywy:before{ content: "\E760"; }
+/*行政区划*/ .el-icon-njm-area:before{ content: "\E761"; }
+/*暂停器具查询*/ .el-icon-njm-ztqjcx:before{ content: "\E762"; }
+/*结论用语*/ .el-icon-njm-jlyy:before{ content: "\E763"; }
+/*账号维护*/ .el-icon-njm-zhwh:before{ content: "\E764"; }
+/*项别维护*/ .el-icon-njm-xbwh:before{ content: "\E765"; }
+/*业务受理*/ .el-icon-njm-ywsl:before{ content: "\E766"; }
+/*受理查询*/ .el-icon-njm-slcx:before{ content: "\E767"; }
+/*自检要号*/ .el-icon-njm-zjyh:before{ content: "\E768"; }
+/*现场要号*/ .el-icon-njm-xcyh:before{ content: "\E769"; }
+/*带回配号*/ .el-icon-njm-dhph:before{ content: "\E770"; }
+/*录入*/ .el-icon-njm-lr:before{ content: "\E771"; }
+/*任务安排*/ .el-icon-njm-rwap:before{ content: "\E772"; }
+/*查询*/ .el-icon-njm-cx:before{ content: "\E773"; }
+/*送检查询*/ .el-icon-njm-sjcx:before{ content: "\E774"; }
+/*任务分配*/ .el-icon-njm-rwfp:before{ content: "\E775"; }
+/*任务总览*/ .el-icon-njm-rwzl:before{ content: "\E776"; }
+/*种别维护*/ .el-icon-njm-zbwh:before{ content: "\E777"; }
+/*强检目录*/ .el-icon-njm-qjml:before{ content: "\E778"; }
+/*异常任务*/ .el-icon-njm-ycrw:before{ content: "\E779"; }
+/*现场任务（工程师）*/ .el-icon-njm-xcrwgcs:before{ content: "\E780"; }
+/*现场任务（带队人）*/ .el-icon-njm-xcrwddr:before{ content: "\E781"; }
+/*现场任务（业务员）*/ .el-icon-njm-xcrwywy:before{ content: "\E782"; }
+/*人员去向*/ .el-icon-njm-ryqx:before{ content: "\E783"; }
+/*样品入库*/ .el-icon-njm-yprk:before{ content: "\E784"; }
+/*证书入库*/ .el-icon-njm-zsrk:before{ content: "\E785"; }
+/*综合入库*/ .el-icon-njm-zhrk:before{ content: "\E786"; }
+/*入库撤销*/ .el-icon-njm-rkcx:before{ content: "\E787"; }
+/*担保录入*/ .el-icon-njm-dblr:before{ content: "\E788"; }
+/*担保查询*/ .el-icon-njm-dbcx:before{ content: "\E789"; }
+/*原始记录交接*/ .el-icon-njm-ysjljj:before{ content: "\E790"; }
+/*库房统计*/ .el-icon-njm-kftj:before{ content: "\E791"; }
+/*库房查询*/ .el-icon-njm-kfcx:before{ content: "\E792"; }
+/*样品出库*/ .el-icon-njm-ypck:before{ content: "\E793"; }
+/*证书出库*/ .el-icon-njm-zsck:before{ content: "\E794"; }
+/*综合出库*/ .el-icon-njm-zhck:before{ content: "\E795"; }
+/*出库单查询*/ .el-icon-njm-ckdcx:before{ content: "\E796"; }
+/*分包*/ .el-icon-njm-fb:before{ content: "\E797"; }
+/*待分包查询*/ .el-icon-njm-dfbcx:before{ content: "\E798"; }
+/*分包查询*/ .el-icon-njm-fbcx:before{ content: "\E799"; }
+/*分包返库*/ .el-icon-njm-fbfk:before{ content: "\E800"; }
+/*送检任务*/ .el-icon-njm-sjrw:before{ content: "\E801"; }
+/*人员任务分配*/ .el-icon-njm-ryrwfp:before{ content: "\E802"; }
+/*人员任务查看*/ .el-icon-njm-ryrwck:before{ content: "\E803"; }
+/*房间条码打印*/ .el-icon-njm-fjtmdy:before{ content: "\E804"; }
+/*部门房间号维护*/ .el-icon-njm-bmfjhwh:before{ content: "\E805"; }
+/*样品流转*/ .el-icon-njm-yplz:before{ content: "\E806"; }
+/*流转查询*/ .el-icon-njm-lzcx:before{ content: "\E807"; }
+/*异常申请*/ .el-icon-njm-ycsq:before{ content: "\E808"; }
+/*异常流程查询*/ .el-icon-njm-yclccx:before{ content: "\E809"; }
+/*异常一审*/ .el-icon-njm-ycys:before{ content: "\E810"; }
+/*异常二审*/ .el-icon-njm-yces:before{ content: "\E811"; }
+/*流程查询*/ .el-icon-njm-lccx:before{ content: "\E812"; }
+/*证书模板*/ .el-icon-njm-zsmb:before{ content: "\E813"; }
+/*证书主模板*/ .el-icon-njm-zszmb:before{ content: "\E814"; }
+/*模板一级审核*/ .el-icon-njm-zsmbyjsh:before{ content: "\E816"; }
+/*模板二级审核*/ .el-icon-njm-zsmbejsh:before{ content: "\E817"; }
+/*证书添加*/ .el-icon-njm-zstj:before{ content: "\E818"; }
+/*PDF生成*/ .el-icon-njm-pdfsc:before{ content: "\E819"; }
+/*证书修改*/ .el-icon-njm-zsxg:before{ content: "\E820"; }
+/*批准前修改*/ .el-icon-njm-pzqxg:before{ content: "\E821"; }
+/*证书PDF*/ .el-icon-njm-zspdf:before{ content: "\E822"; }
+/*证书审核*/ .el-icon-njm-zssh:before{ content: "\E823"; }
+/*证书检定*/ .el-icon-njm-zsjd:before{ content: "\E824"; }
+/*证书核验*/ .el-icon-njm-zshy:before{ content: "\E825"; }
+/*证书主管*/ .el-icon-njm-zszg:before{ content: "\E826"; }
+/*PDF下载*/ .el-icon-njm-pdfxz:before{ content: "\E827"; }
+/*证书打印*/ .el-icon-njm-zsdy:before{ content: "\E828"; }
+/*分散打印*/ .el-icon-njm-fsdy:before{ content: "\E829"; }
+/*集中打印*/ .el-icon-njm-jzdy:before{ content: "\E830"; }
+/*修改打印*/ .el-icon-njm-xgdy:before{ content: "\E831"; }
+/*补打打印*/ .el-icon-njm-bddy:before{ content: "\E832"; }
+/*证书查询*/ .el-icon-njm-zscx:before{ content: "\E833"; }
+/*备份查询*/ .el-icon-njm-bfcx:before{ content: "\E834"; }
+/*记录模板*/ .el-icon-njm-jlmb:before{ content: "\E835"; }
+/*记录添加*/ .el-icon-njm-jltj:before{ content: "\E836"; }
+/*记录修改*/ .el-icon-njm-jlxg:before{ content: "\E837"; }
+/*记录审核*/ .el-icon-njm-jlsh:before{ content: "\E838"; }
+/*证书上传*/ .el-icon-njm-zssc:before{ content: "\E839"; }
+/*记录查询*/ .el-icon-njm-jlcx:before{ content: "\E840"; }
+/*费用录入*/ .el-icon-njm-fylr:before{ content: "\E841"; }
+/*费用查询*/ .el-icon-njm-fycx:before{ content: "\E842"; }
+/*费用批量修改*/ .el-icon-njm-fyplxg:before{ content: "\E843"; }
+/*缴费单*/ .el-icon-njm-jfd:before{ content: "\E844"; }
+/*预开票*/ .el-icon-njm-ykp:before{ content: "\E845"; }
+/*预开票申请*/ .el-icon-njm-ykpsq:before{ content: "\E846"; }
+/*预开票审核*/ .el-icon-njm-ykpsh:before{ content: "\E847"; }
+/*预开发票*/ .el-icon-njm-ykfp:before{ content: "\E848"; }
+/*预开票记录*/ .el-icon-njm-ykpjl:before{ content: "\E849"; }
+/*挂账查询*/ .el-icon-njm-gzcx:before{ content: "\E850"; }
+/*到款管理*/ .el-icon-njm-dkgl:before{ content: "\E851"; }
+/*到款查询*/ .el-icon-njm-dkcx:before{ content: "\E852"; }
+/*到款认领*/ .el-icon-njm-dkrl:before{ content: "\E853"; }
+/*认领记录查询*/ .el-icon-njm-rljlcx:before{ content: "\E854"; }
+/*结账*/ .el-icon-njm-jz:before{ content: "\E855"; }
+/*其他条件结账*/ .el-icon-njm-qttjjz:before{ content: "\E856"; }
+/*缴费单结账*/ .el-icon-njm-jfdjz:before{ content: "\E857"; }
+/*预开票结账*/ .el-icon-njm-ykpjz:before{ content: "\E858"; }
+/*挂账结账*/ .el-icon-njm-jzgz:before{ content: "\E859"; }
+/*结账查询记录*/ .el-icon-njm-jzcxjl:before{ content: "\E860"; }
+/*折扣审核*/ .el-icon-njm-zksh:before{ content: "\E861"; }
+/*新增报价*/ .el-icon-njm-xzbj:before{ content: "\E862"; }
+/*报价查询*/ .el-icon-njm-bjcx:before{ content: "\E863"; }
+/*报价审核*/ .el-icon-njm-bjsh:before{ content: "\E864"; }
+/*折扣审核记录*/ .el-icon-njm-zkshjl:before{ content: "\E865"; }
+/*转任务*/ .el-icon-njm-zrw:before{ content: "\E866"; }
+/*设置状态*/ .el-icon-njm-szzt:before{ content: "\E867"; }
+/*异常报价*/ .el-icon-njm-ycbj:before{ content: "\E868"; }
+/*合同管理*/ .el-icon-njm-htgl:before{ content: "\E869"; }
+/*合同审核*/ .el-icon-njm-htsh:before{ content: "\E870"; }
+/*备案审核*/ .el-icon-njm-bash:before{ content: "\E871"; }
+/*主标准器备案审核*/ .el-icon-njm-zbzqbash:before{ content: "\E872"; }
+/*变更审核*/ .el-icon-njm-bgsh:before{ content: "\E873"; }
+/*折扣审核记录*/ .el-icon-njm-zkshjl:before{ content: "\E874"; }
+/*备案查询*/ .el-icon-njm-bacx:before{ content: "\E875"; }
+/*主标准器备案查询*/ .el-icon-njm-zbzqbacx:before{ content: "\E876"; }
+/*主标准器变更审核*/ .el-icon-njm-zbzqbgsh:before{ content: "\E877"; }
+/*超期预警*/ .el-icon-njm-cqyj:before{ content: "\E878"; }
+/*超期查询*/ .el-icon-njm-cqcx:before{ content: "\E879"; }
+/*文件夹*/ .el-icon-njm-wjj:before{ content: "\E946"; }
+/*已上传*/ .el-icon-njm-ysc:before{ content: "\E948 "; }
+/*待上传*/ .el-icon-njm-dsc:before{ content: "\E949 "; }
+/*费用录入*/ .el-icon-njm-fylr:before{ content: "\E950 "; }
+/*已录入*/ .el-icon-njm-ylr:before{ content: "\E951 "; }
+/*文件夹关闭*/ .el-icon-njm-dkdwjj:before{ content: "\E952 "; }
+/*加急（任务类）*/ .el-icon-njm-sy-syjjrwl:before{ content: "\E953"; }
+/*超期未检*/ .el-icon-njm-sy-sycqwj:before{ content: "\E954"; }
+/*所有未检*/ .el-icon-njm-sy-sysywj:before{ content: "\E955"; }
+/*待领样*/ .el-icon-njm-sy-sydly:before{ content: "\E956"; }
+/*异常*/ .el-icon-njm-sy-syyc:before{ content: "\E957"; }
+/*记录核验*/ .el-icon-njm-sy-syjlhy:before{ content: "\E958"; }
+/*记录编制*/ .el-icon-njm-sy-syjlbz:before{ content: "\E959"; }
+/*证书修改*/ .el-icon-njm-sy-syzsxg:before{ content: "\E960"; }
+/*证书核验*/ .el-icon-njm-sy-syzshy:before{ content: "\E961"; }
+/*证书检定*/ .el-icon-njm-sy-syzsjd:before{ content: "\E962"; }
+/*证书上传*/ .el-icon-njm-sy-syzssc:before{ content: "\E963"; }
+/*合同预警*/ .el-icon-njm-sy-syhtyj:before{ content: "\E964"; }
+/*客户拜访提醒*/ .el-icon-njm-sy-sykhbftx:before{ content: "\E965"; }
+/*证书预警*/ .el-icon-njm-sy-syzsyj:before{ content: "\E966"; }
+/*加急*/ .el-icon-njm-sy-syjj:before{ content: "\E967"; }
+/*设备超期预警*/ .el-icon-njm-sy-sysbcqyj:before{ content: "\E968"; }
+/*计量标准超期预警*/ .el-icon-njm-sy-syjlbzcqyj:before{ content: "\E969"; }
+/*cnas预警*/ .el-icon-njm-sy-sycnasyj:before{ content: "\E970"; }
+/*技术依据预警*/ .el-icon-njm-sy-syjsyjyj:before{ content: "\E971"; }
+/*人员资质预警*/ .el-icon-njm-sy-syryzzyj:before{ content: "\E972"; }
+/*设备证书审核提醒*/ .el-icon-njm-sy-sysbzsshyj:before{ content: "\E973"; }
+/*担保提醒*/ .el-icon-njm-sy-sydbtx:before{ content: "\E974"; }
+/*样品入库提醒*/ .el-icon-njm-sy-syyprktx:before{ content: "\E975"; }
+/*证书入库提醒*/ .el-icon-njm-sy-syzsrktx:before{ content: "\E976"; }
+/*待安排*/ .el-icon-njm-sy-sydap:before{ content: "\E977"; }
+/*待自排*/ .el-icon-njm-sy-sydzp:before{ content: "\E978"; }
+/*待分配*/ .el-icon-njm-sy-sydfp:before{ content: "\E979"; }
+/*待配号*/ .el-icon-njm-sy-sydph:before{ content: "\E980"; }
+/*证书主管*/ .el-icon-njm-sy-syzszg:before{ content: "\E981"; }
+/*通知公告*/ .el-icon-njm-sy-sybftzgg:before{ content: "\E982"; }
+/*工作流*/ .el-icon-njm-sy-sybfgzl:before{ content: "\E983"; }
+/*任务*/ .el-icon-njm-sy-sybfrw:before{ content: "\E984"; }
+/*现场*/ .el-icon-njm-sy-sybfxc:before{ content: "\E985"; }
+/*证书记录*/ .el-icon-njm-sy-sybfzsjl:before{ content: "\E986"; }
+/*质量*/ .el-icon-njm-sy-sybfzl:before{ content: "\E987"; }
+/*市场*/ .el-icon-njm-sy-sybfsc:before{ content: "\E988"; }
+/*外网*/ .el-icon-njm-sy-sybfww:before{ content: "\E989"; }
+/*其他*/ .el-icon-njm-sy-sybfqt:before{ content: "\E990"; }
+/*主办*/ .el-icon-njm-vzhuban:before{ content: "\E991"; }
+/*交办*/ .el-icon-njm-vjiaoban:before{ content: "\E992"; }
+
+
+
+
+
+
+
+
+@-webkit-keyframes rotating {
+  0% {
+    -webkit-transform: rotateZ(0deg);
+    transform: rotateZ(0deg); }
+  100% {
+    -webkit-transform: rotateZ(360deg);
+    transform: rotateZ(360deg); } }
+
+@keyframes rotating {
+  0% {
+    -webkit-transform: rotateZ(0deg);
+    transform: rotateZ(0deg); }
+  100% {
+    -webkit-transform: rotateZ(360deg);
+    transform: rotateZ(360deg); } }
+
+
+

@@ -1,0 +1,308 @@
+<html>
+<body>
+<!-- 模板编辑内容都写在body中 -->
+<style>
+
+  #printDiv {
+    width: 1000px;
+    text-align: center;
+    margin: auto;
+  }
+
+  .trTop1 {
+    border-top: #808080 solid 2px;
+  }
+
+  .font_table_title {
+    font-size: 11pt;
+    font-family: "华文中宋";
+    font-weight: normal;
+  }
+
+  .font_num {
+    font-size: 12pt;
+    font-family: "Arial";
+  }
+
+  table.MsoNormalTable {
+    font-family: "Times New Roman";
+    word-wrap: break-word;
+    overflow: auto !important;
+  }
+
+
+</style>
+<script>
+  var talbehtml = "";//表模板
+  var talbehead = "";//表头模板
+  var talbedata = "";
+  var talbesum = "";
+
+
+  /**
+   * 如果方法存在则不会直接操作模板
+   * $ jquery对象
+   * data 页面中传入的相应参数
+   */
+  function receive(data) {
+    var script = document.createElement('script');
+    script.src = 'static/js/jquery/jquery-3.3.1.js';
+    document.body.appendChild(script);
+    script.onload = function () {
+      //获取模板
+      getTemplate("applianceList");
+      //使用for判断是否分页
+      $("#currentDate").text(new Date().format("YYYY-MM-DD"))
+      if (data) {
+        //默认单位信息
+
+        $(".defaultCompanyName").text(localStorage.getItem("defaultCompanyName"));
+        $("#defaultAddress").text(localStorage.getItem("defaultAddress"));
+        $("#defaultLevel").text(localStorage.getItem("defaultLevel"));
+        $("#defaultTelephone").text(localStorage.getItem("defaultTelephone"));
+        $("#defaultFax").text(localStorage.getItem("defaultFax"));
+        $("#defaultZipcode").text(localStorage.getItem("defaultZipcode"));//单位邮编
+        $("#defaultBank").text(localStorage.getItem("defaultBank"));//单位开户银行
+        $("#defaultBankAccount").text(localStorage.getItem("defaultBankAccount"));//单位开户银行账号
+        $("#defaultOfficialwebsite").text(localStorage.getItem("defaultOfficialwebsite"));//单位网址
+        $("#defaultMarketphone").text(localStorage.getItem("defaultMarketphone"));
+        $("#defaultMarketFax").text(localStorage.getItem("defaultMarketFax"));
+        $("#defaultSendReceivephone").text(localStorage.getItem("defaultSendReceivephone"));
+        $("#defaultComplaintphone").text(localStorage.getItem("defaultComplaintphone"));
+        $("#defaultOfficialwebsite").text(localStorage.getItem("defaultOfficialwebsite"));
+        //基本信息
+        $.get('/back/arrange/printOrderGetInfo',{orderNo:data.orderNo}, (res) => {
+          for (var p in res.map) {
+            $("#" + p).text(res.map[p]);
+          }
+        });
+
+        //器具信息
+        $.get('/back/plan/getApplianceListByOrderNo?orderNo=' + data.orderNo + "&sc=''", (res) => {
+          createTable("applianceList", res.rows);
+        });
+      }
+    };
+  }
+
+
+  //创建器具行
+  function createTable(id, list) {
+    $("#" + id).append(talbehead);
+    var sumTs = 0;
+    var sumMoney = 0;
+    for (var i = 0; i < list.length; i++) {
+      //talbedata  赋值
+      var tempData = $(talbedata);
+      tempData.find("td").each(function (index, row) {
+        var name = $(this).attr("column-name");
+        if ("index" == name) {
+          $(this).html(i + 1);
+        } else if ("detectionMethod" == name) {
+          var methods = "";
+          // 0现场 1送检 2带回
+          if (list[i][name] == "0") {
+            methods = "现场"
+          } else if (list[i][name] == "1") {
+            methods = "送检"
+          } else if (list[i][name] == "2") {
+            methods = "带回";
+          }
+          $(this).html(methods);
+        } else if ("setNumber" == name) {
+          $(this).html(list[i][name]);
+          //套数
+          sumTs += list[i][name];
+        } else {
+          $(this).html(list[i][name]);
+        }
+      })
+      $("#" + id).append(tempData.prop("outerHTML"));
+    }
+    //合计
+    var tempSum = $(talbesum);
+    $("#" + id).append(tempSum.prop("outerHTML"));
+    $("#sumTs").html(sumTs)
+  }
+
+  /**
+   *
+   * 根据id抽取模板
+   */
+  function getTemplate(id) {
+    $("#" + id).find("tr").each(function (i, row) {
+      if ("data" == $(this).attr("t_type")) {
+        talbedata = $(this).prop("outerHTML");
+      } else if ("sum" == $(this).attr("t_type")) {
+        talbesum = $(this).prop("outerHTML");
+      } else if ("head" == $(this).attr("t_type")) {
+        talbehead = $(this).prop("outerHTML");
+      }
+    });
+    $("#" + id).empty();
+    talbehtml = $("#" + id).prop("outerHTML");
+  }
+
+  Date.prototype.format = function (format) {
+    if (isNaN(this.getMonth())) {
+      return null;
+    }
+    let o = {
+      "M+": this.getMonth() + 1,
+      "D+": this.getDate(),
+      "h+": this.getHours(),
+      "m+": this.getMinutes(),
+      "s+": this.getSeconds(),
+      "q+": Math.floor((this.getMonth() + 3) / 3),
+      "S": this.getMilliseconds()
+    };
+    if (/(Y+)/.test(format)) {
+      format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    }
+    for (let k in o) {
+      if (new RegExp("(" + k + ")").test(format)) {
+        format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
+      }
+    }
+    return format;
+  };
+
+
+</script>
+<button onclick="window.print()" class="Noprint">print</button>
+
+<div id="printDiv">
+  <table id="quotation" width="1000px" class="MsoNormalTable">
+    <tr>
+      <td align=center valign=middle height=40px>
+        <b><span face="宋体" size="4"><span class="defaultCompanyName"></span></span></b>
+      </td>
+    </tr>
+    <tr>
+      <td align=center valign=middle >
+        <span>计量器具检校委托单</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div align="left">
+          <table border="0" width="100%" cellspacing="0" cellpadding="0" style="font-size: 11pt" class="MsoNormalTable">
+            <tr>
+              <td width="500">委托单位：<span id="companyName"></span></td>
+              <td colspan="2">联&nbsp;系&nbsp;人：<span id="contacter"></span></td>
+            </tr>
+            <tr>
+              <td>地&nbsp;&nbsp;&nbsp;&nbsp;址：<span id="address"></span></td>
+              <td>业务员：<span id="businessStaffName"></span></td>
+            </tr>
+
+            <tr>
+              <td>带队人：<span id="leaderName"></span></td>
+            </tr>
+            <tr>
+              <td>车辆：<span id="vehicle"></span></td>
+              <td>驾驶员：<span id="driverName"></span></td>
+            </tr>
+            <tr>
+              <td>说明：<span id="remark"></span></td>
+              <td>计划日期：<span id="allPlanTime"></span></td>
+            </tr>
+            <tr>
+              <td>证书单位：<span id="certificateCompanyName"></span></td>
+              <td>证书单位地址：<span id="certificateCompanyAddress"></span></td>
+            </tr>
+            <tr>
+              <td colspan="2">特殊要求：<span id="specialRequirement"></span></td>
+            </tr>
+          </table>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <hr color="#000000" width="100%" size="0.1">
+      </td>
+    </tr>
+  </table>
+
+  <table id="applianceList" border="0" align="center" width="1000px" cellspacing="0" cellpadding="0" class="MsoNormalTable">
+    <tr t_type="head">
+      <td width="50">序号</td>
+      <td width="150" align="center">器具名称</td>
+      <td width="200" align="center">规格型号</td>
+      <td width="80" align="center">套数</td>
+      <td width="100" align="center">服务类型</td>
+      <td width="100" align="center">检测方式</td>
+      <td width="320" align="center">备注</td>
+    </tr>
+    <tr t_type="data">
+      <td class="trTop1 font_table_title" column-name="index"></td>
+      <td align="center" class="trTop1" column-name="applianceName"></td>
+      <td align="center" class="trTop1" column-name="model"></td>
+      <td align="center" class="trTop1" column-name="setNumber"></td>
+      <td align="center" class="trTop1" column-name="certificateType"></td>
+      <td align="center" class="trTop1" column-name="detectionMethod"></td>
+      <td align="center" class="trTop1" column-name="remark"></td>
+    </tr>
+
+  </table>
+  <table border="0" align="center" width="1000px" cellspacing="0" cellpadding="0" class="MsoNormalTable">
+    <tr>
+      <td>
+        <hr color="#000000" width="100%" size="0.1">
+      </td>
+    </tr>
+    <tr>
+      <td  >
+        若报告形式为校准或检测时，是否出具结论： 是 □ 否 □
+      </td>
+    </tr>
+    <tr>
+      <td>
+        若报告形式为校准或检测时，是否出具复检/校日期：是 □ 否 □
+      </td>
+    </tr>
+    <tr>
+      <td align="left">
+        &nbsp;&nbsp;委托人确认无误后，签字：
+      </td>
+    </tr>
+    <tr>
+      <td colspan="7" align="left">
+        本<span name="defaultLevel"></span>收发复核员只对送检仪器的外观进行核查，缺陷在备注栏中说明，仪器性能由实验室待查！本所复核员签字:
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <hr color="#000000" width="100%" size="0.1">
+      </td>
+    </tr>
+  </table>
+
+  <table  border="0" align="center" width="1000px" cellspacing="0" cellpadding="0" class="MsoNormalTable" style="font-size:10px;">
+    <tr>
+      <td align="left">检测单位：<span class="defaultCompanyName"></span></td>
+      <td align="left">单位地址：<span id="defaultAddress"></span></td>
+      <td align="left">联系电话：<span id="defaultTelephone"></span></td>
+      <td align="left">业务拓展部电话：<span id="defaultMarketphone"></span></td>
+
+    </tr>
+    <tr>
+      <td align="left">银行帐号：<span id="defaultBankAccount"></span></td>
+      <td align="left">邮编：<span id="defaultZipcode"></span></td>
+      <td align="left">收发电话：<span id="defaultSendReceivephone"></span></td>
+      <td align="left">传真:<span ic="defaultFax"></span></td>
+    </tr>
+    <tr>
+      <td align="left">开户银行：<span id="defaultBank"></span></td>
+      <td align="left">网址：<span id="defaultOfficialwebsite"></span></td>
+      <td align="left">投诉电话：<span id="defaultComplaintphone"></span></td>
+      <td align="left">业务拓展部传真：<span id="defaultMarketFax"></span></td>
+    </tr>
+  </table>
+</div>
+
+
+</body>
+</html>

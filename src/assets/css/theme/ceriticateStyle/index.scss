@@ -1,0 +1,213 @@
+body {
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  border: 0; }
+.cerCommonStyle{
+	font-size: 14px;
+	font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+  font-weight: 400;
+  color: #000;
+	a {
+	  color: #1D74B7;
+	  text-decoration: none; }
+	  a:hover, a:focus {
+	    color: #4a90c5; }
+	  a:active {
+	    color: #1a68a5; }
+
+	h1, h2, h3, h4, h5, h6 {
+	  color: #606266;
+	  font-weight: inherit; }
+	  h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+	    margin-top: 0; }
+	  h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:last-child {
+	    margin-bottom: 0; }
+
+	h1 {
+	  font-size: 20px; }
+
+	h2 {
+	  font-size: 18px; }
+
+	h3 {
+	  font-size: 16px; }
+
+	h4, h5, h6, p {
+	  font-size: inherit; }
+
+	p {
+	  line-height: 1.8; }
+	  p:first-child {
+	    margin-top: 0; }
+	  p:last-child {
+	    margin-bottom: 0; }
+
+	sup, sub {
+	  font-size: 13px; }
+
+	small {
+	  font-size: 12px; }
+
+	hr {
+	  margin-top: 20px;
+	  margin-bottom: 20px;
+	  border: 0;
+	  border-top: 1px solid #eeeeee; }
+	blockquote, body, dd, dl, dt, form, h1, h2, h3, h4, h5, h6, li, ol, p, pre, td, th, ul {
+	    margin: 0;
+	    padding: 0;
+	    -webkit-box-sizing: border-box;
+	    -moz-box-sizing: border-box;
+	    box-sizing: border-box;
+	    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	    border: 0;
+	}
+
+
+	div{
+	    
+	}
+
+	input{
+	    margin:0;
+	    -webkit-box-sizing: border-box;
+	    -moz-box-sizing: border-box;
+	    box-sizing: border-box;
+	    -webkit-border-radius: 4px;
+	    -moz-border-radius: 4px;
+	    border-radius: 4px;
+	    border:1px solid #c9d6de;
+	    padding-left:5px;
+	    padding-right:5px;
+	    /* height:30px; */
+	    /*width:100%;*/
+	    color:#3b464d;
+	}
+	textarea{
+	    margin:0;
+	    -webkit-box-sizing: border-box;
+	    -moz-box-sizing: border-box;
+	    box-sizing: border-box;
+	    -webkit-border-radius: 4px;
+	    -moz-border-radius: 4px;
+	    border-radius: 4px;
+	    border:1px solid #c9d6de;
+	    padding-left:5px;
+	    padding-right:5px;
+	    width:100%;
+	    color:#3b464d;
+	}
+	body {
+	    font-family: sans-serif;
+	}
+
+	a {
+	    text-decoration: none;
+	}
+
+	a:active, a:hover {
+	    outline: 0
+	}
+
+	img {
+	    display: inline-block;
+	    border: none
+	}
+
+	li {
+	    list-style: none
+	}
+
+	table {
+	    border-collapse: collapse;
+	    border-spacing: 0
+	}
+
+	input, optgroup, option, select, textarea {
+	    font-family: inherit;
+	    font-size: inherit;
+	    font-style: inherit;
+	    font-weight: inherit;
+	    outline: 0
+	}
+
+	iframe {
+	    display: block;
+	    width: 100%;
+	    height: 100%;
+	    border: 0;
+	}
+
+
+	/*提示文字颜色*/
+	::-webkit-input-placeholder { /* WebKit browsers */
+	    color: #b5c2ca;
+	}
+	:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+	    color: #b5c2ca;
+	}
+	::-moz-placeholder { /* Mozilla Firefox 19+ */
+	    color: #b5c2ca;
+	}
+	:-ms-input-placeholder { /* Internet Explorer 10+ */
+	    color: #b5c2ca;
+	}
+}
+
+.cerEditorStyle{
+	font:12px/1.5 "sans serif",tahoma,verdana,helvetica;
+	html {margin:0;padding:0;}
+	body {margin:0;padding:5px;}
+	td {font:12px/1.5 "sans serif",tahoma,verdana,helvetica;}
+	body, p, div {word-wrap: break-word;}
+	p {margin:5px 0;}
+	table {border-collapse:collapse;}
+	img {border:0;}
+	noscript {display:none;}
+	table.ke-zeroborder td {border:1px dotted #AAA;}
+	img.ke-flash {
+		border:1px solid #AAA;
+		background-image:url(http://localhost:8080/static/js/kindeditor/themes/common/flash.gif);
+		background-position:center center;
+		background-repeat:no-repeat;
+		width:100px;
+		height:100px;
+	}
+	img.ke-rm {
+		border:1px solid #AAA;
+		background-image:url(http://localhost:8080/static/js/kindeditor/themes/common/rm.gif);
+		background-position:center center;
+		background-repeat:no-repeat;
+		width:100px;
+		height:100px;
+	}
+	img.ke-media {
+		border:1px solid #AAA;
+		background-image:url(http://localhost:8080/static/js/kindeditor/themes/common/media.gif);
+		background-position:center center;
+		background-repeat:no-repeat;
+		width:100px;
+		height:100px;
+	}
+	img.ke-anchor {
+		border:1px dashed #666;
+		width:16px;
+		height:16px;
+	}
+	.ke-script, .ke-noscript, .ke-display-none {
+		display:none;
+		font-size:0;
+		width:0;
+		height:0;
+	}
+	.ke-pagebreak {
+		border:1px dotted #AAA;
+		font-size:0;
+		height:2px;
+	}
+}
